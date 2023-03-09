@@ -1,10 +1,14 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import edu.rosehulman.kaupaies.carcompanion.R
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleTreeUtils
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleViewHolder
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
+import com.example.carcompanion.R
 
 class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragment.OnTroubleSelectedListener?) : RecyclerView.Adapter<TroubleViewHolder>(){
 
@@ -19,7 +23,7 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TroubleViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.row_view_trouble, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_view_trouble, parent, false)
         return TroubleViewHolder(view, this)
     }
 
@@ -59,7 +63,6 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
             woes.add(w[i])
             notifyItemInserted(i)
         }
-
     }
 
 }

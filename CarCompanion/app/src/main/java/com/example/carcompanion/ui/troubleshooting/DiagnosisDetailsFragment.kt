@@ -1,13 +1,13 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
 //import kotlinx.android.synthetic.main..view.*
-import kotlinx.android.synthetic.main.fragment_diagnosis_details.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +21,7 @@ private const val ARG_TR = "trouble"
 class DiagnosisDetailsFragment : Fragment() {
 
     private var trouble: TroubleData? = null
+    private lateinit var binding: FragmentDiagnosisDetailsBinding
 
     companion object {
         @JvmStatic
@@ -43,11 +44,18 @@ class DiagnosisDetailsFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_diagnosis_details, container, false)
-        view.fragment_diagnosis_details_title.text = trouble?.title
-        view.fragment_diagnosis_detail_body.text = trouble?.text
 
-        return view
+//        val view = inflater.inflate(R.layout.fragment_diagnosis_details, container, false)
+//        view.fragment_diagnosis_details_title.text = trouble?.title
+//        view.fragment_diagnosis_detail_body.text = trouble?.text
+        binding = FragmentDiagnosisDetailsBinding.inflate(inflater, container, false)
+
+        binding.fragmentDiagnosisDetailsTitle.text = trouble?.title
+        binding.fragmentDiagnosisDetailBody.text = trouble?.text
+
+        var root = binding.root
+
+        return root
     }
 
 }
