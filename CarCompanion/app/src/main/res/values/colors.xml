@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Our original pretty colors <3 -->
+    <color name="darkest_blue">#06145E</color>
+    <color name="dark_teal">#17384E</color>
+    <color name="seafoam">#5C9C96</color>
+
+    <!--Our new color resources, made for 375 by koenignm-->
+    <color name="charcoal">#274156</color>
+    <color name="cerulean">#1C6E8C</color>
+    <color name="verdigris">#53A2A1</color>
+    <color name="celadon">#8AD6B5</color>
+    <color name="french_gray">#D0CCD0</color>
+    <color name="pearl">#FBFCFF</color>
 </resources>
