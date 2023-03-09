@@ -1,6 +1,7 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
 import android.content.Context
+import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 object TroubleTreeUtils {
 

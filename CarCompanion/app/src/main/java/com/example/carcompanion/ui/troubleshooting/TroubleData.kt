@@ -1,4 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
 import android.os.Parcelable
 //import kotlinx.android.parcel.Parcelize

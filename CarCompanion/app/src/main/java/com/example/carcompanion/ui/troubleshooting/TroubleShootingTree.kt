@@ -3,7 +3,7 @@
 package com.example.carcompanion.ui.troubleshooting
 
 import com.example.carcompanion.R
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
+import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 public class TroubleShootingTree {
     //Troubleshooting trees are composed of nodes that referred to as Woes

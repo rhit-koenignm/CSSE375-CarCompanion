@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentTroubleshootingBinding
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
+import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 
 class TroubleshootingFragment : Fragment() {
 
