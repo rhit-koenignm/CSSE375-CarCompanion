@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentCarDetailsBinding
-import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetails
-import edu.rosehulman.kaupaies.carcompanion.ui.car_info.diagnosis_section.DiagnosisAdapter
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleAdapter
 
 class CarSpecificDetailsFragment (private val car: CarDetails): Fragment() {

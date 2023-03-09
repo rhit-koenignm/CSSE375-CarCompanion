@@ -1,4 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.car_info
+package com.example.carcompanion.ui.car_info
 
 import com.google.firebase.firestore.DocumentSnapshot
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
