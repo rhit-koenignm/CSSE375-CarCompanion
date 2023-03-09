@@ -1,8 +1,9 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.example.carcompanion.R
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
 
 public class TroubleShootingTree {
     //Troubleshooting trees are composed of nodes that referred to as Woes
