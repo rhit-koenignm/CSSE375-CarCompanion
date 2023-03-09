@@ -1,4 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
+package com.example.carcompanion.ui.troubleshooting
 
 import android.content.Context
 import android.os.Bundle
@@ -10,12 +10,15 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.rosehulman.kaupaies.carcompanion.Constants
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.example.carcompanion.Constants
+import com.example.carcompanion.databinding.FragmentTroubleshootingBinding
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 
 class TroubleshootingFragment : Fragment() {
 
     private var listener: OnTroubleSelectedListener? = null
+
+    private lateinit var binding: FragmentTroubleshootingBinding
 
     lateinit var recylclerParent: RecyclerView
 
@@ -23,31 +26,36 @@ class TroubleshootingFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        var relativeView = inflater.inflate(R.layout.fragment_troubleshooting, container, false)
-        var view = relativeView.findViewById<RecyclerView>(R.id.troubleshooting_recycler)
+        binding = FragmentTroubleshootingBinding.inflate(inflater, container, false)
+
+//        var relativeView = inflater.inflate(R.layout.fragment_troubleshooting, container, false)
+//        var view = relativeView.findViewById<RecyclerView>(R.id.troubleshooting_recycler)
+        var view = binding.troubleshootingRecycler
+
         Log.d(Constants.TAG, "opened troubleshooter")
         val adapter = TroubleAdapter(context, listener)
         view.adapter = adapter
         view.layoutManager = LinearLayoutManager(context)
         view.setHasFixedSize(true)
 
-        var restart_trouble_button = relativeView.findViewById<Button>(R.id.restart_button)
-        restart_trouble_button.setOnClickListener {
+        // var restart_trouble_button = relativeView.findViewById<Button>(R.id.restart_button)
+        binding.restartButton.setOnClickListener {
             Log.d(Constants.TAG, "restart button pressed")
             adapter.restartTroubleshooting()
         }
 
-        var back_step_button = relativeView.findViewById<Button>(R.id.back_step_button)
-        back_step_button.setOnClickListener {
+        //var back_step_button = relativeView.findViewById<Button>(R.id.back_step_button)
+
+        binding.backStepButton.setOnClickListener {
             Log.d(Constants.TAG, "back step button pressed")
         }
 
-        var next_step_button = relativeView.findViewById<Button>(R.id.next_step_button)
-        next_step_button.setOnClickListener {
+        // var next_step_button = relativeView.findViewById<Button>(R.id.next_step_button)
+        binding.nextStepButton.setOnClickListener {
             Log.d(Constants.TAG, "next step button pressed")
         }
 
-        return relativeView
+        return binding.root
     }
 
     override fun onAttach(context: Context){
@@ -68,5 +76,4 @@ class TroubleshootingFragment : Fragment() {
     interface OnTroubleSelectedListener {
         fun onTroubleSelected(woe: TroubleShootingTree.Woe)
     }
-
 }

@@ -1,7 +1,7 @@
 package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+//import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class TroubleData(var title: String, var text: String): Parcelable
+//@Parcelize
+// data class TroubleData(var title: String, var text: String): Parcelable
