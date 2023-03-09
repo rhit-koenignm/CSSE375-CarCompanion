@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.rosehulman.kaupaies.carcompanion.MainActivity
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.example.carcompanion.MainActivity
+import com.example.carcompanion.R
 
 class CarDetailFragment(var main: MainActivity) : Fragment() {
 
