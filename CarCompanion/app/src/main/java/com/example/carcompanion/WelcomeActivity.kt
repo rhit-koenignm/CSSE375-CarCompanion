@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carcompanion.databinding.ActivityMainBinding
+import com.example.carcompanion.databinding.ActivityWelcomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.firebase.ui.auth.AuthUI
 
@@ -11,7 +12,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityWelcomeBinding
 
     private val providers = arrayListOf(
         AuthUI.IdpConfig.EmailBuilder().build()
@@ -24,7 +25,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // TODO: Recognize these two lines are new additions to get the project to compile
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 //        setContentView(R.layout.activity_welcome)
@@ -38,7 +39,8 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun initializeButtonListeners() {
-        binding.btn_login.setOnClickListener {
+        // Had to change this from btn_login
+        binding.btnLogin.setOnClickListener {
             startActivityForResult(
                 AuthUI.getInstance()
                     .createSignInIntentBuilder()
@@ -47,7 +49,8 @@ class WelcomeActivity : AppCompatActivity() {
                     .build(), RC_SIGN_IN
             )
         }
-        btn_guest.setOnClickListener {
+        // Had to change this from btn_guest
+        binding.btnGuest.setOnClickListener {
             auth.signInAnonymously()
         }
     }
