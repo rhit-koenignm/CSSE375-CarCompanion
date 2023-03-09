@@ -1,0 +1,38 @@
+ <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.rosehulman.kaupaies.carcompanion.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"
+        android:iconTint="@color/white"
+        />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="1"
+        android:title="@string/logout"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+
+        />
+    <item
+        android:id="@+id/action_add_car"
+        android:orderInCategory="2"
+        android:title="@string/add_a_car"
+        app:showAsAction="never"
+        />
+     <item
+         android:id="@+id/action_add_report"
+         android:orderInCategory="3"
+         android:title="Add a Diagnosis Report"
+         app:showAsAction="never"
+         />
+<!--    <item android:id="@+id/action_clear"-->
+<!--        android:title="Clear"-->
+<!--        android:orderInCategory="80"-->
+<!--        app:showAsAction="always"-->
+<!--        android:icon="@android:drawable/btn_minus"-->
+<!--        />-->
+</menu>

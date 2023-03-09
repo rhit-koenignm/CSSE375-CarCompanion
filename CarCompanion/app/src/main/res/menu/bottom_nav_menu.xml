@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_car_detail"
+        android:icon="@drawable/ic_car"
+        android:title="@string/car_details" />
+
+    <item
+        android:id="@+id/navigation_troubleshooting"
+        android:icon="@drawable/ic_troubleshooting"
+        android:title="@string/troubleshooting_mode" />
+
+    <item
+        android:id="@+id/navigation_find_help"
+        android:icon="@drawable/ic_home"
+        android:title="@string/nav_help_string" />
+
+</menu>

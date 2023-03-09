@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/car_specific_image"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_baseline_directions_car_24"
+        />
+
+    <TextView
+        android:id="@+id/spec_nick_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/nickname"
+        android:layout_below="@+id/car_specific_image"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/car_specific_nickname"
+        style="@style/CarSpecificTexts"
+        android:text="Mia's Car"
+        android:layout_below="@+id/car_specific_image"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/car_specific_ymm_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/ymm"
+        android:layout_below="@+id/car_specific_nickname"/>
+
+    <TextView
+        android:id="@+id/car_specific_ymm_txt"
+        style="@style/CarSpecificTexts"
+        android:text="2000 Mazda 626"
+        android:layout_below="@+id/car_specific_nickname"/>
+
+    <TextView
+        android:id="@+id/vin_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/vin"
+        android:layout_below="@+id/car_specific_ymm_txt"/>
+
+    <TextView
+        android:id="@+id/vin_txt"
+        style="@style/CarSpecificTexts"
+        android:text="123ABC456DEF789"
+        android:layout_below="@+id/car_specific_ymm_txt"/>
+
+    <TextView
+        android:id="@+id/license_plate_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/license_plate"
+        android:layout_below="@+id/vin_txt"/>
+
+    <TextView
+        android:id="@+id/license_plate_txt"
+        style="@style/CarSpecificTexts"
+        android:text="RH184J"
+        android:layout_below="@+id/vin_txt"/>
+
+    <TextView
+        android:id="@+id/license_state_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/license_state"
+        android:layout_below="@+id/license_plate_txt"/>
+
+    <TextView
+        android:id="@+id/license_state_txt"
+        style="@style/CarSpecificTexts"
+        android:text="Indiana"
+        android:layout_below="@+id/license_plate_txt"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/diagnosis_recycler"
+        android:layout_below="@+id/license_state_txt"
+        android:layout_margin="20dp"/>
+
+</RelativeLayout>

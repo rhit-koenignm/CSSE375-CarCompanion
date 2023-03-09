@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/add_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a Car"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/nick_label_add"
+        style="@style/CarAddLabels"
+        android:text="@string/nickname"
+        android:layout_below="@id/add_title"/>
+
+    <EditText
+        android:id="@+id/car_nickname_et"
+        style="@style/CarAddTexts"
+        android:layout_below="@id/add_title"/>
+
+    <TextView
+        android:id="@+id/car_year_label_add"
+        style="@style/CarAddLabels"
+        android:text="@string/year"
+        android:layout_below="@+id/car_nickname_et"/>
+
+    <EditText
+        android:id="@+id/car_year_et"
+        android:inputType="number"
+        style="@style/CarAddTexts"
+        android:layout_below="@+id/car_nickname_et"/>
+
+    <TextView
+        android:id="@+id/car_make_label_add"
+        style="@style/CarAddLabels"
+        android:text="Make:"
+        android:layout_below="@+id/car_year_et"/>
+
+    <EditText
+        android:id="@+id/car_make_et"
+        style="@style/CarAddTexts"
+        android:layout_below="@+id/car_year_et"/>
+
+    <TextView
+        android:id="@+id/car_model_label_add"
+        style="@style/CarAddLabels"
+        android:text="Model:"
+        android:layout_below="@+id/car_make_et"/>
+
+    <EditText
+        android:id="@+id/car_model_et"
+        style="@style/CarAddTexts"
+        android:layout_below="@+id/car_make_et"/>
+
+    <TextView
+        android:id="@+id/vin_label"
+        style="@style/CarAddLabels"
+        android:text="@string/vin"
+        android:layout_below="@+id/car_model_et"/>
+
+    <EditText
+        android:id="@+id/vin_txt"
+        style="@style/CarAddTexts"
+        android:layout_below="@+id/car_model_et"/>
+
+    <TextView
+        android:id="@+id/license_plate_label"
+        style="@style/CarAddLabels"
+        android:text="@string/license_plate"
+        android:layout_below="@+id/vin_txt"/>
+
+    <EditText
+        android:id="@+id/license_plate_et"
+        style="@style/CarAddTexts"
+        android:layout_width="150dp"
+        android:layout_below="@+id/vin_txt"/>
+
+    <TextView
+        android:id="@+id/license_state_label"
+        style="@style/CarAddLabels"
+        android:text="@string/license_state"
+        android:layout_below="@+id/license_plate_et"/>
+
+    <EditText
+        android:id="@+id/license_state_et"
+        style="@style/CarAddTexts"
+        android:layout_width="150dp"
+        android:layout_below="@+id/license_plate_et"/>
+
+    <Button
+        android:id="@+id/btn_add_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_below="@+id/license_state_et"
+        android:text="Save New Car"
+        android:textSize="20sp"
+        />
+
+</RelativeLayout>

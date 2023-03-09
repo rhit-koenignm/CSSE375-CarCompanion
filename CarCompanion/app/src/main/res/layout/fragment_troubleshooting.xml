@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/troubleshooting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/troubleshooting_mode"
+        android:textSize="24sp"
+        android:layout_margin="30dp"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <TextView
+        android:id="@+id/current_troubleshooting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/seafoam"
+        android:text="@string/init_trouble_title"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:layout_below="@+id/troubleshooting_title"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/current_troubleshooting_title"
+        android:id="@+id/troubleshooting_recycler"
+        >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/back_step_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="@string/back_step"
+        android:backgroundTint="@color/darkest_blue"
+        android:textColor="@color/white"
+        android:layout_below="@id/troubleshooting_recycler"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@id/restart_button"
+        android:layout_marginVertical="50dp"
+        />
+
+    <Button
+        android:id="@+id/restart_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="50dp"
+        android:layout_below="@id/troubleshooting_recycler"
+        android:backgroundTint="@color/darkest_blue"
+        android:text="@string/restart_step"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/next_step_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_below="@id/troubleshooting_recycler"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="50dp"
+        android:layout_marginBottom="137dp"
+        android:layout_toRightOf="@id/restart_button"
+        android:backgroundTint="@color/darkest_blue"
+        android:text="@string/next_step"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

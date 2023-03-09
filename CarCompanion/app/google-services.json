@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "592454974183",
+    "project_id": "carcompanion-b1908",
+    "storage_bucket": "carcompanion-b1908.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592454974183:android:32cc338e7ef6bf62ac0042",
+        "android_client_info": {
+          "package_name": "com.example.carcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592454974183-e1sv1qq33i76ohlni1mpjhl2fn96a736.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIOCr7SoZ9O8coVppHLCOHowoM3jhuamo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592454974183-e1sv1qq33i76ohlni1mpjhl2fn96a736.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592454974183:android:ed7c12f1d668d77fac0042",
+        "android_client_info": {
+          "package_name": "edu.rosehulman.kaupaies.carcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592454974183-e1sv1qq33i76ohlni1mpjhl2fn96a736.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIOCr7SoZ9O8coVppHLCOHowoM3jhuamo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592454974183-e1sv1qq33i76ohlni1mpjhl2fn96a736.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
