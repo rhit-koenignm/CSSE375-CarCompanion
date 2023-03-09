@@ -1,5 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.find_help
-
+package com.example.carcompanion.ui.find_help
 
 //import com.google.android.libraries.places.api.model.Place
 //import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
@@ -16,22 +15,25 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import edu.rosehulman.kaupaies.carcompanion.Constants
-import edu.rosehulman.kaupaies.carcompanion.MainActivity
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.google.android.libraries.maps.GoogleMap
+import com.google.android.libraries.maps.OnMapReadyCallback
+import com.google.android.libraries.maps.model.CameraPosition
+import com.example.carcompanion.Constants
+import com.example.carcompanion.MainActivity
 
 class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
+    // FIXME This class will need to be updated to meet current android binding standards for activity
 
     private lateinit var map: GoogleMap
     private lateinit var cameraPosition: CameraPosition
     private lateinit var lastLocation: Location
+
+//    private lateinit var binding: Activity
 
     //The entry point to the Places api
 
@@ -39,20 +41,24 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_find_help)
+
+        //setContentView(R.layout.fragment_find_help)
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+//        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+//        mapFragment.getMapAsync(this)
         Log.d(Constants.TAG, "Help Map Activity launched")
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         //handling our buttons
         //we only care about the back home button for now
-        var backHomeButton = findViewById<Button>(R.id.back_home_button)
-        backHomeButton.setOnClickListener {
-            val i = Intent(this@HelpMapActivity, MainActivity::class.java)
-            startActivity(i)
-        }
+
+//        var backHomeButton = findViewById<Button>(R.id.back_home_button)
+//        backHomeButton.setOnClickListener {
+//            val i = Intent(this@HelpMapActivity, MainActivity::class.java)
+//            startActivity(i)
+//        }
     }
 
     companion object{
@@ -68,18 +74,18 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         }
 
         //Enables the my location layer which draws a light blue dot on the user's location
-        map.isMyLocationEnabled = true
+//        map.isMyLocationEnabled = true
 
         //gives the most recent location currently available
 
 
-        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-            if(location != null){
-                lastLocation = location
-                val currentLatLng = LatLng(location.latitude, location.longitude)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
-            }
-        }
+//        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+//            if(location != null){
+//                lastLocation = location
+//                val currentLatLng = LatLng(location.latitude, location.longitude)
+//                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+//            }
+//        }
     }
 
     /**
@@ -96,12 +102,15 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 
         // Add a marker at Rose Hulman and move the camera
         val myPlace = LatLng(39.4833, -87.3241)
-        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
+//        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
+//        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
         map.getUiSettings().setZoomControlsEnabled(true)
         map.setOnMarkerClickListener(this)
         setUpMap()
     }
 
-    override fun onMarkerClick(p0: Marker?) = false
+    //override fun onMarkerClick(p0: Marker?) = false
+    override fun onMarkerClick(p0: com.google.android.libraries.maps.model.Marker?): Boolean {
+        TODO("Not yet implemented")
+    }
 }

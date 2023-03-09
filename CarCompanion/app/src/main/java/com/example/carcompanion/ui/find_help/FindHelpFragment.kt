@@ -1,4 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.find_help
+package com.example.carcompanion.ui.find_help
 
 import android.os.Bundle
 import android.util.Log
@@ -8,22 +8,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
-import edu.rosehulman.kaupaies.carcompanion.Constants
-import edu.rosehulman.kaupaies.carcompanion.R
+import com.example.carcompanion.Constants
+import com.example.carcompanion.databinding.FragmentFindHelpBinding
+
 
 class FindHelpFragment: Fragment() {
     lateinit var myMapView: MapView
     private lateinit var map: GoogleMap
+    private lateinit var binding: FragmentFindHelpBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
-        var v = inflater.inflate(R.layout.fragment_find_help, container, false)
+        binding = FragmentFindHelpBinding.inflate(inflater, container, false)
+        val root = binding.root
+        //var v = inflater.inflate(R.layout.fragment_find_help, container, false)
 //        myMapView = v.findViewById(R.id.map_view)
 //        myMapView.onCreate(savedInstanceState)
 //        myMapView.onResume()
         //we need this for our map to show up
         Log.d(Constants.TAG, "opened find help map")
-        return v
+        return root
     }
 
 //    override fun onResume() {
