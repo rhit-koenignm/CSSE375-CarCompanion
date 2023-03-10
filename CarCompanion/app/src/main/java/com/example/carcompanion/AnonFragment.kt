@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailAdapter
+import com.example.carcompanion.ui.car_info.CarDetailAdapter
 
 class AnonFragment: Fragment() {
 

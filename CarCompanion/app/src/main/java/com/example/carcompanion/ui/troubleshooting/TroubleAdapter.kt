@@ -4,10 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleTreeUtils
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleViewHolder
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 import com.example.carcompanion.R
 
 class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragment.OnTroubleSelectedListener?) : RecyclerView.Adapter<TroubleViewHolder>(){

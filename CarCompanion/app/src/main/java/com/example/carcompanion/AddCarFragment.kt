@@ -12,7 +12,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetails
+import com.example.carcompanion.ui.car_info.CarDetails
 //import kotlinx.android.synthetic.main.fragment_add_car.*
 
 class AddCarFragment(val user: String) : Fragment() {

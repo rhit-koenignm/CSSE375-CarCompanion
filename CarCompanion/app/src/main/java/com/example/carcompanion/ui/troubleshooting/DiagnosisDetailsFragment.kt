@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
+import com.example.carcompanion.ui.troubleshooting.TroubleData
 //import kotlinx.android.synthetic.main..view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,7 +28,8 @@ class DiagnosisDetailsFragment : Fragment() {
         fun newInstance(trouble: TroubleData): DiagnosisDetailsFragment{
             val fragment = DiagnosisDetailsFragment()
             fragment.arguments = Bundle()
-            fragment.requireArguments().putParcelable(ARG_TR, trouble)
+            // TODO: Convert troubleData class to be Parcelable again
+            // fragment.requireArguments().putParcelable(ARG_TR, trouble)
             return fragment
         }
     }
@@ -36,7 +37,8 @@ class DiagnosisDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            trouble = arguments?.getParcelable(ARG_TR)
+            // TODO: Convert troubleData class to be Parcelable again
+            // trouble = arguments?.getParcelable(ARG_TR)
         }
     }
 

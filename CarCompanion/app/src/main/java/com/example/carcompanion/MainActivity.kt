@@ -12,9 +12,9 @@ import com.example.carcompanion.ui.car_info.CarDetailFragment
 import com.example.carcompanion.ui.find_help.HelpMapActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
-import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
+import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
+import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity : AppCompatActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener,
