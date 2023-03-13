@@ -12,32 +12,34 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.libraries.maps.GoogleMap
-import com.google.android.libraries.maps.OnMapReadyCallback
-import com.google.android.libraries.maps.model.CameraPosition
+//import com.google.android.gms.location.FusedLocationProviderClient
+//import com.google.android.gms.location.LocationServices
+//import com.google.android.gms.maps.CameraUpdateFactory
+//import com.google.android.gms.maps.SupportMapFragment
+//import com.google.android.gms.maps.model.LatLng
+//import com.google.android.gms.maps.model.Marker
+//import com.google.android.gms.maps.model.MarkerOptions
+//import com.google.android.libraries.maps.GoogleMap
+//import com.google.android.libraries.maps.OnMapReadyCallback
+//import com.google.android.libraries.maps.model.CameraPosition
 import com.example.carcompanion.Constants
 import com.example.carcompanion.MainActivity
 
-class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+class HelpMapActivity : AppCompatActivity()
+//    OnMapReadyCallback, GoogleMap.OnMarkerClickListener
+{
 
     // FIXME This class will need to be updated to meet current android binding standards for activity
 
-    private lateinit var map: GoogleMap
-    private lateinit var cameraPosition: CameraPosition
+//    private lateinit var map: GoogleMap
+//    private lateinit var cameraPosition: CameraPosition
     private lateinit var lastLocation: Location
 
 //    private lateinit var binding: Activity
 
     //The entry point to the Places api
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+//    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,7 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 //        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
 //        mapFragment.getMapAsync(this)
         Log.d(Constants.TAG, "Help Map Activity launched")
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         //handling our buttons
         //we only care about the back home button for now
@@ -97,20 +99,20 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-
-        // Add a marker at Rose Hulman and move the camera
-        val myPlace = LatLng(39.4833, -87.3241)
-//        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
-//        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
-        map.getUiSettings().setZoomControlsEnabled(true)
-        map.setOnMarkerClickListener(this)
-        setUpMap()
-    }
+//    override fun onMapReady(googleMap: GoogleMap) {
+//        map = googleMap
+//
+//        // Add a marker at Rose Hulman and move the camera
+//        val myPlace = LatLng(39.4833, -87.3241)
+////        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
+////        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
+//        map.getUiSettings().setZoomControlsEnabled(true)
+//        map.setOnMarkerClickListener(this)
+//        setUpMap()
+//    }
 
     //override fun onMarkerClick(p0: Marker?) = false
-    override fun onMarkerClick(p0: com.google.android.libraries.maps.model.Marker?): Boolean {
-        TODO("Not yet implemented")
-    }
+//    override fun onMarkerClick(p0: com.google.android.libraries.maps.model.Marker?): Boolean {
+//        TODO("Not yet implemented")
+//    }
 }

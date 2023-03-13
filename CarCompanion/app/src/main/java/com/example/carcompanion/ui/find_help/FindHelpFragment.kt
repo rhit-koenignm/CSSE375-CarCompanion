@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
+//import com.google.android.gms.maps.GoogleMap
+//import com.google.android.gms.maps.MapView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentFindHelpBinding
 
 
 class FindHelpFragment: Fragment() {
-    lateinit var myMapView: MapView
-    private lateinit var map: GoogleMap
+//    lateinit var myMapView: MapView
+//    private lateinit var map: GoogleMap
     private lateinit var binding: FragmentFindHelpBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
