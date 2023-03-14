@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        // setSupportActionBar(findViewById(R.id.toolbar))
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //        window.statusBarColor(ContextCompat.getColor(activity_main, R.color.white))
