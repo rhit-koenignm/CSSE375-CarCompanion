@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // setSupportActionBar(findViewById(R.id.toolbar))
-        //setSupportActionBar(binding.toolbar)
 
         bottomNav = binding.bottomNavView
         bottomNav.setOnItemSelectedListener {
@@ -58,17 +56,11 @@ class MainActivity : AppCompatActivity(),
                     currentFragment = "find help"
                     val i = Intent(this@MainActivity, HelpMapActivity::class.java)
 //                    startActivity(i)
-                switchFrag(FindHelpFragment())
+                    switchFrag(FindHelpFragment())
                 }
             }
             true
         }
-
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//        window.statusBarColor(ContextCompat.getColor(activity_main, R.color.white))
-
-        user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
