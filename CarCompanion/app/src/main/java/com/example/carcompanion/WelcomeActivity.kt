@@ -17,8 +17,8 @@ class WelcomeActivity : AppCompatActivity() {
     private val providers = arrayListOf(
         AuthUI.IdpConfig.EmailBuilder().build()
     )
-    private val RC_SIGN_IN = 1
 
+    private val RC_SIGN_IN = 1
     private var currentActivity: String = "WelcomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,6 @@ class WelcomeActivity : AppCompatActivity() {
         // TODO: Recognize these two lines are new additions to get the project to compile
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 //        setContentView(R.layout.activity_welcome)
         initializeButtonListeners()
         initializeAuthListeners()

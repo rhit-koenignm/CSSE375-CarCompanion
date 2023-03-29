@@ -8,7 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
+import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.ui.car_info.CarDetailFragment
+import com.example.carcompanion.ui.find_help.FindHelpFragment
 import com.example.carcompanion.ui.find_help.HelpMapActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -17,8 +19,11 @@ import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity : AppCompatActivity(),
-    BottomNavigationView.OnNavigationItemSelectedListener,
     TroubleshootingFragment.OnTroubleSelectedListener {
+
+    lateinit var binding: ActivityMainBinding
+
+    lateinit var bottomNav: BottomNavigationView
 
     private var currentFragment:String = "home"
     val auth = FirebaseAuth.getInstance()
@@ -27,8 +32,38 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         // setSupportActionBar(findViewById(R.id.toolbar))
+        //setSupportActionBar(binding.toolbar)
+
+        bottomNav = binding.bottomNavView
+        bottomNav.setOnItemSelectedListener {
+            var switchTo: Fragment? = null
+
+            when (it.itemId) {
+                R.id.navigation_car_detail -> {
+                    currentFragment = "car detail"
+                    if(isAnon) {
+                        switchFrag(AnonFragment())
+                        true
+                    }
+                    switchFrag(CarDetailFragment(this))
+                }
+                R.id.navigation_troubleshooting -> {
+                    currentFragment = "troubleshooting"
+                    switchFrag(TroubleshootingFragment())
+                }
+                R.id.navigation_find_help -> {
+                    currentFragment = "find help"
+                    val i = Intent(this@MainActivity, HelpMapActivity::class.java)
+//                    startActivity(i)
+                switchFrag(FindHelpFragment())
+                }
+            }
+            true
+        }
+
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //        window.statusBarColor(ContextCompat.getColor(activity_main, R.color.white))
@@ -38,41 +73,11 @@ class MainActivity : AppCompatActivity(),
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
-        //passing in each menu id
-        val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-        bottomNavView.setOnNavigationItemSelectedListener(this)
-
         title = "CarCompanion"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var switchTo: Fragment? = null
-
-        when (item.itemId) {
-            R.id.navigation_car_detail -> {
-                currentFragment = "car detail"
-                if(isAnon) {
-                    switchFrag(AnonFragment())
-                    return true
-                }
-                switchFrag(CarDetailFragment(this))
-            }
-            R.id.navigation_troubleshooting -> {
-                currentFragment = "troubleshooting"
-                switchFrag(TroubleshootingFragment())
-            }
-            R.id.navigation_find_help -> {
-                currentFragment = "find help"
-                val i = Intent(this@MainActivity, HelpMapActivity::class.java)
-                startActivity(i)
-//                switchFrag(FindHelpFragment())
-            }
-        }
         return true
     }
 
