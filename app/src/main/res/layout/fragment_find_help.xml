@@ -64,7 +64,7 @@
                 android:textColor="@color/platinum"
                 android:backgroundTint="@color/seafoam"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="6dp"
                 />
 
             <Button
@@ -75,7 +75,7 @@
                 android:textColor="@color/platinum"
                 android:backgroundTint="@color/seafoam"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="6dp"
                 />
 
             <Button
@@ -86,7 +86,7 @@
                 android:backgroundTint="@color/seafoam"
                 android:layout_weight="1"
                 android:textColor="@color/platinum"
-                android:layout_marginHorizontal="10dp"/>
+                android:layout_marginHorizontal="6dp"/>
 
             
         </LinearLayout>
