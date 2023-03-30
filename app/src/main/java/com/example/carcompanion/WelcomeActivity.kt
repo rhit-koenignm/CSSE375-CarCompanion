@@ -2,6 +2,7 @@ package com.example.carcompanion
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.databinding.ActivityWelcomeBinding
@@ -12,22 +13,17 @@ class WelcomeActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
+
     private lateinit var binding: ActivityWelcomeBinding
 
-    private val providers = arrayListOf(
-        AuthUI.IdpConfig.EmailBuilder().build()
-    )
-
-    private val RC_SIGN_IN = 1
     private var currentActivity: String = "WelcomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Recognize these two lines are new additions to get the project to compile
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setContentView(R.layout.activity_welcome)
+
         initializeButtonListeners()
         initializeAuthListeners()
     }
@@ -38,18 +34,18 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun initializeButtonListeners() {
-        // Had to change this from btn_login
         binding.btnLogin.setOnClickListener {
-            startActivityForResult(
-                AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setAvailableProviders(providers)
-                    .setIsSmartLockEnabled(false)
-                    .build(), RC_SIGN_IN
-            )
+            // TODO: Move to sign in fragment
+            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign in fragment")
         }
-        // Had to change this from btn_guest
+
+        binding.btnSignup.setOnClickListener {
+            // TODO: Move to sign up fragment
+            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign up fragment")
+        }
+
         binding.btnGuest.setOnClickListener {
+            Log.d(Constants.DEFAULT_TAG, " Sign in as guest option selected -> navigating to main activity")
             auth.signInAnonymously()
         }
     }
@@ -59,7 +55,6 @@ class WelcomeActivity : AppCompatActivity() {
             val user = auth.currentUser
             if(user != null) {
                 this.currentActivity = "MainActivity"
-
                 val inputIntent = Intent(this, MainActivity::class.java)
                 inputIntent.putExtra(USER_UID, user.uid)
                 inputIntent.putExtra(IS_ANON, user.isAnonymous)

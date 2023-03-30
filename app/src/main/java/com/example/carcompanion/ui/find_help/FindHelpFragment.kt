@@ -26,7 +26,7 @@ class FindHelpFragment: Fragment() {
 //        myMapView.onCreate(savedInstanceState)
 //        myMapView.onResume()
         //we need this for our map to show up
-        Log.d(Constants.TAG, "opened find help map")
+        Log.d(Constants.DEFAULT_TAG, "opened find help map")
         return root
     }
 
