@@ -54,9 +54,8 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     }
 
     fun addWoes(w: ArrayList<TroubleShootingTree.Woe>){
-        var size = w.size - 1
-        for(i in 0..size){
-            woes.add(w[i])
+        w.forEachIndexed { i, woe ->
+            woes.add(woe)
             notifyItemInserted(i)
         }
     }
