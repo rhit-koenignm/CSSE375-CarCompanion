@@ -104,8 +104,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
 
-        Log.d(Constants.TAG, "Trouble Selected: ${woe.getTitle()}\n")
-        Log.d(Constants.TAG, "Woe is of type ${woe.getType()}")
+        Log.d(Constants.DEFAULT_TAG, "Trouble Selected: ${woe.getTitle()}\n")
+        Log.d(Constants.DEFAULT_TAG, "Woe is of type ${woe.getType()}")
 
         if(woe.getType() == "Diagnosis"){
             val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
