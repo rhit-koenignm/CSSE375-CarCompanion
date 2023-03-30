@@ -3,7 +3,6 @@
 package com.example.carcompanion.ui.troubleshooting
 
 import com.example.carcompanion.R
-import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 public class TroubleShootingTree {
     //Troubleshooting trees are composed of nodes that referred to as Woes
@@ -160,55 +159,4 @@ public class TroubleShootingTree {
         }
     }
 
-    class Indicator(data: TroubleData) : TroubleShootingTree.Woe(data){
-        var woeType: String = "Indicator"
-
-        override fun getType(): String{
-            return woeType
-        }
-
-        fun setType(givenType: String){
-            woeType = givenType
-        }
-    }
-
-    class Symptom(data: TroubleData) : TroubleShootingTree.Woe(data) {
-        var woeType: String = "Symptom"
-
-        var diagnoses = ArrayList<TroubleShootingTree.Woe>()
-
-        override fun getType(): String{
-            return woeType
-        }
-
-        fun setType(givenType: String){
-            woeType = givenType
-        }
-
-        fun addDiagnosis(diag: Diagnosis){
-            diagnoses.add(diag)
-        }
-
-        @JvmName("getDiagnoses1")
-        fun getDiagnoses(): ArrayList<Woe>{
-            return diagnoses;
-        }
-
-        fun getDiagnosisAt(index: Int): Woe {
-            return diagnoses[index]
-        }
-    }
-
-    class Diagnosis(data: TroubleData) : Woe(data) {
-        var woeType: String = "Diagnosis"
-
-        override fun getType(): String{
-            return woeType
-        }
-
-        //made this function to make sure I can have each woe have the right type
-        fun setType(givenType: String){
-            woeType = givenType
-        }
-    }
 }
