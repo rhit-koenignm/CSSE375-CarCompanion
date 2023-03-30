@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.example.carcompanion.ui.car_info.CarDetails
@@ -44,10 +42,10 @@ class AddCarFragment(val user: String) : Fragment() {
                 )
                 usersRef.set(userDoc, SetOptions.merge())
                         .addOnSuccessListener {
-                            Log.d(Constants.TAG, "added successfully!")
+                            Log.d(Constants.DEFAULT_TAG, "added successfully!")
                         }
                         .addOnFailureListener {
-                            Log.d(Constants.TAG, "something went wrong with adding user :(")
+                            Log.d(Constants.DEFAULT_TAG, "something went wrong with adding user :(")
                         }
             }
 

@@ -8,23 +8,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/charcoal"
-        app:popupTheme="@style/Theme.CarCompanion.AppBarOverlay"
-        app:layout_constraintTop_toTopOf="@+id/activity_main"
-        app:titleTextColor="@color/platinum"
-        app:subtitleTextColor="@color/french_gray"
-        />
-
     <FrameLayout
         android:id="@+id/fragment_container"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/activity_main"
         android:backgroundTint="@color/design_default_color_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="edu.rosehulman.kaupaies.carcompanion.MainActivity."
@@ -37,6 +26,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/verdigris"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -27,7 +27,7 @@ class TroubleshootingFragment : Fragment() {
         binding = FragmentTroubleshootingBinding.inflate(inflater, container, false)
         var view = binding.troubleshootingRecycler
 
-        Log.d(Constants.TAG, "opened troubleshooter")
+        Log.d(Constants.DEFAULT_TAG, "opened troubleshooter")
         val adapter = TroubleAdapter(context, listener)
         setView(view, adapter)
 
@@ -46,24 +46,24 @@ class TroubleshootingFragment : Fragment() {
 
     private fun setRestartButton(binding: FragmentTroubleshootingBinding, adapter: TroubleAdapter) {
         binding.restartButton.setOnClickListener {
-            Log.d(Constants.TAG, "restart button pressed")
+            Log.d(Constants.DEFAULT_TAG, "restart button pressed")
             adapter.restartTroubleshooting()
         }
     }
 
     private fun setBackStepButton(binding: FragmentTroubleshootingBinding) {
         binding.backStepButton.setOnClickListener {
-            Log.d(Constants.TAG, "back step button pressed")
+            Log.d(Constants.DEFAULT_TAG, "back step button pressed")
         }
     }
     private fun setnextStepButton(binding: FragmentTroubleshootingBinding) {
         binding.nextStepButton.setOnClickListener {
-            Log.d(Constants.TAG, "next step button pressed")
+            Log.d(Constants.DEFAULT_TAG, "next step button pressed")
         }
     }
     override fun onAttach(context: Context){
         super.onAttach(context)
-        Log.d(Constants.TAG, "attempting to attach troubleshoot")
+        Log.d(Constants.DEFAULT_TAG, "attempting to attach troubleshoot")
         if(context is OnTroubleSelectedListener){
             listener = context
         } else {
