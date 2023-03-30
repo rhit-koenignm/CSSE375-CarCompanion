@@ -1,7 +1,6 @@
 package com.example.carcompanion.ui.troubleshooting
 
 import android.content.Context
-import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 object TroubleTreeUtils {
 
@@ -12,13 +11,13 @@ object TroubleTreeUtils {
     //This tree creation relies on my knowing which index all these are at
     fun createTree(context: Context?): TroubleShootingTree {
         val troubleTree = TroubleShootingTree()
-        var indicList = createIndicators() as ArrayList<TroubleShootingTree.Indicator>
-        var diagnosesList = loadDiagnoses(context) as ArrayList<TroubleShootingTree.Diagnosis>
-        var sympList = createSymptoms() as ArrayList<TroubleShootingTree.Symptom>
+        var indicList = createIndicators() as ArrayList<Indicator>
+        var diagnosesList = loadDiagnoses(context) as ArrayList<Diagnosis>
+        var sympList = createSymptoms() as ArrayList<Symptom>
 
         //First I'm going to connect the indicators
         //This one is the flashing light indicator
-        indicList.get(0).addSymptom(sympList[1] as TroubleShootingTree.Symptom)
+        indicList.get(0).addSymptom(sympList[1] as Symptom)
         sympList[1].addSymptom(sympList[4])
         sympList[1].addDiagnosis(diagnosesList[3])
 
@@ -63,7 +62,7 @@ object TroubleTreeUtils {
 
         var createdSymptoms = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubleData){
-            val newSymptom = TroubleShootingTree.Symptom(trobdata)
+            val newSymptom = Symptom(trobdata)
             newSymptom.setType(type)
             createdSymptoms.add(newSymptom)
         }
@@ -82,7 +81,7 @@ object TroubleTreeUtils {
 
         var createdIndicators = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubleData){
-            val newIndicator = TroubleShootingTree.Indicator(trobdata)
+            val newIndicator = Indicator(trobdata)
             newIndicator.setType(type)
             createdIndicators.add(newIndicator)
         }
@@ -110,7 +109,7 @@ object TroubleTreeUtils {
         )
         var createdDiagnosis = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubles){
-            val newDiagnosis = TroubleShootingTree.Diagnosis(trobdata)
+            val newDiagnosis = Diagnosis(trobdata)
             newDiagnosis.setType("Diagnosis")
             createdDiagnosis.add(newDiagnosis)
         }
