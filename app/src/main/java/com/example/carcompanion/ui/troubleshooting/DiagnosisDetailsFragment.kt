@@ -52,8 +52,8 @@ class DiagnosisDetailsFragment : Fragment() {
 //        view.fragment_diagnosis_detail_body.text = trouble?.text
         binding = FragmentDiagnosisDetailsBinding.inflate(inflater, container, false)
 
-        binding.fragmentDiagnosisDetailsTitle.text = trouble?.title
-        binding.fragmentDiagnosisDetailBody.text = trouble?.text
+        binding.fragmentDiagnosisDetailsTitle.text = trouble?.getTitle()
+        binding.fragmentDiagnosisDetailBody.text = trouble?.getText()
 
         var root = binding.root
 
