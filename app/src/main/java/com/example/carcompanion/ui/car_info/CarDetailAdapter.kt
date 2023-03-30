@@ -16,30 +16,29 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
 
     private var carList:ArrayList<CarDetails> = ArrayList<CarDetails>()
 
-//    private val detailRef =
-//        main.user?.let {
-//        FirebaseFirestore
-//                .getInstance()
-//                .collection("users")
-//                .document(it)
-//                .collection("cars")
-//    }
+   private val detailRef =
+       main.user?.let {
+       FirebaseFirestore
+               .getInstance()
+               .collection("users")
+               .document(it)
+               .collection("cars")
+   }
 
     init {
-//        detailRef?.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
-//            carList.clear()
-//            if(snapshot == null)
-//                return@addSnapshotListener
-//            for(doc in snapshot!!) {
-//                carList.add(CarDetails.fromSnapshot(doc))
-//            }
-//            notifyDataSetChanged()
-//        }
+       detailRef?.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
+           carList.clear()
+           if(snapshot == null)
+               return@addSnapshotListener
+           for(doc in snapshot!!) {
+               carList.add(CarDetails.fromSnapshot(doc))
+           }
+           notifyDataSetChanged()
+       }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarDetailViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cardview_car_detail, parent, false)
-        //val view = LayoutInflater.from(context).inflate(R.layout.cardview_car_detail, parent, false)
         return CarDetailViewHolder(view, main)
     }
 
@@ -50,7 +49,7 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
     override fun getItemCount(): Int = carList.size
 
     fun addCar(cd: CarDetails) {
-//        detailRef?.add(cd)
+       detailRef?.add(cd)
     }
 
 }
