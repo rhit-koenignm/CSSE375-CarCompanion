@@ -6,13 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentTroubleshootingBinding
-import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 
 class TroubleshootingFragment : Fragment() {
 
@@ -27,37 +25,42 @@ class TroubleshootingFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTroubleshootingBinding.inflate(inflater, container, false)
-
-//        var relativeView = inflater.inflate(R.layout.fragment_troubleshooting, container, false)
-//        var view = relativeView.findViewById<RecyclerView>(R.id.troubleshooting_recycler)
         var view = binding.troubleshootingRecycler
 
         Log.d(Constants.TAG, "opened troubleshooter")
         val adapter = TroubleAdapter(context, listener)
-        view.adapter = adapter
-        view.layoutManager = LinearLayoutManager(context)
-        view.setHasFixedSize(true)
+        setView(view, adapter)
 
-        // var restart_trouble_button = relativeView.findViewById<Button>(R.id.restart_button)
-        binding.restartButton.setOnClickListener {
-            Log.d(Constants.TAG, "restart button pressed")
-            adapter.restartTroubleshooting()
-        }
-
-        //var back_step_button = relativeView.findViewById<Button>(R.id.back_step_button)
-
-        binding.backStepButton.setOnClickListener {
-            Log.d(Constants.TAG, "back step button pressed")
-        }
-
-        // var next_step_button = relativeView.findViewById<Button>(R.id.next_step_button)
-        binding.nextStepButton.setOnClickListener {
-            Log.d(Constants.TAG, "next step button pressed")
-        }
+        setRestartButton(binding,adapter);
+        setBackStepButton(binding);
+        setnextStepButton(binding);
 
         return binding.root
     }
 
+    private fun setView(view: RecyclerView, adapter: TroubleAdapter) {
+        view.adapter = adapter
+        view.layoutManager = LinearLayoutManager(context)
+        view.setHasFixedSize(true)
+    }
+
+    private fun setRestartButton(binding: FragmentTroubleshootingBinding, adapter: TroubleAdapter) {
+        binding.restartButton.setOnClickListener {
+            Log.d(Constants.TAG, "restart button pressed")
+            adapter.restartTroubleshooting()
+        }
+    }
+
+    private fun setBackStepButton(binding: FragmentTroubleshootingBinding) {
+        binding.backStepButton.setOnClickListener {
+            Log.d(Constants.TAG, "back step button pressed")
+        }
+    }
+    private fun setnextStepButton(binding: FragmentTroubleshootingBinding) {
+        binding.nextStepButton.setOnClickListener {
+            Log.d(Constants.TAG, "next step button pressed")
+        }
+    }
     override fun onAttach(context: Context){
         super.onAttach(context)
         Log.d(Constants.TAG, "attempting to attach troubleshoot")
