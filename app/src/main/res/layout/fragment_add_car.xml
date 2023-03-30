@@ -98,10 +98,12 @@
         android:id="@+id/btn_add_car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
         android:layout_below="@+id/license_state_et"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:text="Save New Car"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
 </RelativeLayout>
