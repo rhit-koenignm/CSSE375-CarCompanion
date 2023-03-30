@@ -28,7 +28,7 @@
     <string name="logout">Logout</string>
     <string name="init_trouble_title">What sensory experience are you having?</string>
     <string name="back_step">Back Step</string>
-    <string name="restart_step">Restart Troubleshooting</string>
+    <string name="restart_step">Restart</string>
     <string name="next_step">Next Step</string>
     <string name="diagnosis_title">A possible Diagnosis is...</string>
     <string name="year">Year:</string>
@@ -37,4 +37,5 @@
     <string name="mechanics">Mechanics</string>
     <string name="autoshops">AutoShops</string>
     <string name="search">Search</string>
+    <string name="home_message">The Car Companion is an app designed to help users pinpoint car problems based on certain behaviors, and assist with small repairs or find resources for getting help nearby.</string>
 </resources>
