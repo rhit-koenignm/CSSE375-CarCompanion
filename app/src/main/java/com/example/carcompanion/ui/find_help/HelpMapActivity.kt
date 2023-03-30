@@ -4,12 +4,10 @@ package com.example.carcompanion.ui.find_help
 //import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 //import com.google.android.libraries.places.api.net.PlacesClient
 
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 //import com.google.android.gms.location.FusedLocationProviderClient
@@ -23,7 +21,6 @@ import androidx.core.app.ActivityCompat
 //import com.google.android.libraries.maps.OnMapReadyCallback
 //import com.google.android.libraries.maps.model.CameraPosition
 import com.example.carcompanion.Constants
-import com.example.carcompanion.MainActivity
 
 class HelpMapActivity : AppCompatActivity()
 //    OnMapReadyCallback, GoogleMap.OnMarkerClickListener
@@ -50,7 +47,7 @@ class HelpMapActivity : AppCompatActivity()
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
 //        mapFragment.getMapAsync(this)
-        Log.d(Constants.TAG, "Help Map Activity launched")
+        Log.d(Constants.DEFAULT_TAG, "Help Map Activity launched")
 //        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         //handling our buttons
