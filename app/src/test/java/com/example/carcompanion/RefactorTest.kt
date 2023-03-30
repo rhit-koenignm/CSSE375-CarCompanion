@@ -22,11 +22,6 @@ internal class RefactorTest {
 
     @Test
     fun longMethedTest() {
-
-    }
-
-    @Test
-    fun speculativeGeneralityTest() {
-
+        //UI testing
     }
 }
