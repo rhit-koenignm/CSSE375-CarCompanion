@@ -19,18 +19,21 @@ public class TroubleShootingTree {
     final var finalStep: Int = 20
     lateinit var currentWoe: Woe
 
-    fun addWoes(list: java.util.ArrayList<Woe>, type: String){
-        for(i in 1..(list.size - 1)){
-            var woe = list[i]
-            if(type == "Indicator"){
-                indicators.add(woe)
-            }
-            else if(type == "Diagnosis"){
-                diagnoses.add(woe)
-            }
-            else if(type == "Symptom"){
-                //This is a symptom then
-                symptoms.add(woe)
+    fun addWoes(list: java.util.ArrayList<Woe>){
+        list.forEach {
+            when (it) {
+                is Indicator -> {
+                    indicators.add(it)
+                }
+                is Diagnosis -> {
+                    diagnoses.add(it)
+                }
+                is Symptom -> {
+                    symptoms.add(it)
+                }
+                else -> {
+                    // some type we have not yet handled
+                }
             }
         }
     }
@@ -147,7 +150,7 @@ public class TroubleShootingTree {
         }
 
         open fun getType(): String {
-            return ""
+            return "Woe"
         }
 
         fun addSymptom(symp: Symptom){
