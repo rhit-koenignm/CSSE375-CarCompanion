@@ -1,16 +1,10 @@
 package com.example.carcompanion.ui.troubleshooting
 
 class Symptom(data: TroubleData) : TroubleShootingTree.Woe(data) {
-    var woeType: String = "Symptom"
-
     var diagnoses = ArrayList<TroubleShootingTree.Woe>()
 
     override fun getType(): String{
-        return woeType
-    }
-
-    fun setType(givenType: String){
-        woeType = givenType
+        return "Symptom"
     }
 
     fun addDiagnosis(diag: Diagnosis){

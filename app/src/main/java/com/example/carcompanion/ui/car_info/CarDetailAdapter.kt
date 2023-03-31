@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
-import com.example.carcompanion.Constants
 import com.example.carcompanion.MainActivity
 import com.example.carcompanion.R
 
@@ -16,25 +15,23 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
 
     private var carList:ArrayList<CarDetails> = ArrayList<CarDetails>()
 
-   private val detailRef =
-       main.user?.let {
+   private val detailRef = main.user.let {
        FirebaseFirestore
-               .getInstance()
-               .collection("users")
-               .document(it)
-               .collection("cars")
+           .getInstance()
+           .collection("users")
+           .document(it)
+           .collection("cars")
    }
 
     init {
-       detailRef?.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
-           carList.clear()
-           if(snapshot == null)
-               return@addSnapshotListener
-           for(doc in snapshot!!) {
-               carList.add(CarDetails.fromSnapshot(doc))
-           }
-           notifyDataSetChanged()
-       }
+        detailRef.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
+            carList.clear()
+            if(snapshot == null)
+                return@addSnapshotListener
+
+            carList.addAll(snapshot.map{ CarDetails.fromSnapshot(it) })
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarDetailViewHolder {
@@ -47,9 +44,4 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
     }
 
     override fun getItemCount(): Int = carList.size
-
-    fun addCar(cd: CarDetails) {
-       detailRef?.add(cd)
-    }
-
 }
