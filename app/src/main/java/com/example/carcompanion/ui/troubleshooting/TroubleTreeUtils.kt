@@ -37,6 +37,7 @@ object TroubleTreeUtils {
         return troubleTree
     }
 
+
     fun loadWoes(context: Context?): ArrayList<TroubleShootingTree.Woe> {
         var woeList = createIndicators()
         woeList.addAll(loadDiagnoses(context))
