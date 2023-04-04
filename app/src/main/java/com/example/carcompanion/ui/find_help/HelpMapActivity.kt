@@ -101,8 +101,8 @@ class HelpMapActivity : AppCompatActivity()
 //
 //        // Add a marker at Rose Hulman and move the camera
 //        val myPlace = LatLng(39.4833, -87.3241)
-////        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
-////        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
+//        map.addMarker(MarkerOptions().position(myPlace).title("Marker in Rose Hulman Insititute of Technology"))
+//        map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
 //        map.getUiSettings().setZoomControlsEnabled(true)
 //        map.setOnMarkerClickListener(this)
 //        setUpMap()
