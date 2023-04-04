@@ -19,18 +19,21 @@ public class TroubleShootingTree {
     final var finalStep: Int = 20
     lateinit var currentWoe: Woe
 
-    fun addWoes(list: java.util.ArrayList<Woe>, type: String){
-        for(i in 1..(list.size - 1)){
-            var woe = list[i]
-            if(type == "Indicator"){
-                indicators.add(woe)
-            }
-            else if(type == "Diagnosis"){
-                diagnoses.add(woe)
-            }
-            else if(type == "Symptom"){
-                //This is a symptom then
-                symptoms.add(woe)
+    fun addWoes(list: java.util.ArrayList<Woe>){
+        list.forEach {
+            when (it) {
+                is Indicator -> {
+                    indicators.add(it)
+                }
+                is Diagnosis -> {
+                    diagnoses.add(it)
+                }
+                is Symptom -> {
+                    symptoms.add(it)
+                }
+                else -> {
+                    // some type we have not yet handled
+                }
             }
         }
     }
@@ -92,33 +95,28 @@ public class TroubleShootingTree {
 
     fun getCommonDiagnoses(): ArrayList<Woe> {
         val commonDiagnoses = (symptomPath.get(0) as Symptom).diagnoses
-        var doesContain = true
         var diagnosisMap = HashMap<Woe, Int>()
         //Instead of going through each arraylist and comparing with each other, I'm going to go through each and insert the diagnoses into a map and then grab the
-        var symptom: Symptom
-        var diagnoses: ArrayList<Diagnosis>
 
-        for(i in 1 until symptomPath.size){
-            symptom = symptomPath.get(i) as Symptom
-            diagnoses = symptom.getDiagnoses() as ArrayList<Diagnosis>
-            for(j in 1 until symptom.getDiagnoses().size){
-                if(diagnosisMap.containsKey(diagnoses[j])){
-                    var count = diagnosisMap.getValue(diagnoses[j]) + 1
-                    diagnosisMap.put(diagnoses[j], count)
-                }
-                else {
-                    diagnosisMap.put(diagnoses[j], 1)
-                }
+        symptomPath
+            .map{ it as Symptom }
+            .forEach{symptom ->
+                val diagnoses = symptom.getDiagnoses() as ArrayList<Diagnosis>
+                diagnoses
+                    .forEach{ diagnosis ->
+                        if(diagnosisMap.containsKey(diagnosis)){
+                            val count = diagnosisMap.getValue(diagnosis) + 1
+                            diagnosisMap[diagnosis] = count
+                        }
+                        else {
+                            diagnosisMap[diagnosis] = 1
+                        }
+                    }
             }
-        }
 
-        for(Woe in diagnosisMap.keys){
-            if(diagnosisMap.get(Woe)!! > 3){
-                commonDiagnoses.add(Woe)
-            }
-        }
+        commonDiagnoses.addAll(diagnosisMap.filter{ it.value > 3}.keys)
 
-        return commonDiagnoses as ArrayList<Woe>
+        return commonDiagnoses
     }
 
 
@@ -147,7 +145,7 @@ public class TroubleShootingTree {
         }
 
         open fun getType(): String {
-            return ""
+            return "Woe"
         }
 
         fun addSymptom(symp: Symptom){
