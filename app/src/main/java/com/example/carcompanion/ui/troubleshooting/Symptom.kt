@@ -19,4 +19,5 @@ class Symptom(data: TroubleData) : TroubleShootingTree.Woe(data) {
     fun getDiagnosisAt(index: Int): TroubleShootingTree.Woe {
         return diagnoses[index]
     }
+
 }

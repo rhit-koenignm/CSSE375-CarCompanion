@@ -35,7 +35,14 @@ object TroubleTreeUtils {
 
         return troubleTree
     }
-
+    fun createIndicators(): ArrayList<TroubleShootingTree.Woe> {
+        val troubleData = getIndicatorTroubleData()
+        return ArrayList(troubleData.map { Indicator(it) })
+    }
+    fun loadDiagnoses(): ArrayList<TroubleShootingTree.Woe> {
+        val troubles = getDiagnosesTroubleData()
+        return ArrayList(troubles.map { Diagnosis(it) })
+    }
     fun loadWoes(): ArrayList<TroubleShootingTree.Woe> {
         val woeList = ArrayList<TroubleShootingTree.Woe>()
         woeList.addAll(createIndicators())
@@ -45,62 +52,32 @@ object TroubleTreeUtils {
     }
 
     fun createSymptoms(): ArrayList<TroubleShootingTree.Woe> {
-        val troubleData = getSymptomTroubleData()
-        return ArrayList(troubleData.map { Symptom(it) })
-    }
-    fun createIndicators(): ArrayList<TroubleShootingTree.Woe> {
-        val troubleData = getIndicatorTroubleData()
-        return ArrayList(troubleData.map { Indicator(it) })
+        var troubleData = addTroubleData()
+        return addSyntomData(troubleData)
     }
 
-    fun loadDiagnoses(): ArrayList<TroubleShootingTree.Woe> {
-        val troubles = getDiagnosesTroubleData()
-        return ArrayList(troubles.map { Diagnosis(it) })
+    private fun addSyntomData(troubleData: ArrayList<TroubleData>):  ArrayList<TroubleShootingTree.Woe> {
+        var symptoms = ArrayList<TroubleShootingTree.Woe>()
+        for(trobdata in troubleData){
+            val newSymptom = Symptom(trobdata)
+            symptoms.add(newSymptom)
+        }
+        return symptoms
     }
 
-    private fun getSymptomTroubleData(): ArrayList<TroubleData> {
-        val troubleData = ArrayList<TroubleData>()
-        troubleData.add(TroubleData("Burning smell", "Your car is producing a burning smell"))
-        troubleData.add(
-            TroubleData(
-                "Check Engine Light",
-                "The check engine light on your dashboard is lit up"
-            )
-        )
-        troubleData.add(
-            TroubleData(
-                "Smell of sulfur",
-                "Your car is producing a smell like sulfur or rotten eggs"
-            )
-        )
-        troubleData.add(
-            TroubleData(
-                "Struggling to Accelerate",
-                "Your car is struggling to accelerate"
-            )
-        )
-        troubleData.add(TroubleData("Misfiring Engine", "Your car's engine is misfiring"))
-        troubleData.add(
-            TroubleData(
-                "High RPM with low acceleration",
-                "Your car is struggling to accelerate with high RPM"
-            )
-        )
-        troubleData.add(TroubleData("Clunking Sound", "Your car is producing a clunking sound"))
-        troubleData.add(
-            TroubleData(
-                "Squealing Sound",
-                "Your car is producing a squealing sound on braking"
-            )
-        )
-        troubleData.add(
-            TroubleData(
-                "Dark Smoke",
-                "Your car is producing dark smoke coming from the exhaust"
-            )
-        )
-        troubleData.add(TroubleData("Pink fluid leaking", "Your car is leaking a pink fluid"))
-        return troubleData
+    private fun addTroubleData(): ArrayList<TroubleData> {
+        var tempData = ArrayList<TroubleData>()
+        tempData.add(TroubleData("Burning smell", "Your car is producing a burning smell"))
+        tempData.add(TroubleData("Check Engine Light", "The check engine light on your dashboard is lit up"))
+        tempData.add(TroubleData("Smell of sulfur", "Your car is producing a smell like sulfur or rotten eggs"))
+        tempData.add(TroubleData("Struggling to Accelerate", "Your car is struggling to accelerate"))
+        tempData.add(TroubleData("Misfiring Engine", "Your car's engine is misfiring"))
+        tempData.add(TroubleData("High RPM with low acceleration", "Your car is struggling to accelerate with high RPM"))
+        tempData.add(TroubleData("Clunking Sound", "Your car is producing a clunking sound"))
+        tempData.add(TroubleData("Squealing Sound", "Your car is producing a squealing sound on braking"))
+        tempData.add(TroubleData("Dark Smoke", "Your car is producing dark smoke coming from the exhaust"))
+        tempData.add(TroubleData("Pink fluid leaking", "Your car is leaking a pink fluid"))
+        return tempData
     }
 
 
@@ -180,4 +157,3 @@ object TroubleTreeUtils {
         return troubles
     }
 }
-

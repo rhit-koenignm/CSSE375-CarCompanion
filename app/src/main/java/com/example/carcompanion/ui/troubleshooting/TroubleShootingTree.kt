@@ -137,11 +137,11 @@ public class TroubleShootingTree {
         var symptoms = ArrayList<Woe>()
 
         fun getTitle(): String {
-            return this.data.title
+            return this.data.getTitle()
         }
 
         fun getText(): String{
-            return this.data.text
+            return this.data.getText()
         }
 
         open fun getType(): String {
