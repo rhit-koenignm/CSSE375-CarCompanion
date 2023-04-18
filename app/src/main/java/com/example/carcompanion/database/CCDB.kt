@@ -4,7 +4,7 @@ import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 class CCDB : CarCompanionDatabase {
     override fun loadTroubleDouble(): ArrayList<TroubleData> {
-        var tempData = ArrayList<TroubleData>()
+            var tempData = ArrayList<TroubleData>()
             tempData.add(TroubleData("Burning smell", "Your car is producing a burning smell"))
             tempData.add(TroubleData("Check Engine Light", "The check engine light on your dashboard is lit up"))
             tempData.add(TroubleData("Smell of sulfur", "Your car is producing a smell like sulfur or rotten eggs"))
