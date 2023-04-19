@@ -72,7 +72,10 @@
 
             
         </LinearLayout>
-        
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
     </LinearLayout>
 
 </FrameLayout>

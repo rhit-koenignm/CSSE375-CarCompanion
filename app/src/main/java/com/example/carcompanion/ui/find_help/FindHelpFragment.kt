@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 //import com.google.android.gms.maps.MapView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentFindHelpBinding
+import org.osmdroid.config.Configuration
 
 
 class FindHelpFragment: Fragment() {
@@ -27,6 +28,7 @@ class FindHelpFragment: Fragment() {
 //        myMapView.onResume()
         //we need this for our map to show up
         Log.d(Constants.DEFAULT_TAG, "opened find help map")
+        Configuration.getInstance().userAgentValue = "CarCompanion"
         return root
     }
 
