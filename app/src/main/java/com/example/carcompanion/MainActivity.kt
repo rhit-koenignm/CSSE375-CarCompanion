@@ -12,6 +12,7 @@ import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.ui.car_info.CarDetailFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
 import com.example.carcompanion.ui.find_help.HelpMapActivity
+import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity(),
             }
             true
         }
+        addFrag(HomeFragment())
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
@@ -92,12 +94,17 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    fun addFrag(f: Fragment): Boolean {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.add(R.id.fragment_container, f)
+        ft.addToBackStack(null)
+        ft.commit()
+        return true
+    }
+
     fun switchFrag(f: Fragment): Boolean {
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_container, f)
-        while (supportFragmentManager.backStackEntryCount > 0){
-            supportFragmentManager.popBackStackImmediate()
-        }
         ft.commit()
         return true
     }
