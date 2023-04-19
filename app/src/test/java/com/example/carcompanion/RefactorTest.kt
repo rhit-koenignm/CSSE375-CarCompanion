@@ -14,11 +14,11 @@ internal class RefactorTest {
     @Test
     fun dataClassTest() {
         var troubleData =TroubleData("Burning smell", "Your car is producing a burning smell")
-        var synptomList = ArrayList<Symptom>()
+        var symptomList = ArrayList<Symptom>()
         var newSymptom = Symptom(troubleData)
 
-        synptomList.add(newSymptom)
-        assertEquals(synptomList.get(0).getTitle(),"Burning smell")
+        symptomList.add(newSymptom)
+        assertEquals(symptomList.get(0).getTitle(),"Burning smell")
     }
 
     @Test
