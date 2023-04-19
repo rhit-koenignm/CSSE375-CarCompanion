@@ -10,16 +10,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 //import com.google.android.gms.maps.GoogleMap
 //import com.google.android.gms.maps.MapView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.databinding.FragmentFindHelpBinding
 import com.google.android.gms.location.*
+import kotlinx.coroutines.launch
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 
 
 class FindHelpFragment: Fragment() {
@@ -46,6 +50,12 @@ class FindHelpFragment: Fragment() {
 
         // Get current location
         initLocation()
+
+        binding.searchButton.setOnClickListener {
+            lifecycleScope.launch {
+                onSearch()
+            }
+        }
 
         return binding.root
     }
@@ -115,5 +125,24 @@ class FindHelpFragment: Fragment() {
         Log.d(Constants.DEFAULT_TAG, "location: $location")
         curLoc = GeoPoint(location)
         mapView.controller.setCenter(curLoc)
+    }
+
+    private suspend fun onSearch() {
+        val searcher = AutoShopSearcher()
+        // Within 5 miles of current location
+        val shops = searcher.getAutoShops(curLoc!!, 8046.72)
+        val markers = shops.map {
+            Log.d(Constants.DEFAULT_TAG, "shop: $it")
+            val marker = Marker(mapView)
+            marker.title = it.name
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            marker.icon = ContextCompat.getDrawable(requireContext(), com.example.carcompanion.R.drawable.car_companion_icon)
+            marker.position = it.location
+
+            marker
+        }
+
+        mapView.overlays.addAll(markers)
+        mapView.invalidate()
     }
 }

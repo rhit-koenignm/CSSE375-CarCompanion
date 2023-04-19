@@ -25,53 +25,16 @@
             android:layout_marginRight="60dp"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/search_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.01"
-                android:ems="10"
-                android:inputType="textPersonName"/>
-
             <Button
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search"
-                android:textColor="@color/darkest_blue"/>
+                android:textColor="@color/darkest_blue" />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button_autoshops"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:text="@string/autoshops"
-                android:textColor="@color/darkest_blue"
-                />
-            <Button
-                android:id="@+id/button_mechanics"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:text="@string/mechanics"
-                android:textColor="@color/darkest_blue"
-                />
-
-            <Button
-                android:id="@+id/back_home_button"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:text="@string/back_to_home_text"
-                android:textColor="@color/darkest_blue"/>
-
-            
-        </LinearLayout>
         <org.osmdroid.views.MapView
             android:id="@+id/map"
             android:layout_width="fill_parent"
