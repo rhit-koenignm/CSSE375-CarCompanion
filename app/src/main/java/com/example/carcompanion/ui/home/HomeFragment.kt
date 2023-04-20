@@ -25,6 +25,8 @@ class HomeFragment : Fragment() {
                 ViewModelProvider(this).get(HomeViewModel::class.java)
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+
         val root = binding.root
 
         //val root = inflater.inflate(R.layout.fragment_home, container, false)
