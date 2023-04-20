@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         >
 
         <TextView
             android:id="@+id/signup_text"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_centerHorizontal="true"
             android:text="@string/signup"
             android:textSize="45sp"
@@ -31,7 +31,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fname_textField"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:hint="@string/first_name">
 
@@ -45,7 +46,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/lname_textField"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:hint="@string/last_name">
 
@@ -59,7 +61,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_textField"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:hint="@string/email">
 
@@ -73,7 +76,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/choose_password_textField"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:hint="@string/choose_password"
             app:endIconMode="password_toggle"
@@ -91,7 +95,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/retype_password_textField"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:hint="@string/retype_password"
             app:endIconMode="password_toggle"
