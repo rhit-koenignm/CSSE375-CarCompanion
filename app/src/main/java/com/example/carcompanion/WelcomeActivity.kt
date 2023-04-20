@@ -26,12 +26,11 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        print("Attempting to add Front page Fragment")
-        addFrag(FrontPageFragment())
-
         initializeAuthListeners()
-    }
 
+        Log.d(Constants.DEFAULT_TAG, "Attempting to add Front page Fragment")
+        addFrag(FrontPageFragment())
+    }
 
 
     override fun onStart() {
@@ -43,13 +42,13 @@ class WelcomeActivity : AppCompatActivity() {
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
             val user = auth.currentUser
-            if(user != null) {
+            if (user != null) {
                 this.currentActivity = "MainActivity"
                 val inputIntent = Intent(this, MainActivity::class.java)
                 inputIntent.putExtra(USER_UID, user.uid)
                 inputIntent.putExtra(IS_ANON, user.isAnonymous)
                 startActivity(inputIntent)
-            } else if(this.currentActivity != "WelcomeActivity") {
+            } else if (this.currentActivity != "WelcomeActivity") {
                 this.currentActivity = "WelcomeActivity"
                 val intent = Intent(this@WelcomeActivity, this::class.java)
                 startActivity(intent)
@@ -59,17 +58,17 @@ class WelcomeActivity : AppCompatActivity() {
 
 
     fun addFrag(f: Fragment): Boolean {
-        val ft = supportFragmentManager.beginTransaction()
-        ft.add(R.id.fragment_container, f)
-        ft.addToBackStack(null)
-        ft.commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, f)
+            .addToBackStack(null)
+            .commit()
         return true
     }
 
     fun switchFrag(f: Fragment): Boolean {
-        val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.fragment_container, f)
-        ft.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, f)
+            .commit()
         return true
     }
 
