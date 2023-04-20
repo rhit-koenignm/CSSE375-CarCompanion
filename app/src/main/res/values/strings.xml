@@ -20,6 +20,8 @@
     <string name="nav_help_string">Nearby Towing/Mechanics</string>
     <string name="anon_car_details">Please login/sign up to use this feature!</string>
     <string name="nickname">Nickname:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password:</string>
     <string name="ymm">Year Make Model:</string>
     <string name="vin">VIN:</string>
     <string name="license_plate">License Plate:</string>
