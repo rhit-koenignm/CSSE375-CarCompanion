@@ -4,7 +4,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Exclude
 
 data class CarObject(
-    var name: String = "My Prius",
+    var nickname: String = "My Prius",
     var year: Int = 2006,
     var make: String = "Toyota",
     var model: String = "Prius",

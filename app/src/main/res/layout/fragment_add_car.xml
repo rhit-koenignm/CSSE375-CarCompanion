@@ -59,46 +59,12 @@
         style="@style/CarAddTexts"
         android:layout_below="@+id/car_make_et"/>
 
-    <TextView
-        android:id="@+id/vin_label"
-        style="@style/CarAddLabels"
-        android:text="@string/vin"
-        android:layout_below="@+id/car_model_et"/>
-
-    <EditText
-        android:id="@+id/vin_txt"
-        style="@style/CarAddTexts"
-        android:layout_below="@+id/car_model_et"/>
-
-    <TextView
-        android:id="@+id/license_plate_label"
-        style="@style/CarAddLabels"
-        android:text="@string/license_plate"
-        android:layout_below="@+id/vin_txt"/>
-
-    <EditText
-        android:id="@+id/license_plate_et"
-        style="@style/CarAddTexts"
-        android:layout_width="150dp"
-        android:layout_below="@+id/vin_txt"/>
-
-    <TextView
-        android:id="@+id/license_state_label"
-        style="@style/CarAddLabels"
-        android:text="@string/license_state"
-        android:layout_below="@+id/license_plate_et"/>
-
-    <EditText
-        android:id="@+id/license_state_et"
-        style="@style/CarAddTexts"
-        android:layout_width="150dp"
-        android:layout_below="@+id/license_plate_et"/>
 
     <Button
         android:id="@+id/btn_add_car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/license_state_et"
+        android:layout_below="@+id/car_model_et"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
