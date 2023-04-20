@@ -1,17 +1,17 @@
 package com.example.carcompanion
 
-import android.content.Intent
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowManager
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.ui.car_info.CarDetailFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
-import com.example.carcompanion.ui.find_help.HelpMapActivity
 import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -35,12 +35,11 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        switchFrag(AnonFragment())
         //setContentView(R.layout.activity_main)
 
         bottomNav = binding.bottomNavView
         bottomNav.setOnItemSelectedListener {
-            var switchTo: Fragment? = null
-
             when (it.itemId) {
                 R.id.navigation_car_detail -> {
                     currentFragment = "car detail"
@@ -56,8 +55,6 @@ class MainActivity : AppCompatActivity(),
                 }
                 R.id.navigation_find_help -> {
                     currentFragment = "find help"
-                    val i = Intent(this@MainActivity, HelpMapActivity::class.java)
-//                    startActivity(i)
                     switchFrag(FindHelpFragment())
                 }
             }
@@ -69,6 +66,15 @@ class MainActivity : AppCompatActivity(),
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         title = "CarCompanion"
+        requestPermissions()
+    }
+
+    fun requestPermissions() {
+        // if permissions aren't requested, request them
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
