@@ -3,7 +3,7 @@ package com.example.carcompanion.database
 import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 class CCDB : CarCompanionDatabase {
-    override fun loadTroubleDouble(): ArrayList<TroubleData> {
+    override fun loadTroubleData(): ArrayList<TroubleData> {
             var tempData = ArrayList<TroubleData>()
             tempData.add(TroubleData("Burning smell", "Your car is producing a burning smell"))
             tempData.add(TroubleData("Check Engine Light", "The check engine light on your dashboard is lit up"))

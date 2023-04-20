@@ -55,7 +55,7 @@ object TroubleTreeUtils {
     }
 
     fun createSymptoms(): ArrayList<TroubleShootingTree.Woe> {
-        var troubleData = addTroubleData()
+        var troubleData = getTroubleData()
         return addSyntomData(troubleData)
     }
 
@@ -68,8 +68,8 @@ object TroubleTreeUtils {
         return symptoms
     }
 
-    private fun addTroubleData(): ArrayList<TroubleData> {
-        return db.loadTroubleDouble()
+    private fun getTroubleData(): ArrayList<TroubleData> {
+        return db.loadTroubleData()
     }
 
 
