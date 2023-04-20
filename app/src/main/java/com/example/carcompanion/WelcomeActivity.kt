@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.carcompanion.databinding.ActivityMainBinding
+import androidx.navigation.NavController
 import com.example.carcompanion.databinding.ActivityWelcomeBinding
 import com.example.carcompanion.ui.user_auth.FrontPageFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.firebase.ui.auth.AuthUI
+import com.google.android.material.navigation.NavigationView
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -25,8 +26,13 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        print("Attempting to add Front page Fragment")
         addFrag(FrontPageFragment())
+
+        initializeAuthListeners()
     }
+
+
 
     override fun onStart() {
         super.onStart()
