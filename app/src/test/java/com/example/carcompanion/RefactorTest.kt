@@ -55,6 +55,7 @@ internal class RefactorTest {
         var troubles = db.loadDiagnosesTroubleData()
         assertEquals(troubles.size,6)
     }
+
     @Test
     fun dbTest_loadDiagnosesTroubleData_content(){
         var db = CCDB()
