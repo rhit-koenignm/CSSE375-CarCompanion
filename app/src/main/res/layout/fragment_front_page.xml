@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/welcome"
+        android:textSize="45sp"
+        android:textAlignment="center"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/charcoal"
+        />
+
+    <Button
+        style="@style/WelcomeButtons"
+        android:id="@+id/btn_login"
+        android:layout_below="@id/welcomeText"
+        android:text="@string/login"
+        />
+
+    <Button
+        style="@style/WelcomeButtons"
+        android:id="@+id/btn_signup"
+        android:layout_below="@id/btn_login"
+        android:text="@string/signup"
+        android:backgroundTint="@color/seafoam"
+        />
+
+    <Button
+        style="@style/WelcomeButtons"
+        android:id="@+id/btn_guest"
+        android:layout_below="@+id/btn_signup"
+        android:text="@string/use_as_guest"
+        android:backgroundTint="@color/seafoam"
+        />
+
+</RelativeLayout>
