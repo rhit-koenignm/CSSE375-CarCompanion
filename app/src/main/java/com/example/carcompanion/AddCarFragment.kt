@@ -40,9 +40,6 @@ class AddCarFragment(val user: String) : Fragment() {
             view.findViewById<EditText>(R.id.car_year_et).text.toString(),
             view.findViewById<EditText>(R.id.car_make_et).text.toString(),
             view.findViewById<EditText>(R.id.car_model_et).text.toString(),
-            view.findViewById<EditText>(R.id.vin_txt).text.toString(),
-            view.findViewById<EditText>(R.id.license_state_et).text.toString(),
-            view.findViewById<EditText>(R.id.license_plate_et).text.toString()
         )
         return car
     }
