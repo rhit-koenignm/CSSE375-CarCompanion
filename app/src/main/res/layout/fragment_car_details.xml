@@ -1,7 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    />
+    <TextView
+        android:id="@+id/details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/car_details"
+        android:textSize="45sp"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/charcoal"
+        />
+
+    <ImageView
+        android:id="@+id/car_specific_image"
+        android:layout_below="@id/details_title"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_directions_car_24"
+        />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/car_specific_image"
+        app:dividerColor="@color/cerulean"
+        />
+
+    <TextView
+        android:id="@+id/spec_nick_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/nickname"
+        android:layout_below="@id/car_specific_image"
+        android:textColor="@color/cerulean"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/car_specific_nickname"
+        style="@style/CarSpecificTexts"
+        android:text="Mia's Car"
+        android:textColor="@color/cerulean"
+        android:layout_below="@id/car_specific_image"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/car_year_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/year"
+        android:textColor="@color/cerulean"
+        android:textStyle="bold"
+        android:layout_below="@id/car_specific_nickname"/>
+
+    <TextView
+        android:id="@+id/car_year_txt"
+        style="@style/CarSpecificTexts"
+        android:text="2000"
+        android:textColor="@color/cerulean"
+        android:layout_below="@id/car_specific_nickname"/>
+
+    <TextView
+        android:id="@+id/make_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/make"
+        android:textColor="@color/cerulean"
+        android:textStyle="bold"
+        android:layout_below="@+id/car_year_label"/>
+
+    <TextView
+        android:id="@+id/make_txt"
+        style="@style/CarSpecificTexts"
+        android:text="Toyota"
+        android:textColor="@color/cerulean"
+        android:layout_below="@id/car_year_txt"/>
+
+    <TextView
+        android:id="@+id/model_label"
+        style="@style/CarSpecificLabels"
+        android:text="@string/model"
+        android:textColor="@color/cerulean"
+        android:textStyle="bold"
+        android:layout_below="@id/make_label"/>
+
+    <TextView
+        android:id="@+id/model_txt"
+        style="@style/CarSpecificTexts"
+        android:text="RH184J"
+        android:textColor="@color/cerulean"
+        android:layout_below="@id/make_txt"/>
+
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/recyler_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/model_label"
+        app:dividerColor="@color/cerulean"
+        android:layout_marginTop="20dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/diagnosis_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recyler_divider"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />
+
+</RelativeLayout>

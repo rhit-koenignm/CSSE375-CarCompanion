@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.databinding.ActivityWelcomeBinding
+import com.example.carcompanion.ui.user_auth.FrontPageFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.firebase.ui.auth.AuthUI
 
@@ -20,12 +22,10 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initializeButtonListeners()
-        initializeAuthListeners()
+        addFrag(FrontPageFragment())
     }
 
     override fun onStart() {
@@ -33,22 +33,6 @@ class WelcomeActivity : AppCompatActivity() {
         auth.addAuthStateListener(authStateListener)
     }
 
-    private fun initializeButtonListeners() {
-        binding.btnLogin.setOnClickListener {
-            // TODO: Move to sign in fragment
-            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign in fragment")
-        }
-
-        binding.btnSignup.setOnClickListener {
-            // TODO: Move to sign up fragment
-            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign up fragment")
-        }
-
-        binding.btnGuest.setOnClickListener {
-            Log.d(Constants.DEFAULT_TAG, " Sign in as guest option selected -> navigating to main activity")
-            auth.signInAnonymously()
-        }
-    }
 
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
@@ -66,6 +50,23 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    fun addFrag(f: Fragment): Boolean {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.add(R.id.fragment_container, f)
+        ft.addToBackStack(null)
+        ft.commit()
+        return true
+    }
+
+    fun switchFrag(f: Fragment): Boolean {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.fragment_container, f)
+        ft.commit()
+        return true
+    }
+
 
     companion object {
         const val USER_UID = "USER_UID"

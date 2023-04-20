@@ -17,7 +17,7 @@ class CarDetailFragment(var main: MainActivity) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_car_details, container, false) as RecyclerView
+        var view = inflater.inflate(R.layout.fragment_car_list, container, false) as RecyclerView
         view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         var adapter = CarDetailAdapter(context, main)
         view.adapter = adapter
