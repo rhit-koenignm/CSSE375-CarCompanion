@@ -1,19 +1,14 @@
 package com.example.carcompanion.ui.car_info
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.carcompanion.Constants
+import com.example.carcompanion.database.models.CarObject
 import com.example.carcompanion.databinding.FragmentCarDetailsBinding
-import com.example.carcompanion.ui.troubleshooting.TroubleAdapter
 
-class CarSpecificDetailsFragment (private val car: CarDetails): Fragment() {
+class CarSpecificDetailsFragment(private val car: CarObject): Fragment() {
 
     private lateinit var binding: FragmentCarDetailsBinding
 
