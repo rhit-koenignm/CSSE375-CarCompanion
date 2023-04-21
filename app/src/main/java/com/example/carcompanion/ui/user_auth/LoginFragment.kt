@@ -2,11 +2,14 @@ package com.example.carcompanion.ui.user_auth
 
 import UserViewModel
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.carcompanion.Constants
 import com.example.carcompanion.R
 import com.example.carcompanion.database.models.UserObject
 import com.example.carcompanion.databinding.FragmentLoginBinding
@@ -27,6 +30,28 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
         initializeAuthenticationListener()
+
+        binding.loginBtn.setOnClickListener {
+            val email = binding.emailInput.text.toString().trim()
+            val password = binding.passwordInput.text.toString().trim()
+
+
+            if(TextUtils.isEmpty(email) || !isValidEmail(email)) {
+                binding.emailInput.error = "Email is required"
+                return@setOnClickListener
+            }
+
+            if(TextUtils.isEmpty(password)) {
+                binding.passwordInput.error = "Password is required"
+                return@setOnClickListener
+            }
+
+            var auth = FirebaseAuth.getInstance()
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    Log.d(Constants.AUTH_TAG, "Logged in $email")
+                }
+        }
     }
 
     override fun onCreateView(
@@ -69,5 +94,10 @@ class LoginFragment : Fragment() {
             .setIsSmartLockEnabled(false)
             .build()
         signinLauncher.launch(signinIntent)
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
+        return email.matches(emailRegex.toRegex())
     }
 }
