@@ -103,7 +103,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_input"
+                android:id="@+id/retype_password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -113,9 +113,9 @@
 
         <Button
             style="@style/WelcomeButtons"
-            android:id="@+id/login_btn"
+            android:id="@+id/btn_signup"
             android:layout_below="@id/retype_password_textField"
-            android:text="@string/login"
+            android:text="@string/signup"
             />
 
     </LinearLayout>

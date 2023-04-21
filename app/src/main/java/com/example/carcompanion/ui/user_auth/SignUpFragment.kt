@@ -2,11 +2,13 @@ package com.example.carcompanion.ui.user_auth
 
 import UserViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.carcompanion.Constants
 import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentLoginBinding
 import com.example.carcompanion.databinding.FragmentSignupBinding
@@ -15,6 +17,7 @@ import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUpFragment : Fragment() {
+
     private lateinit var binding: FragmentSignupBinding
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
@@ -27,8 +30,8 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignupBinding.bind(view)
         initializeAuthenticationListener()
+        setUpSignUpButtonListener()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +46,7 @@ class SignUpFragment : Fragment() {
             val user = auth.currentUser
 
             if (user == null) {
-                setupAuthUI()
+//                setupAuthUI()
             } else {
                 val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
                 userModel.getOrMakeUser {
@@ -57,19 +60,23 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun setupAuthUI() {
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-        val signinIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(false)
-//            .setTheme(R.style.Theme_Chronic)
-//            .setLogo(R.mipmap.chronic_logo)
-            .build()
-        signinLauncher.launch(signinIntent)
+    private fun setUpSignUpButtonListener() {
+        Log.d(Constants.AUTH_TAG, "Initializing sign-up button")
+        binding.btnSignup.setOnClickListener {
+            Log.d(Constants.AUTH_TAG, "Sign up button pressed")
+            //TODO: Check inputs and then attempt to sign up
+            val email = binding.emailInput.text.toString().trim()
+            val firstName = binding.fnameInput.text.toString().trim()
+            val lastName = binding.lnameInput.text.toString().trim()
+            val password = binding.choosePasswordInput.text.toString().trim()
+            val confirmPassword = binding.retypePasswordInput.text.toString().trim()
+
+
+//            if(TextUtils.)
+        }
     }
+
+
+
+
 }

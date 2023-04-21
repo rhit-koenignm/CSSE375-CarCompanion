@@ -32,7 +32,6 @@ class WelcomeActivity : AppCompatActivity() {
         addFrag(FrontPageFragment())
     }
 
-
     override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authStateListener)
@@ -56,10 +55,9 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
-
     fun addFrag(f: Fragment): Boolean {
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, f)
+            .replace(R.id.fragment_container, f)
             .addToBackStack(null)
             .commit()
         return true
@@ -71,7 +69,6 @@ class WelcomeActivity : AppCompatActivity() {
             .commit()
         return true
     }
-
 
     companion object {
         const val USER_UID = "USER_UID"

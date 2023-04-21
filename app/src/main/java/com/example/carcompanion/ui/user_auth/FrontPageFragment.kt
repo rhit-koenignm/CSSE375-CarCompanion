@@ -33,14 +33,14 @@ class FrontPageFragment : Fragment() {
         Log.d(Constants.DEFAULT_TAG, "Initializing buttons")
         binding.btnLogin.setOnClickListener {
             // TODO: Move to sign in fragment
-            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign in fragment")
-            switchFrag(LoginFragment())
+            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to log in fragment")
+            addFrag(LoginFragment())
         }
 
         binding.btnSignup.setOnClickListener {
             // TODO: Move to sign up fragment
             Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign up fragment")
-            switchFrag(SignUpFragment())
+            addFrag(SignUpFragment())
         }
 
         binding.btnGuest.setOnClickListener {
@@ -58,5 +58,11 @@ class FrontPageFragment : Fragment() {
             .addToBackStack(null) // This is optional, but allows for back navigation
             .commit()
     }
-
+    fun addFrag(f: Fragment): Boolean {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, f)
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
 }
