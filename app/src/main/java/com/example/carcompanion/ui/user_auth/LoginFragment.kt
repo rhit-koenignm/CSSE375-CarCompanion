@@ -48,6 +48,7 @@ class LoginFragment : Fragment() {
                 userModel.getOrMakeUser {
                     if (userModel.hasCompletedSetup()) {
 //                        setupHeaderBar(userModel)
+
                     } else {
                         // ...
                     }
@@ -66,8 +67,6 @@ class LoginFragment : Fragment() {
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
             .setIsSmartLockEnabled(false)
-//            .setTheme(R.style.Theme_Chronic)
-//            .setLogo(R.mipmap.chronic_logo)
             .build()
         signinLauncher.launch(signinIntent)
     }

@@ -5,7 +5,6 @@ import com.google.firebase.firestore.Exclude
 
 
 data class UserObject(
-    var userName: String = "WhatsWrongWithMyCar",
     var firstName: String = "tempFirstName",
     var lastName: String = "tempLastName",
     var email: String = "ohnomycar@gmail.com",
