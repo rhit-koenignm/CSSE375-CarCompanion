@@ -1,5 +1,6 @@
 package com.example.carcompanion.ui.user_auth
 
+import CarListFragment
 import UserViewModel
 import android.os.Bundle
 import android.text.TextUtils
@@ -36,12 +37,12 @@ class LoginFragment : Fragment() {
             val password = binding.passwordInput.text.toString().trim()
 
 
-            if(TextUtils.isEmpty(email) || !isValidEmail(email)) {
+            if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
                 binding.emailInput.error = "Email is required"
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty(password)) {
+            if (TextUtils.isEmpty(password)) {
                 binding.passwordInput.error = "Password is required"
                 return@setOnClickListener
             }
@@ -50,6 +51,13 @@ class LoginFragment : Fragment() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     Log.d(Constants.AUTH_TAG, "Logged in $email")
+                    val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
+                    userModel.getOrMakeUser {
+                        if (userModel.hasCompletedSetup()) {
+                            Log.d(Constants.AUTH_TAG, "User has completed signin")
+                        } else {
+                        }
+                    }
                 }
         }
     }
@@ -72,10 +80,8 @@ class LoginFragment : Fragment() {
                 val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
                 userModel.getOrMakeUser {
                     if (userModel.hasCompletedSetup()) {
-//                        setupHeaderBar(userModel)
-
+                        Log.d(Constants.AUTH_TAG, "User has completed signin")
                     } else {
-                        // ...
                     }
                 }
             }

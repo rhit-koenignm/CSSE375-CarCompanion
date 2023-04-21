@@ -22,7 +22,6 @@ import com.firebase.ui.auth.util.ui.fieldvalidators.EmailFieldValidator
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUpFragment : Fragment() {
-
     private lateinit var binding: FragmentSignupBinding
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
@@ -53,7 +52,7 @@ class SignUpFragment : Fragment() {
             val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
             userModel.getOrMakeUser {
                 if (userModel.hasCompletedSetup()) {
-                      Log.d(Constants.AUTH_TAG, "User has completed setup")
+                    Log.d(Constants.AUTH_TAG, "User has completed setup")
                 } else {
                     // ...
 
@@ -73,32 +72,32 @@ class SignUpFragment : Fragment() {
             val password = binding.choosePasswordInput.text.toString().trim()
             val confirmPassword = binding.retypePasswordInput.text.toString().trim()
 
-            if(TextUtils.isEmpty(email) || !isValidEmail(email)) {
+            if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
                 binding.emailInput.error = "Email is required"
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty(firstName)) {
+            if (TextUtils.isEmpty(firstName)) {
                 binding.fnameInput.error = "First name is required"
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty(lastName)) {
+            if (TextUtils.isEmpty(lastName)) {
                 binding.lnameInput.error = "Last name is required"
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty(password)) {
+            if (TextUtils.isEmpty(password)) {
                 binding.choosePasswordInput.error = "Password is required"
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty(confirmPassword)) {
+            if (TextUtils.isEmpty(confirmPassword)) {
                 binding.retypePasswordInput.error = "Please retype your password"
                 return@setOnClickListener
             }
 
-            if(password != confirmPassword) {
+            if (password != confirmPassword) {
                 binding.choosePasswordInput.error = "Passwords don't match"
                 binding.retypePasswordInput.error = "Passwords don't match"
                 return@setOnClickListener
@@ -107,15 +106,17 @@ class SignUpFragment : Fragment() {
             // In this case, we know we've got a valid login
             var auth = FirebaseAuth.getInstance()
             auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener() {   task ->
-                    if(task.isSuccessful) {
-                        Toast.makeText(this.context, "Sign up successful", Toast.LENGTH_SHORT).show()
-                    } else {
+                .addOnCompleteListener() { task ->
+                    if (!task.isSuccessful) {
                         Toast.makeText(this.context, "Sign up failed", Toast.LENGTH_SHORT).show()
-                    }
-                    val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
-                    userModel.getOrMakeUser {
-                        Log.d(Constants.AUTH_TAG, "Get or make user called")
+                        Log.d(Constants.AUTH_TAG, task.exception.toString())
+                    } else {
+                        Toast.makeText(this.context, "Sign up successful", Toast.LENGTH_SHORT)
+                            .show()
+                        val userModel = ViewModelProvider(this).get(UserViewModel::class.java)
+                        userModel.getOrMakeUser {
+                            Log.d(Constants.AUTH_TAG, "Get or make user called")
+                        }
                     }
                 }
         }
