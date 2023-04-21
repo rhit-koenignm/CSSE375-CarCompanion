@@ -39,6 +39,7 @@ class UserViewModel : ViewModel() {
                         email = this?.email!!,
                         firstName = firstNameInput!!,
                         lastName = lastNameInput!!,
+                        hasCompletedSetup = true
                     ) }
                     //Push the new thing back to firebase
                     firebaseReference.set(user!!)

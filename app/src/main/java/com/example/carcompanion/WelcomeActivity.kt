@@ -11,6 +11,8 @@ import com.example.carcompanion.ui.user_auth.FrontPageFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -37,6 +39,10 @@ class WelcomeActivity : AppCompatActivity() {
         auth.addAuthStateListener(authStateListener)
     }
 
+    override fun onStop() {
+        super.onStop()
+        Firebase.auth.removeAuthStateListener(authStateListener)
+    }
 
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
