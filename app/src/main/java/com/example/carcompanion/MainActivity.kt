@@ -1,5 +1,6 @@
 package com.example.carcompanion
 
+import CarListFragment
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.ui.car_info.CarDetailFragment
+import com.example.carcompanion.ui.car_info.CarSpecificDetailsFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
 import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,19 +37,19 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        switchFrag(AnonFragment())
-        //setContentView(R.layout.activity_main)
+        // switchFrag(AnonFragment())
+        setContentView(R.layout.activity_main)
 
         bottomNav = binding.bottomNavView
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_car_detail -> {
                     currentFragment = "car detail"
-                    if(isAnon) {
-                        switchFrag(AnonFragment())
-                        true
-                    }
-                    switchFrag(CarDetailFragment(this))
+                    // if(isAnon) {
+                    //     switchFrag(AnonFragment())
+                    //     true
+                    // }
+//                    switchFrag(CarSpecificDetailsFragment(/))
                 }
                 R.id.navigation_troubleshooting -> {
                     currentFragment = "troubleshooting"
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity(),
             }
             true
         }
-        addFrag(HomeFragment())
+        addFrag(CarListFragment())
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
@@ -89,10 +91,10 @@ class MainActivity : AppCompatActivity(),
                 true
             }
             R.id.action_add_car -> {
-                if(isAnon) {
-                    switchFrag(AnonFragment())
-                    return true
-                }
+                // if(isAnon) {
+                //     switchFrag(AnonFragment())
+                //     return true
+                // }
                 switchFrag(AddCarFragment(user))
                 true
             }
