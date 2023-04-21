@@ -23,8 +23,7 @@ class CarDetailAdapter(var context: Context?, var main: MainActivity) :
         FirebaseFirestore
             .getInstance()
             .collection("users")
-            //    .document(it)
-            .document("vzEIAKfgspSHePX6K32hcmclIO32") // TODO: Replace with "it"
+               .document(it)
             .collection("cars")
     }
 

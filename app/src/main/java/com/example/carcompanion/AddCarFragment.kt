@@ -11,8 +11,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.database.models.CarObject
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import com.example.carcompanion.ui.car_info.CarDetails
 
 class AddCarFragment(val user: String) : Fragment() {
 
@@ -33,14 +31,14 @@ class AddCarFragment(val user: String) : Fragment() {
         val carDocRef = FirebaseFirestore
             .getInstance()
             .collection("users")
-            .document("vzEIAKfgspSHePX6K32hcmclIO32") // TODO: Replace with user
+            .document(user)
             .collection("cars")
 
         val car = getCarObject()
         carDocRef.add(car).addOnSuccessListener {
             // Pop the current fragment (AddCarFragment) from the back stack to return to the previous fragment
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, CarListFragment())
+                .replace(R.id.fragment_container, CarListFragment(user))
                 .commit()
         }
     }

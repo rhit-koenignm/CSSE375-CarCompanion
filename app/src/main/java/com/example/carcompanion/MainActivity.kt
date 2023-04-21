@@ -11,15 +11,13 @@ import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
-import com.example.carcompanion.ui.car_info.CarDetailFragment
-import com.example.carcompanion.ui.car_info.CarSpecificDetailsFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
-import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
+import com.example.carcompanion.ui.user_auth.FrontPageFragment
 
 class MainActivity : AppCompatActivity(),
     TroubleshootingFragment.OnTroubleSelectedListener {
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity(),
 
     lateinit var bottomNav: BottomNavigationView
 
-    private var currentFragment:String = "home"
+    private var currentFragment: String = "home"
     val auth = FirebaseAuth.getInstance()
     lateinit var user: String
     private var isAnon = true
@@ -51,10 +49,12 @@ class MainActivity : AppCompatActivity(),
                     // }
 //                    switchFrag(CarSpecificDetailsFragment(/))
                 }
+
                 R.id.navigation_troubleshooting -> {
                     currentFragment = "troubleshooting"
                     switchFrag(TroubleshootingFragment())
                 }
+
                 R.id.navigation_find_help -> {
                     currentFragment = "find help"
                     switchFrag(FindHelpFragment())
@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity(),
             }
             true
         }
-        addFrag(CarListFragment())
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
+        addFrag(CarListFragment(user))
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         title = "CarCompanion"
@@ -73,9 +73,23 @@ class MainActivity : AppCompatActivity(),
 
     fun requestPermissions() {
         // if permissions aren't requested, request them
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                1
+            )
         }
     }
 
@@ -88,8 +102,11 @@ class MainActivity : AppCompatActivity(),
         return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
+                // TODO: This should be handled in an auth observer
+                switchFrag(FrontPageFragment())
                 true
             }
+
             R.id.action_add_car -> {
                 // if(isAnon) {
                 //     switchFrag(AnonFragment())
@@ -98,6 +115,7 @@ class MainActivity : AppCompatActivity(),
                 switchFrag(AddCarFragment(user))
                 true
             }
+
             else -> false
         }
     }
@@ -122,14 +140,13 @@ class MainActivity : AppCompatActivity(),
         Log.d(Constants.DEFAULT_TAG, "Trouble Selected: ${woe.getTitle()}\n")
         Log.d(Constants.DEFAULT_TAG, "Woe is of type ${woe.getType()}")
 
-        if(woe.getType() == "Diagnosis"){
+        if (woe.getType() == "Diagnosis") {
             val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
             val ft = supportFragmentManager.beginTransaction()
             ft.replace(R.id.fragment_container, detailFragment)
             ft.addToBackStack("detail")
             ft.commit()
-        }
-        else{
+        } else {
 
             //if a non diagnosis is selected then we want to let the adapter know
             //will create function later

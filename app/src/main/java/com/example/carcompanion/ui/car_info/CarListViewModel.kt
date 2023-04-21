@@ -12,11 +12,11 @@ class CarListViewModel : ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
     val carListLiveData: MutableLiveData<List<CarObject>> = MutableLiveData()
 
-    fun fetchCarList(hardcodedUserId: String) {
+    fun fetchCarList(user: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val carList = mutableListOf<CarObject>()
             val querySnapshot = firestore.collection("users")
-                .document(hardcodedUserId)
+                .document(user)
                 .collection(CarObject.COLLECTION_PATH)
                 .get()
                 .await()
