@@ -3,9 +3,6 @@ package com.example.carcompanion
 import com.example.carcompanion.database.CCDB
 import com.example.carcompanion.ui.troubleshooting.Symptom
 import com.example.carcompanion.ui.troubleshooting.TroubleData
-import com.example.carcompanion.ui.troubleshooting.TroubleTreeUtils
-import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

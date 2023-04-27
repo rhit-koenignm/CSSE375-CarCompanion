@@ -129,8 +129,9 @@ class FindHelpFragment: Fragment() {
 
     private suspend fun onSearch() {
         val searcher = AutoShopSearcher()
-        // Within 5 miles of current location
-        val shops = searcher.getAutoShops(curLoc!!, 8046.72)
+        // 5 miles = 8046.72 meters
+        val radius = 8046.72
+        val shops = searcher.getAutoShops(curLoc!!, radius)
         val markers = shops.map {
             Log.d(Constants.DEFAULT_TAG, "shop: $it")
             val marker = Marker(mapView)

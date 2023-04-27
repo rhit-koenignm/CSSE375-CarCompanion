@@ -1,5 +1,7 @@
 package com.example.carcompanion.ui.find_help
 
+import android.util.Log
+import com.example.carcompanion.Constants
 import com.jillesvangurp.geojson.Geometry
 import com.jillesvangurp.overpasskotlinclient.OverpassClient
 import org.osmdroid.util.GeoPoint
@@ -31,6 +33,7 @@ class AutoShopSearcher {
         """.trimIndent()
 
         val featureCollection = client.getGeoJson(query)
+
         return featureCollection.features.map {
             val name = it.properties?.get("name").toString()
             val pt = it.geometry as Geometry.Point

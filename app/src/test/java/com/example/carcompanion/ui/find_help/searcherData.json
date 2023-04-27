@@ -1,0 +1,121 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3865022,
+          39.5080535
+        ]
+      },
+      "properties": {
+        "addr:city": "Terre Haute",
+        "addr:housenumber": "2060",
+        "addr:postcode": "47805",
+        "addr:state": "IN",
+        "addr:street": "Lafayette Avenue",
+        "name": "Erin's Pit Stop",
+        "shop": "car_repair",
+        "@id": "node/4381096317"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3790286,
+          39.5173004
+        ]
+      },
+      "properties": {
+        "addr:city": "Terre Haute",
+        "addr:housenumber": "2500",
+        "addr:postcode": "47805",
+        "addr:state": "IN",
+        "addr:street": "Lafayette Avenue",
+        "name": "Station Break 10 Min Oil Lube",
+        "shop": "car_repair",
+        "@id": "node/4381096337"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4039,
+          39.4641
+        ]
+      },
+      "properties": {
+        "name": "All-Tran Parts Department",
+        "shop": "car_repair",
+        "website": "https://all-tran-transmission-service.hub.biz/",
+        "@id": "node/7315953179"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.414574,
+          39.4882216
+        ]
+      },
+      "properties": {
+        "name": "Don's Service Center",
+        "shop": "car_repair",
+        "@id": "node/7646333962"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3886149,
+          39.4480626
+        ]
+      },
+      "properties": {
+        "name": "Wilguess Service Center",
+        "shop": "car_repair",
+        "@id": "node/7866674309"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3973258,
+          39.4702688
+        ]
+      },
+      "properties": {
+        "name": "A & H Automotive Services",
+        "shop": "car_repair",
+        "@id": "node/8504227877"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4052382,
+          39.4825656
+        ]
+      },
+      "properties": {
+        "name": "Blackburn Collision",
+        "shop": "car_repair",
+        "@id": "node/8589248839"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}
