@@ -2,6 +2,7 @@ package com.example.carcompanion
 
 import com.example.carcompanion.ui.car_info.car_details.CarListFragment
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -104,7 +105,8 @@ class MainActivity : AppCompatActivity(),
             R.id.action_logout -> {
                 auth.signOut()
                 // TODO: This should be handled in an auth observer
-                switchFrag(FrontPageFragment())
+                val inputIntent = Intent(this, WelcomeActivity::class.java)
+                startActivity(inputIntent)
                 true
             }
 
