@@ -1,17 +1,16 @@
-package com.example.carcompanion.ui.car_info
+package com.example.carcompanion.ui.car_info.car_details
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
 import com.example.carcompanion.MainActivity
 import com.example.carcompanion.R
 import com.example.carcompanion.database.models.CarObject
 import com.example.carcompanion.databinding.CarListItemBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 
 class CarDetailAdapter(var context: Context?, var main: MainActivity) :
     RecyclerView.Adapter<CarDetailViewHolder>() {
@@ -20,8 +19,7 @@ class CarDetailAdapter(var context: Context?, var main: MainActivity) :
     private var carList: ArrayList<CarObject> = ArrayList<CarObject>()
 
     private val detailRef = main.user.let {
-        FirebaseFirestore
-            .getInstance()
+        FirebaseFirestore.getInstance()
             .collection("users")
                .document(it)
             .collection("cars")

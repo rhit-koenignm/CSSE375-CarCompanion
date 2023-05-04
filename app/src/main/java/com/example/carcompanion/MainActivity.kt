@@ -1,6 +1,6 @@
 package com.example.carcompanion
 
-import CarListFragment
+import com.example.carcompanion.ui.car_info.car_details.CarListFragment
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,7 @@ import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
+import com.example.carcompanion.ui.AddCarFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth

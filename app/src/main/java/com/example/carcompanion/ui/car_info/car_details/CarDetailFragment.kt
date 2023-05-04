@@ -1,6 +1,5 @@
-package com.example.carcompanion.ui.car_info
+package com.example.carcompanion.ui.car_info.car_details
 
-import CarListAdapter
 import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater

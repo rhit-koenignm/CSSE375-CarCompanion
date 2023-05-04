@@ -1,3 +1,5 @@
+package com.example.carcompanion.ui.car_info.car_details
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

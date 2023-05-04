@@ -1,4 +1,4 @@
-package com.example.carcompanion.ui.car_info
+package com.example.carcompanion.ui.car_info.car_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +13,8 @@ class CarSpecificDetailsFragment(private val car: CarObject): Fragment() {
     private lateinit var binding: FragmentCarDetailsBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCarDetailsBinding.inflate(inflater, container, false)
         //val view = inflater.inflate(R.layout.fragment_car_specific_details, container, false)

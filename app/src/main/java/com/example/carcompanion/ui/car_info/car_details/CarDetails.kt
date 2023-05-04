@@ -1,7 +1,6 @@
-package com.example.carcompanion.ui.car_info
+package com.example.carcompanion.ui.car_info.car_details
 
 import com.google.firebase.firestore.DocumentSnapshot
-import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 data class CarDetails
     (var nickname: String = "",
