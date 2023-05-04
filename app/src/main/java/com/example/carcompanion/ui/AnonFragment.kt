@@ -1,13 +1,10 @@
-package com.example.carcompanion
+package com.example.carcompanion.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.carcompanion.ui.car_info.CarDetailAdapter
+import com.example.carcompanion.R
 
 class AnonFragment: Fragment() {
 

@@ -1,6 +1,6 @@
 package com.example.carcompanion.ui.user_auth
 
-import CarListFragment
+import com.example.carcompanion.ui.car_info.car_details.CarListFragment
 import UserViewModel
 import android.os.Bundle
 import android.text.TextUtils

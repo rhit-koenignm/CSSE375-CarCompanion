@@ -1,3 +1,5 @@
+package com.example.carcompanion.ui.car_info.car_details
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

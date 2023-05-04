@@ -1,6 +1,6 @@
-package com.example.carcompanion
+package com.example.carcompanion.ui
 
-import CarListFragment
+import com.example.carcompanion.ui.car_info.car_details.CarListFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.carcompanion.Constants
+import com.example.carcompanion.R
 import com.example.carcompanion.database.models.CarObject
 import com.google.firebase.firestore.FirebaseFirestore
 
