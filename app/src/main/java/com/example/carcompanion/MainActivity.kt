@@ -8,11 +8,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
 import com.example.carcompanion.ui.AddCarFragment
+import com.example.carcompanion.ui.AnonFragment
+import com.example.carcompanion.ui.car_info.car_details.CarSpecificDetailsFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
+import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
@@ -20,8 +24,7 @@ import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
 import com.example.carcompanion.ui.user_auth.FrontPageFragment
 
-class MainActivity : AppCompatActivity(),
-    TroubleshootingFragment.OnTroubleSelectedListener {
+class MainActivity : AppCompatActivity(), TroubleshootingFragment.OnTroubleSelectedListener {
 
     lateinit var binding: ActivityMainBinding
 
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity(),
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // switchFrag(AnonFragment())
-        setContentView(R.layout.activity_main)
+//         setContentView(R.layout.activity_main)
 
         bottomNav = binding.bottomNavView
         bottomNav.setOnItemSelectedListener {
@@ -48,7 +51,7 @@ class MainActivity : AppCompatActivity(),
                     //     switchFrag(AnonFragment())
                     //     true
                     // }
-//                    switchFrag(CarSpecificDetailsFragment(/))
+                    switchFrag(CarListFragment(user))
                 }
 
                 R.id.navigation_troubleshooting -> {
@@ -65,7 +68,8 @@ class MainActivity : AppCompatActivity(),
         }
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
-        addFrag(CarListFragment(user))
+        // addFrag(CarListFragment(user))
+        addFrag(HomeFragment())
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         title = "CarCompanion"
@@ -75,21 +79,16 @@ class MainActivity : AppCompatActivity(),
     fun requestPermissions() {
         // if permissions aren't requested, request them
         if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+                this, Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
+                this, arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                1
+                ), 1
             )
         }
     }
@@ -100,6 +99,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d(Constants.DEFAULT_TAG, "option selected!")
         return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
