@@ -33,13 +33,13 @@ class FrontPageFragment : Fragment() {
         Log.d(Constants.DEFAULT_TAG, "Initializing buttons")
         binding.btnLogin.setOnClickListener {
             // TODO: Move to sign in fragment
-            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to log in fragment")
+            // Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to log in fragment")
             addFrag(LoginFragment())
         }
 
         binding.btnSignup.setOnClickListener {
             // TODO: Move to sign up fragment
-            Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign up fragment")
+            // Log.d(Constants.DEFAULT_TAG, " TODO: Navigate to sign up fragment")
             addFrag(SignUpFragment())
         }
 

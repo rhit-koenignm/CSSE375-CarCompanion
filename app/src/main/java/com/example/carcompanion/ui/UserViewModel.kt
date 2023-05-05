@@ -1,4 +1,6 @@
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.carcompanion.Constants
 import com.example.carcompanion.database.models.UserObject
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -33,12 +35,17 @@ class UserViewModel : ViewModel() {
                     //There is no corresponding user on firebase
                     with(Firebase.auth.currentUser) {
                         //TODO Fix this, Emily broke it by not using a standardized format that can be parsed
+                        Log.d(Constants.AUTH_TAG, this?.displayName.toString())
                         var firstNameInput = this?.displayName?.split(" ")?.get(0)
+                        if (firstNameInput == null)
+                            firstNameInput = "None"
                         var lastNameInput = this?.displayName?.split(" ")?.get(1)
+                        if (lastNameInput == null)
+                            lastNameInput = "None"
                         user = UserObject(
                             email = this?.email!!,
-                            firstName = firstNameInput!!,
-                            lastName = lastNameInput!!,
+                            firstName = firstNameInput,
+                            lastName = lastNameInput,
                             hasCompletedSetup = true
                         )
                     }
