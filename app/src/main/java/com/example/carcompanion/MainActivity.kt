@@ -9,13 +9,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.carcompanion.databinding.ActivityMainBinding
-import com.example.carcompanion.ui.AddCarFragment
-import com.example.carcompanion.ui.AnonFragment
-import com.example.carcompanion.ui.car_info.car_details.CarSpecificDetailsFragment
+import com.example.carcompanion.ui.EditCarFragment
 import com.example.carcompanion.ui.find_help.FindHelpFragment
 import com.example.carcompanion.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
-import com.example.carcompanion.ui.user_auth.FrontPageFragment
 
 class MainActivity : AppCompatActivity(), TroubleshootingFragment.OnTroubleSelectedListener {
 
@@ -115,7 +111,7 @@ class MainActivity : AppCompatActivity(), TroubleshootingFragment.OnTroubleSelec
                 //     switchFrag(AnonFragment())
                 //     return true
                 // }
-                switchFrag(AddCarFragment(user))
+                switchFrag(EditCarFragment("", user))
                 true
             }
 
