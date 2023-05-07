@@ -33,10 +33,10 @@ class CarDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set up the RecyclerView and its adapter
-        carListAdapter = CarListAdapter(carList)
-        binding.carListRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = carListAdapter
-        }
+//        carListAdapter = CarListAdapter(carList)
+//        binding.carListRecyclerView.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = carListAdapter
+//        }
     }
 }

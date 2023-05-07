@@ -13,8 +13,23 @@ data class CarObject(
     @get:Exclude
     var id = ""
 
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            kCarColor to this.color,
+            kCarMake to this.make,
+            kCarModel to this.model,
+            kCarNickname to this.nickname,
+            kCarYear to this.year
+        )
+    }
     companion object {
         const val COLLECTION_PATH = "cars"
+        const val kCarColor: String = "color"
+        const val kCarMake = "make"
+        const val kCarModel = "model"
+        const val kCarNickname = "nickname"
+        const val kCarYear = "year"
+
 
         fun from(snapshot: DocumentSnapshot): CarObject {
             val carObject = snapshot.toObject(CarObject::class.java)!!

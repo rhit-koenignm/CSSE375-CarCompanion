@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.carcompanion.MainActivity
 import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentCarListBinding
+import com.example.carcompanion.ui.EditCarFragment
 
 class CarListFragment(val user: String) : Fragment() {
 
@@ -33,7 +35,7 @@ class CarListFragment(val user: String) : Fragment() {
         carListViewModel.carListLiveData.observe(viewLifecycleOwner) { carList ->
             // Update the adapter with the fetched carList
             if (carList.isNotEmpty()) {
-                carListAdapter = CarListAdapter(carList)
+                carListAdapter = CarListAdapter(this, carList)
                 binding.carListRecyclerView.apply {
                     layoutManager = LinearLayoutManager(context)
                     adapter = carListAdapter
@@ -46,4 +48,14 @@ class CarListFragment(val user: String) : Fragment() {
 
         carListViewModel.fetchCarList(user)
     }
+
+    fun navigateToEditPage(carId: String) {
+        switchFrag(EditCarFragment(carId, user))
+    }
+
+    fun switchFrag(f: Fragment) {
+        val activity = this.activity as MainActivity
+        activity.switchFrag(f)
+    }
+
 }
