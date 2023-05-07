@@ -12,7 +12,7 @@
         android:text="@string/car_details"
         android:textSize="45sp"
         android:textAlignment="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="10dp"
         android:textColor="@color/charcoal"
         />
@@ -95,14 +95,22 @@
         android:textColor="@color/cerulean"
         android:layout_below="@id/make_txt"/>
 
+    <Button
+        android:id="@+id/edit_details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/model_label"
+        android:layout_centerHorizontal="true"
+        android:text="Edit Car Details"
+        />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/recyler_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/model_label"
+        android:layout_below="@id/edit_details_button"
         app:dividerColor="@color/cerulean"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         />
 
     <androidx.recyclerview.widget.RecyclerView

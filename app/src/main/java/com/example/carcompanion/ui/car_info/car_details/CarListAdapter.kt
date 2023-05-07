@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.database.models.CarObject
-import com.example.carcompanion.databinding.CarListItemBinding
+import com.example.carcompanion.databinding.CardviewCarDetailBinding
 
 class CarListAdapter(private val carList: List<CarObject>) :
     RecyclerView.Adapter<CarListAdapter.CarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
-        val binding = CarListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CardviewCarDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CarViewHolder(binding)
     }
 
@@ -23,12 +23,12 @@ class CarListAdapter(private val carList: List<CarObject>) :
         return carList.size
     }
 
-    inner class CarViewHolder(private val binding: CarListItemBinding) :
+    inner class CarViewHolder(private val binding: CardviewCarDetailBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(carObject: CarObject) {
-            binding.nickname.text = carObject.nickname
-            binding.yearMakeModel.text = "${carObject.year} ${carObject.make} ${carObject.model}"
+            binding.carNickTxt.text = carObject.nickname
+            binding.carYmmTxt.text = "${carObject.year} ${carObject.make} ${carObject.model}"
         }
     }
 }
