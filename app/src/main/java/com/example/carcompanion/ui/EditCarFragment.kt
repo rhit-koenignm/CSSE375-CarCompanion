@@ -29,6 +29,7 @@ class EditCarFragment(val carId: String, val userId: String) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_edit_car, container, false)
         binding = FragmentEditCarBinding.bind(view)
 
+        Log.d(Constants.DETAILS_PATH, "Attempting to bind page with userId $userId and carId $carId")
         val car = getCarObjectFromFirebase(carId)
 
         if(car != null) {
@@ -71,6 +72,7 @@ class EditCarFragment(val carId: String, val userId: String) : Fragment() {
                 if(document != null) {
                     Log.d(Constants.FIREBASE_TAG, "DocumentSnapshot data: ${document.data}")
                     car = CarObject.from(document)
+                    car!!.id = document.id
                 } else {
                     Log.d(Constants.FIREBASE_TAG, "No car with that id exists")
                 }
@@ -79,6 +81,7 @@ class EditCarFragment(val carId: String, val userId: String) : Fragment() {
                 Log.d(Constants.FIREBASE_TAG, "Get carObject failed with ", exception)
             }
 
+        Log.d(Constants.FIREBASE_TAG, "CarObject has id ${car?.id}")
         return car
     }
 
