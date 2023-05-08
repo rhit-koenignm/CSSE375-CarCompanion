@@ -14,7 +14,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/let_s_narrow_it_down"
+        android:text="@string/having_car_troubles"
         android:textColor="@color/charcoal"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="176dp"
@@ -27,7 +27,7 @@
         android:layout_alignLeft="@id/troubleshooting_title"
         android:layout_alignRight="@id/troubleshooting_title"
         android:textColor="@color/charcoal"
-        android:text="@string/what_other_symptoms"
+        android:text="@string/init_trouble_title"
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:layout_centerHorizontal="true"
@@ -37,12 +37,13 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/troubleshooting_recycler"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_below="@id/current_troubleshooting_title"
-        android:id="@+id/troubleshooting_recycler"
-        >
-
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:scrollbars="none">
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -106,6 +107,7 @@
         android:backgroundTint="@color/celadon"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         />
 
 

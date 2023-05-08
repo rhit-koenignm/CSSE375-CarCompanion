@@ -19,7 +19,7 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TroubleViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_view_trouble, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_view_symptom, parent, false)
         return TroubleViewHolder(view, this)
     }
 

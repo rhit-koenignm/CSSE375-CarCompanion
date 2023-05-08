@@ -7,13 +7,15 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="5dp"
     card_view:cardCornerRadius="10dp"
+    android:id="@+id/symptom_card_view"
+    android:backgroundTint="@color/verdigris"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/trouble_view_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/verdigris">
+        >
 
         <TextView
             android:id="@+id/trouble_name_text_view"
