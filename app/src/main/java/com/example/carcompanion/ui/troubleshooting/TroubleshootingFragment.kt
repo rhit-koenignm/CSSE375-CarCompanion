@@ -45,11 +45,6 @@ class TroubleshootingFragment : Fragment() {
         currentSymptoms = TroubleTreeUtils.createSymptoms()
     }
 
-    private fun setView(view: RecyclerView, adapter: TroubleAdapter) {
-        view.adapter = adapter
-        view.layoutManager = LinearLayoutManager(context)
-        view.setHasFixedSize(true)
-    }
 
     private fun setRestartButton(binding: FragmentTroubleshootingBinding) {
         binding.restartButton.isActivated = false

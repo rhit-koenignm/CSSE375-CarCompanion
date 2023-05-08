@@ -21,7 +21,7 @@ import com.example.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import com.example.carcompanion.ui.troubleshooting.TroubleShootingTree
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
-class MainActivity : AppCompatActivity(), TroubleshootingFragment.OnTroubleSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
@@ -132,23 +132,5 @@ class MainActivity : AppCompatActivity(), TroubleshootingFragment.OnTroubleSelec
         ft.replace(R.id.fragment_container, f)
         ft.commit()
         return true
-    }
-
-    override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
-
-        Log.d(Constants.DEFAULT_TAG, "Trouble Selected: ${woe.getTitle()}\n")
-        Log.d(Constants.DEFAULT_TAG, "Woe is of type ${woe.getType()}")
-
-        if (woe.getType() == "Diagnosis") {
-            val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
-            val ft = supportFragmentManager.beginTransaction()
-            ft.replace(R.id.fragment_container, detailFragment)
-            ft.addToBackStack("detail")
-            ft.commit()
-        } else {
-
-            //if a non diagnosis is selected then we want to let the adapter know
-            //will create function later
-        }
     }
 }
