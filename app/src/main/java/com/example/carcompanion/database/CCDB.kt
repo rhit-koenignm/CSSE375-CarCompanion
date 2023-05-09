@@ -92,4 +92,11 @@ class CCDB : CarCompanionDatabase {
         )
         return troubles
     }
+
+    companion object {
+        fun loadAllTroubleData(): ArrayList<ArrayList<TroubleData>>? {
+            //TODO: organize all trouble data into array of array
+            return null
+        }
+    }
 }
