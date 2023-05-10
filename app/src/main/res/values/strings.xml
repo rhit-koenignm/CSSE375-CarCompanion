@@ -46,4 +46,10 @@
     <string name="autoshops">AutoShops</string>
     <string name="search">Search</string>
     <string name="home_message">The Car Companion is an app designed to help users pinpoint car problems based on certain behaviors, and assist with small repairs or find resources for getting help nearby.</string>
+
+    <string name="sample_symptom_string">My car is producing a weird smell</string>
+    <string name="view_diagnosis_list">View Diagnosis List</string>
+    <string name="having_car_troubles">Having car troubles?</string>
+    <string name="let_s_narrow_it_down">Let\'s narrow it down.</string>
+    <string name="what_other_symptoms">What other symptoms is your car displaying?</string>
 </resources>
