@@ -99,4 +99,18 @@ class TroubleshootingFlowControllerTests {
 
         assertThat(controller.state, instanceOf(State.Start::class.java))
     }
+
+    @Test
+    fun testDiagnosisReset() {
+        val controller = TroubleshootingFlowController()
+        val indicator = getIndicator()
+        val symptom = getSymptom()
+        val diagnosis = getDiagnosis()
+        controller.processEvent(Event.SelectPrimarySymptomEvent(indicator))
+        controller.processEvent(Event.SelectSecondarySymptomEvent(symptom))
+        controller.processEvent(Event.SelectDiagnosisEvent(diagnosis))
+        controller.processEvent(Event.ResetEvent)
+
+        assertThat(controller.state, instanceOf(State.Start::class.java))
+    }
 }

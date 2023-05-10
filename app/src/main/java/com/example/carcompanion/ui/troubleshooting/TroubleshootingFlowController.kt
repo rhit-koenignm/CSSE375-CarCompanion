@@ -3,6 +3,7 @@ package com.example.carcompanion.ui.troubleshooting
 
 class TroubleshootingFlowController {
     var state: State = State.Start
+        private set
 
     sealed interface State {
         object Start : State
