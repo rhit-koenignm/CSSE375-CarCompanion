@@ -4,11 +4,11 @@ import android.os.Parcelable
 //import kotlinx.android.parcel.Parcelize
 
 //@Parcelize
- data class TroubleData(private var title: String, private var text: String, private var id: Int){
+ data class TroubleData(private var id: String, private var title: String, private var text: String){
     fun getTitle(): String{
      return title
     }
-  fun getId(): Int {
+  fun getId(): String {
     return id;
   }
   fun getText(): String{

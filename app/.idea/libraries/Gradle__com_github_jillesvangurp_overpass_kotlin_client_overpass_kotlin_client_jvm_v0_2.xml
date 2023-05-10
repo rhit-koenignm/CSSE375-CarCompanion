@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.jillesvangurp.overpass-kotlin-client:overpass-kotlin-client-jvm:v0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jillesvangurp.overpass-kotlin-client/overpass-kotlin-client-jvm/v0.2/30299f9f933c48cf40823048b0b4bab0c70c0638/overpass-kotlin-client-jvm-v0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jillesvangurp.overpass-kotlin-client/overpass-kotlin-client-jvm/v0.2/148a40a854f326a7e5006b45ebf3de1e76f1b239/overpass-kotlin-client-jvm-v0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
