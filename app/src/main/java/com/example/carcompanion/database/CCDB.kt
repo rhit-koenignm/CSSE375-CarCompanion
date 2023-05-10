@@ -7,9 +7,11 @@ import com.example.carcompanion.ui.troubleshooting.TroubleData
 import io.ktor.util.*
 
 class CCDB : CarCompanionDatabase {
+
     var symptoms = HashMap<String,Symptom>()
     var indicators = HashMap<String,Symptom>()
     var diagnoses = HashMap<String,Symptom>()
+
     override fun loadSymptoms(): HashMap<String,Symptom> {
         return listOf(
             Symptom(TroubleData(
