@@ -1,54 +1,92 @@
 package com.example.carcompanion.ui.troubleshooting
 
-import kotlinx.coroutines.runBlocking
-import ru.nsk.kstatemachine.DataEvent
-import ru.nsk.kstatemachine.DefaultState
-import ru.nsk.kstatemachine.Event
-import ru.nsk.kstatemachine.StateMachine
-import ru.nsk.kstatemachine.addInitialState
-import ru.nsk.kstatemachine.createStateMachine
-import ru.nsk.kstatemachine.transition
 
 class TroubleshootingFlowController {
-    sealed interface States {
-        object Start : States
-        class PrimarySelected(override val data: String) : DefaultState(), States
-        object SecondarySelected : States
-        object ViewDiagnosis : States
+    var state: State = State.Start
+
+    sealed interface State {
+        object Start : State
+        class PrimarySelected(val primary: Indicator) : State
+        class SecondarySelected(val primary: Indicator, val secondary: Symptom) : State
+        class ViewDiagnosis(val primary: Indicator, val secondary: Symptom, val diagnosis: Diagnosis) : State
     }
 
-    sealed interface Events {
-        object ResetEvent : Event, Events
-        class SelectPrimarySymptomEvent(override val data: Indicator) : DataEvent<Indicator>, Events
-        class SelectSecondarySymptomEvent(override val data: Symptom) : DataEvent<Symptom>, Events
-        class SelectDiagnosisEvent(override val data: Diagnosis) : DataEvent<Diagnosis>, Events
-        object BackEvent : Event, Events
+    sealed interface Event {
+        object ResetEvent : Event
+        class SelectPrimarySymptomEvent(val data: Indicator) : Event
+        class SelectSecondarySymptomEvent(val data: Symptom) : Event
+        class SelectDiagnosisEvent(val data: Diagnosis) : Event
+        object BackEvent : Event
     }
 
-    val machine: StateMachine = runBlocking {
-        createStateMachine(this) {
-            addInitialState(States.Start) {
-                transition<Events.ResetEvent> {
-                    targetState = States.Start
+    fun selectWoe(woe: TroubleShootingTree.Woe): State {
+        val evt = when(woe) {
+            is Indicator -> Event.SelectPrimarySymptomEvent(woe)
+            is Symptom -> Event.SelectSecondarySymptomEvent(woe)
+            is Diagnosis -> Event.SelectDiagnosisEvent(woe)
+            else -> throw IllegalArgumentException("Invalid woe type")
+        }
+
+        processEvent(evt)
+
+        return state
+    }
+
+    fun processEvent(event: Event) {
+        state = reduceState(state, event)
+    }
+
+    private fun reduceState(state: State, event: Event): State {
+        if (event is Event.ResetEvent) {
+            return State.Start
+        }
+
+        return when (state) {
+            is State.Start -> {
+                when (event) {
+                    is Event.SelectPrimarySymptomEvent -> {
+                        State.PrimarySelected(event.data)
+                    }
+                    else -> {
+                        state
+                    }
                 }
             }
-        }
-    }
-
-    val state: States
-        get() = machine as States
-
-    suspend fun nextScreen(woe: TroubleShootingTree.Woe) {
-        // send event depending on type
-        when (woe) {
-            is Indicator -> {
-                machine.processEvent(Events.SelectPrimarySymptomEvent(woe))
+            is State.PrimarySelected -> {
+                when (event) {
+                    is Event.SelectSecondarySymptomEvent -> {
+                        State.SecondarySelected(state.primary, event.data)
+                    }
+                    is Event.BackEvent -> {
+                        State.Start
+                    }
+                    else -> {
+                        state
+                    }
+                }
             }
-            is Symptom -> {
-                machine.processEvent(Events.SelectSecondarySymptomEvent(woe))
+            is State.SecondarySelected -> {
+                when (event) {
+                    is Event.SelectDiagnosisEvent -> {
+                        State.ViewDiagnosis(state.primary, state.secondary, event.data)
+                    }
+                    is Event.BackEvent -> {
+                        State.PrimarySelected(state.primary)
+                    }
+                    else -> {
+                        state
+                    }
+                }
             }
-            is Diagnosis -> {
-                machine.processEvent(Events.SelectDiagnosisEvent(woe))
+            is State.ViewDiagnosis -> {
+                when (event) {
+                    is Event.BackEvent -> {
+                        State.SecondarySelected(state.primary, state.secondary)
+                    }
+                    else -> {
+                        state
+                    }
+                }
             }
         }
     }
