@@ -10,5 +10,6 @@ interface CarCompanionDatabase {
     fun loadIndicators(): HashMap<String,Indicator>
 
     fun loadDiagnoses(): HashMap<String,Diagnosis>
+
     fun loadAllTroubleData()
 }

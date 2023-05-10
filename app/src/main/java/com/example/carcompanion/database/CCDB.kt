@@ -4,6 +4,7 @@ import com.example.carcompanion.ui.troubleshooting.Diagnosis
 import com.example.carcompanion.ui.troubleshooting.Indicator
 import com.example.carcompanion.ui.troubleshooting.Symptom
 import com.example.carcompanion.ui.troubleshooting.TroubleData
+import io.ktor.util.*
 
 class CCDB : CarCompanionDatabase {
     var symptoms = HashMap<String,Symptom>()
@@ -62,6 +63,7 @@ class CCDB : CarCompanionDatabase {
                 "The heater or AC is not working",
                 "oh no It's hot/cold in here, HELP!"
             ))
+
         ).fold(HashMap<String, Indicator>()) { set, indicator ->
             set[indicator.data.getId()] = indicator
             return set
@@ -153,7 +155,6 @@ class CCDB : CarCompanionDatabase {
 
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_thermostat_failure")
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_faulty_transmission")
-
 
     }
 

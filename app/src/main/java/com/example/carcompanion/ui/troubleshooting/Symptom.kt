@@ -12,7 +12,7 @@ class Symptom(data: TroubleData) : TroubleShootingTree.Woe(data) {
     }
 
     @JvmName("getDiagnoses1")
-    fun getDiagnoses(): ArrayList<String>{
+    fun getDiagnoses(): ArrayList<String> {
         return diagnoses;
     }
 
