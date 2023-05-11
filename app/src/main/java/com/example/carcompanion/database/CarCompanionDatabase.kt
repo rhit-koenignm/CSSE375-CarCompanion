@@ -6,10 +6,13 @@ import com.example.carcompanion.ui.troubleshooting.Symptom
 import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 interface CarCompanionDatabase {
-    fun loadSymptoms(): HashMap<String,Symptom>
-    fun loadIndicators(): HashMap<String,Indicator>
+    fun getIndicator(id: String): Indicator
+    fun getSymptom(id: String): Symptom
+    fun getDiagnosis(id: String): Diagnosis
 
-    fun loadDiagnoses(): HashMap<String,Diagnosis>
-
-    fun loadAllTroubleData()
+    fun getIndicators(id: String): List<Indicator>
+    fun getIndicatorToSym(indicatorID: String): List<Symptom>
+    fun getSymptoms(id: String): List<Symptom>
+    fun getSymptomToDiag(symptomID: String): List<Diagnosis>
+    fun getDiagnoses(id: String): List<Diagnosis>
 }
