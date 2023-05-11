@@ -23,7 +23,6 @@ class TroubleshootingFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTroubleshootingBinding.inflate(inflater, container, false)
-        var view = binding.troubleshootingRecycler
 
         Log.d(Constants.DEFAULT_TAG, "opened troubleshooter")
 
@@ -32,10 +31,10 @@ class TroubleshootingFragment : Fragment() {
         binding.troubleshootingRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.troubleshootingRecycler.setHasFixedSize(true)
 
-        setRestartButton(binding)
-        setBackStepButton(binding)
-        setNextStepButton(binding)
-        setViewDiagnosisButton(binding)
+        setRestartButton()
+        setBackStepButton()
+        setNextStepButton()
+        setViewDiagnosisButton()
 
         return binding.root
     }
@@ -59,7 +58,7 @@ class TroubleshootingFragment : Fragment() {
         return true
     }
 
-    private fun setRestartButton(binding: FragmentTroubleshootingBinding) {
+    private fun setRestartButton() {
         binding.restartButton.isActivated = false
         binding.restartButton.setOnClickListener {
             Log.d(Constants.DEFAULT_TAG, "restart button pressed")
@@ -67,25 +66,27 @@ class TroubleshootingFragment : Fragment() {
         }
     }
 
-    private fun setBackStepButton(binding: FragmentTroubleshootingBinding) {
+    private fun setBackStepButton() {
         binding.backStepButton.isActivated = false
         binding.backStepButton.setOnClickListener {
             Log.d(Constants.DEFAULT_TAG, "back step button pressed")
         }
     }
-    private fun setNextStepButton(binding: FragmentTroubleshootingBinding) {
+    private fun setNextStepButton() {
         binding.nextStepButton.isActivated = true
         binding.nextStepButton.setOnClickListener {
             Log.d(Constants.DEFAULT_TAG, "next step button pressed")
             troubleAdapter.changeState("symptoms")
+            binding.troubleshootingRecycler.adapter = troubleAdapter
         }
     }
 
-    private fun setViewDiagnosisButton(binding: FragmentTroubleshootingBinding) {
+    private fun setViewDiagnosisButton() {
         binding.viewDiagnosisList.isVisible = true
         binding.viewDiagnosisList.setOnClickListener {
             Log.d(Constants.DEFAULT_TAG, "view diagnoses button pressed")
             troubleAdapter.changeState("diagnoses")
+            binding.troubleshootingRecycler.adapter = troubleAdapter
         }
     }
 }
