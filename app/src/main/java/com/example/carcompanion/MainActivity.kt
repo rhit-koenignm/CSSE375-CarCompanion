@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.navigation_troubleshooting -> {
                     currentFragment = "troubleshooting"
-                    switchFrag(TroubleshootingFragment())
+                    switchFrag(TroubleshootingFragment(null))
                 }
 
                 R.id.navigation_find_help -> {

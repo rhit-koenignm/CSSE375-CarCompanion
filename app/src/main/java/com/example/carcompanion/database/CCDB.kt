@@ -38,41 +38,78 @@ class CCDB : CarCompanionDatabase {
     }
 
      fun loadIndicators(): HashMap<String,Indicator> {
-        return listOf(
-            Indicator(TroubleData("indicator_flashing_light",
-                "Flashing Light",
-                "There are a variety of warning lights on your dashboard, are any lit?"
-            )),
-            Indicator(TroubleData("indicator_weird_noise","Weird Noise", "Is your car making a strange sound?")),
-            Indicator(TroubleData(
-                "indicator_weird_smell",
-                "Weird Smell",
-                "Is there a strangle smell on the outside or inside of your car?"
-            )),
-            Indicator(TroubleData(
-                "indicator_performance_issues",
-                "Performance Issues",
-                "Is your car having trouble starting or accelerating?"
-            )),
-            Indicator(TroubleData(
-                "indicator_strange_thing",
-                "I see something strange",
-                "Is there smoke coming out of your car?"
-            )),
-            Indicator(TroubleData(
-                "indicator_weird_noises",
-                "My car is making weird noises",
-                "oh no there are some weird noises! I wonder why"
-            )),Indicator(TroubleData(
-                "indicator_heater_ac",
-                "The heater or AC is not working",
-                "oh no It's hot/cold in here, HELP!"
-            ))
-        ).fold(HashMap<String, Indicator>()) { set, indicator ->
-            set[indicator.data.getId()] = indicator
-            return set
-        }
-    }
+         return hashMapOf<String, Indicator>(
+             "indicator_flashing_light" to
+             Indicator(TroubleData("indicator_flashing_light",
+                 "Flashing Light",
+                 "There are a variety of warning lights on your dashboard, are any lit?"
+             )),
+             "indicator_weird_noise" to
+             Indicator(TroubleData("indicator_weird_noise","Weird Noise", "Is your car making a strange sound?")),
+             "indicator_weird_smell" to Indicator(TroubleData(
+                 "indicator_weird_smell",
+                 "Weird Smell",
+                 "Is there a strangle smell on the outside or inside of your car?"
+             )),
+             "indicator_performance_issues" to
+             Indicator(TroubleData(
+                 "indicator_performance_issues",
+                 "Performance Issues",
+                 "Is your car having trouble starting or accelerating?"
+             )),
+             "indicator_strange_thing" to
+             Indicator(TroubleData(
+                 "indicator_strange_thing",
+                 "I see something strange",
+                 "Is there smoke coming out of your car?"
+             )),
+             "indicator_weird_noises" to
+             Indicator(TroubleData(
+                 "indicator_weird_noises",
+                 "My car is making weird noises",
+                 "oh no there are some weird noises! I wonder why"
+             )),
+             "indicator_heater_ac" to
+             Indicator(TroubleData(
+             "indicator_heater_ac",
+             "The heater or AC is not working",
+             "oh no It's hot/cold in here, HELP!"
+             )))
+         }
+//        return listOf(
+//            Indicator(TroubleData("indicator_flashing_light",
+//                "Flashing Light",
+//                "There are a variety of warning lights on your dashboard, are any lit?"
+//            )),
+//            Indicator(TroubleData("indicator_weird_noise","Weird Noise", "Is your car making a strange sound?")),
+//            Indicator(TroubleData(
+//                "indicator_weird_smell",
+//                "Weird Smell",
+//                "Is there a strangle smell on the outside or inside of your car?"
+//            )),
+//            Indicator(TroubleData(
+//                "indicator_performance_issues",
+//                "Performance Issues",
+//                "Is your car having trouble starting or accelerating?"
+//            )),
+//            Indicator(TroubleData(
+//                "indicator_strange_thing",
+//                "I see something strange",
+//                "Is there smoke coming out of your car?"
+//            )),
+//            Indicator(TroubleData(
+//                "indicator_weird_noises",
+//                "My car is making weird noises",
+//                "oh no there are some weird noises! I wonder why"
+//            )),Indicator(TroubleData(
+//                "indicator_heater_ac",
+//                "The heater or AC is not working",
+//                "oh no It's hot/cold in here, HELP!"
+//            ))
+//        ).fold(HashMap<String, Indicator>()) { set, indicator ->
+//            set[indicator.data.getId()] = indicator
+//            return set
+//        }
 
      fun loadDiagnoses(): HashMap<String,Diagnosis> {
 
@@ -126,9 +163,9 @@ class CCDB : CarCompanionDatabase {
 
      fun loadAllTroubleData() {
 
-        var indicators = loadIndicators()
-        var symptoms = loadSymptoms()
-        var diagnoses = loadDiagnoses()
+        indicators = loadIndicators()
+        symptoms = loadSymptoms()
+        diagnoses = loadDiagnoses()
 
         //add symptoms under indicator
         indicators["indicator_flashing_light"]?.addSymptom("symptom_check_engine")
@@ -176,7 +213,7 @@ class CCDB : CarCompanionDatabase {
     }
 
     override fun getIndicators(): List<Indicator> {
-        return indicators.values.toList()
+        return indicators.values.toMutableList()
     }
 
     override fun getIndicatorToSym(indicatorID: String): List<Symptom> {

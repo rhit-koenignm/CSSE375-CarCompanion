@@ -42,10 +42,10 @@ object TroubleTreeUtils {
 
     fun createSymptoms(): ArrayList<TroubleShootingTree.Woe> {
         var troubleData = getTroubleData()
-        return addSyntomData(troubleData)
+        return addSymptomData(troubleData)
     }
 
-    private fun addSyntomData(troubleData: ArrayList<TroubleData>):  ArrayList<TroubleShootingTree.Woe> {
+    private fun addSymptomData(troubleData: ArrayList<TroubleData>):  ArrayList<TroubleShootingTree.Woe> {
         var symptoms = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubleData){
             val newSymptom = Symptom(trobdata)

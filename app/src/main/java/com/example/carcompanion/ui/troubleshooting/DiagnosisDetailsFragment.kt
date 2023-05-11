@@ -19,7 +19,7 @@ private const val ARG_TR = "trouble"
  * Use the [DocDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DiagnosisDetailsFragment(diagnosis: Diagnosis) : Fragment() { // We will also need to add the state machine to have a way to go back to the troubleshooting page
+class DiagnosisDetailsFragment(diagnosis: Diagnosis, var flowController: TroubleshootingFlowController) : Fragment() { // We will also need to add the state machine to have a way to go back to the troubleshooting page
 
     private lateinit var binding: FragmentDiagnosisDetailsBinding
     private var diagnosis: Diagnosis = diagnosis
@@ -39,7 +39,7 @@ class DiagnosisDetailsFragment(diagnosis: Diagnosis) : Fragment() { // We will a
 
     fun setupBackButton() {
         binding.backToTroubleshootingButton.setOnClickListener {
-            addFrag(TroubleshootingFragment())
+            addFrag(TroubleshootingFragment(flowController))
         }
     }
 
