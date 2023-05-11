@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:minHeight="400dp"
-        android:layout_marginHorizontal="10dp"
-        android:paddingHorizontal="5dp"
+        android:layout_margin="10dp"
+        android:padding="5dp"
         >
 
         <TextView
@@ -38,11 +38,11 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/dark_teal"
-            android:text="@string/sample_diagnosis_content"/>
+            android:text="@string/sample_diagnosis_details"/>
     </ScrollView>
 
     <Button
-        android:id="@+id/back_to_troubleshooting"
+        android:id="@+id/back_to_troubleshooting_button"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

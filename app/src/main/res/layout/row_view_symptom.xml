@@ -12,7 +12,7 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/symptom_view_layout"
+        android:id="@+id/trouble_view_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         >
@@ -27,14 +27,14 @@
             android:textSize="18dp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/symptom_radio_button"
+            card_view:layout_constraintEnd_toStartOf="@+id/trouble_radio_button"
             card_view:layout_constraintHorizontal_bias="0.5"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintVertical_bias="0.5" />
 
         <RadioButton
-            android:id="@+id/symptom_radio_button"
+            android:id="@+id/trouble_radio_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -43,7 +43,7 @@
             android:textColor="@color/seafoam"
             android:layout_marginRight="5dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintRight_toRightOf="@id/symptom_view_layout"
+            card_view:layout_constraintRight_toRightOf="@id/trouble_view_layout"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintVertical_bias="0.5"
             />
