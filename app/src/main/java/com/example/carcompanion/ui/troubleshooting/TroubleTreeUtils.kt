@@ -1,7 +1,6 @@
 package com.example.carcompanion.ui.troubleshooting
 
 import com.example.carcompanion.database.CCDB
-import com.example.carcompanion.database.CarCompanionDatabase
 
 object TroubleTreeUtils {
     var db = CCDB()
@@ -17,19 +16,6 @@ object TroubleTreeUtils {
         var indicList = createIndicators() as ArrayList<Indicator>
         var diagnosesList = loadDiagnoses() as ArrayList<Diagnosis>
         var sympList = createSymptoms() as ArrayList<Symptom>
-
-        //First I'm going to connect the indicators
-        //This one is the flashing light indicator
-        indicList.get(0).addSymptom(sympList[1] as Symptom)
-        sympList[1].addSymptom(sympList[4])
-        sympList[1].addDiagnosis(diagnosesList[3])
-
-        //The second indicator is a weird noise
-        indicList[1].addSymptom(sympList[6])
-        sympList[6].addDiagnosis(diagnosesList[4])
-        indicList[1].addSymptom(sympList[7])
-        sympList[7].addDiagnosis(diagnosesList[5])
-
 
         //Now I'm going to add all our woes to the tree
         troubleTree.addWoes(indicList as ArrayList<TroubleShootingTree.Woe>)
@@ -69,16 +55,16 @@ object TroubleTreeUtils {
     }
 
     private fun getTroubleData(): ArrayList<TroubleData> {
-        return db.loadTroubleData()
+        return ArrayList<TroubleData>()
     }
 
 
     private fun getIndicatorTroubleData(): ArrayList<TroubleData> {
-        return db.loadIndicatorTroubleData()
+        return ArrayList<TroubleData>()
     }
 
 
     private fun getDiagnosesTroubleData(): ArrayList<TroubleData> {
-        return db.loadDiagnosesTroubleData()
+        return ArrayList<TroubleData>()
     }
 }
