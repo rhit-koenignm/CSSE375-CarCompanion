@@ -9,10 +9,13 @@ import io.ktor.util.*
 class CCDB : CarCompanionDatabase {
 
     var symptoms = HashMap<String,Symptom>()
-    var indicators = HashMap<String,Symptom>()
-    var diagnoses = HashMap<String,Symptom>()
+    var indicators = HashMap<String,Indicator>()
+    var diagnoses = HashMap<String,Diagnosis>()
 
-    override fun loadSymptoms(): HashMap<String,Symptom> {
+    init {
+        loadAllTroubleData()
+    }
+     fun loadSymptoms(): HashMap<String,Symptom> {
         return listOf(
             Symptom(TroubleData(
                 "symptom_burning_smell",
@@ -34,7 +37,7 @@ class CCDB : CarCompanionDatabase {
 
     }
 
-    override fun loadIndicators(): HashMap<String,Indicator> {
+     fun loadIndicators(): HashMap<String,Indicator> {
         return listOf(
             Indicator(TroubleData("indicator_flashing_light",
                 "Flashing Light",
@@ -71,7 +74,7 @@ class CCDB : CarCompanionDatabase {
         }
     }
 
-    override fun loadDiagnoses(): HashMap<String,Diagnosis> {
+     fun loadDiagnoses(): HashMap<String,Diagnosis> {
 
         return listOf(
             Diagnosis(
@@ -121,7 +124,7 @@ class CCDB : CarCompanionDatabase {
     }
 
 
-    override fun loadAllTroubleData() {
+     fun loadAllTroubleData() {
 
         var indicators = loadIndicators()
         var symptoms = loadSymptoms()
@@ -158,6 +161,40 @@ class CCDB : CarCompanionDatabase {
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_faulty_transmission")
 
 
+    }
+
+    override fun getIndicator(id: String): Indicator {
+        return indicators[id]!!
+    }
+
+    override fun getSymptom(id: String): Symptom {
+        return symptoms[id]!!
+    }
+
+    override fun getDiagnosis(id: String): Diagnosis {
+        return diagnoses[id]!!
+    }
+
+    override fun getIndicators(id: String): List<Indicator> {
+        return indicators.values.toList()
+    }
+
+    override fun getIndicatorToSym(indicatorID: String): List<Symptom> {
+        var symptomIDs = indicators[indicatorID]?.symptoms
+        return symptoms.filterKeys { symptomIDs!!.contains(it)}.values.toList()
+    }
+
+    override fun getSymptoms(id: String): List<Symptom> {
+        return symptoms.values.toList()
+    }
+
+    override fun getSymptomToDiag(symptomID: String): List<Diagnosis> {
+        var diagnosisIDs = indicators[symptomID]?.symptoms
+        return diagnoses.filterKeys { diagnosisIDs!!.contains(it)}.values.toList()
+    }
+
+    override fun getDiagnoses(id: String): List<Diagnosis> {
+        return diagnoses.values.toList()
     }
 
 }
