@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">CarCompanion</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -47,9 +47,15 @@
     <string name="search">Search</string>
     <string name="home_message">The Car Companion is an app designed to help users pinpoint car problems based on certain behaviors, and assist with small repairs or find resources for getting help nearby.</string>
 
-    <string name="sample_symptom_string">My car is producing a weird smell</string>
     <string name="view_diagnosis_list">View Diagnosis List</string>
     <string name="having_car_troubles">Having car troubles?</string>
     <string name="let_s_narrow_it_down">Let\'s narrow it down.</string>
     <string name="what_other_symptoms">What other symptoms is your car displaying?</string>
+    <string name="the_car_has_a_faulty_starter">The car has a faulty starter</string>
+
+    <string name="sample_symptom_string">My car is producing a weird smell</string>
+    <string name="sample_diagnosis_title">Faulty Ignition Coil</string>
+    <string name="troubleshooting_return_button_text">Return to Troubleshooting</string>
+    <string name="sample_diagnosis_details">Ignition coils work to transfer ignition voltage so that the spark plugs can fire and the engine can start. Some common signs and symptoms of faulty ignition coils include a hard starting car, a car that frequently misfires, and a car that experiences poor acceleration or loses power. Faulty ignition coils usually don\'t present an immediate safety issue, but it\'s important to have the problem resolved before further engine damage has a chance to occur.t</string>
+
 </resources>

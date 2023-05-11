@@ -7,13 +7,13 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="5dp"
     card_view:cardCornerRadius="10dp"
-    android:id="@+id/symptom_card_view"
-    android:backgroundTint="@color/verdigris"
+    android:id="@+id/trouble_card_view"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/trouble_view_layout"
         android:layout_width="match_parent"
+        android:background="@color/cerulean"
         android:layout_height="50dp"
         >
 
@@ -22,16 +22,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="@string/sample_symptom_string"
+            android:text="@string/the_car_has_a_faulty_starter"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/trouble_radio_button"
+            card_view:layout_constraintEnd_toStartOf="@+id/trouble_image_button"
             card_view:layout_constraintHorizontal_bias="0.5"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintVertical_bias="0.5" />
+
+        <ImageButton
+            android:id="@+id/trouble_image_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintRight_toRightOf="@id/trouble_view_layout"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="0.5"
+            android:src="@drawable/baseline_menu_book_30"
+            android:background="@null"
+            />
 
         <RadioButton
             android:id="@+id/trouble_radio_button"
@@ -48,7 +63,7 @@
             card_view:layout_constraintVertical_bias="0.5"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -52,12 +52,6 @@ class FrontPageFragment : Fragment() {
         }
     }
 
-    private fun switchFrag(f: Fragment) {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, f)
-            .addToBackStack(null) // This is optional, but allows for back navigation
-            .commit()
-    }
     fun addFrag(f: Fragment): Boolean {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, f)

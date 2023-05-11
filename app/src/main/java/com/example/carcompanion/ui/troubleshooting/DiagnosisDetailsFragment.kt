@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
-import com.example.carcompanion.ui.troubleshooting.TroubleData
+
 //import kotlinx.android.synthetic.main..view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,46 +19,35 @@ private const val ARG_TR = "trouble"
  * Use the [DocDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DiagnosisDetailsFragment : Fragment() {
+class DiagnosisDetailsFragment(diagnosis: Diagnosis) : Fragment() { // We will also need to add the state machine to have a way to go back to the troubleshooting page
 
-    private var trouble: TroubleData? = null
     private lateinit var binding: FragmentDiagnosisDetailsBinding
-
-    companion object {
-        @JvmStatic
-        fun newInstance(trouble: TroubleData): DiagnosisDetailsFragment{
-            val fragment = DiagnosisDetailsFragment()
-            fragment.arguments = Bundle()
-            // TODO: Convert troubleData class to be Parcelable again
-            // fragment.requireArguments().putParcelable(ARG_TR, trouble)
-            return fragment
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            // TODO: Convert troubleData class to be Parcelable again
-            // trouble = arguments?.getParcelable(ARG_TR)
-        }
-    }
+    private var diagnosis: Diagnosis = diagnosis
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
-//        val view = inflater.inflate(R.layout.fragment_diagnosis_details, container, false)
-//        view.fragment_diagnosis_details_title.text = trouble?.title
-//        view.fragment_diagnosis_detail_body.text = trouble?.text
         binding = FragmentDiagnosisDetailsBinding.inflate(inflater, container, false)
 
-        binding.fragmentDiagnosisDetailsTitle.text = trouble?.getTitle()
-        binding.fragmentDiagnosisDetailBody.text = trouble?.getText()
+        binding.fragmentDiagnosisDetailsTitle.text =  diagnosis.getTitle()
+        binding.fragmentDiagnosisDetailBody.text = diagnosis.getText()
 
-        var root = binding.root
-
-        return root
+        setupBackButton()
+        return binding.root
     }
 
+    fun setupBackButton() {
+        binding.backToTroubleshootingButton.setOnClickListener {
+            addFrag(TroubleshootingFragment())
+        }
+    }
+
+    fun addFrag(f: Fragment) : Boolean {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, f)
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
 }

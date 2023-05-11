@@ -12,19 +12,49 @@
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="@string/sample_diagnosis_title"
+        android:textColor="@color/darkest_blue"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/darkest_blue"
+        />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="450dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        >
 
         <TextView
             android:id="@+id/fragment_diagnosis_detail_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:textColor="@color/dark_teal"
+            android:text="@string/sample_diagnosis_details"/>
     </ScrollView>
+
+    <Button
+        android:id="@+id/back_to_troubleshooting_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/troubleshooting_return_button_text"
+        android:layout_below="@id/button_layout"
+        android:backgroundTint="@color/cerulean"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        />
+
 </LinearLayout>
 
