@@ -69,75 +69,47 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
         fun bind(trouble: TroubleShootingTree.Woe, index: Int) {
             Log.d(Constants.TRBLE_ADPTER, "These woes are type: " + trouble.getType())
 
-            binding.troubleImageButton.visibility = View.GONE
+            if(trouble.getType().equals("Diagnosis")) {
+                binding.troubleNameTextView.text = trouble.getTitle()
 
-            binding.troubleNameTextView.text = trouble.getTitle()
-            if(selectedIndex != index) {
-                binding.troubleViewLayout.setBackgroundColor(
-                    ContextCompat.getColor(binding.root.context, R.color.seafoam))
-                binding.troubleRadioButton.isChecked = false
-            }
+                binding.troubleRadioButton.visibility = View.GONE
 
-            binding.troubleCardView.setOnClickListener {
+                var diagnosis = trouble as Diagnosis
+                if(!diagnosis.getType().equals("Diagnosis")) {
+                    diagnosis = Diagnosis(trouble.data)
+                }
+                binding.troubleCardView.setOnClickListener {
+                    fragment.moveToDiagnosisPage(diagnosis)
+                }
+            } else {
+                binding.troubleImageButton.visibility = View.GONE
+
+                binding.troubleNameTextView.text = trouble.getTitle()
                 if(selectedIndex != index) {
-                    binding.troubleViewLayout.setBackgroundColor(
-                        ContextCompat.getColor(binding.root.context, R.color.cerulean))
-                    binding.troubleRadioButton.isChecked = true
-                    var prevSelected = selectedIndex
-                    if(prevSelected != -1) {
-                        notifyItemChanged(prevSelected)
-                    }
-                    selectedIndex = index
-                    Log.d(Constants.TRBLE_ADPTER, "Selected trouble is at index " + selectedIndex)
-                } else if(selectedIndex == index){
-                    selectedIndex = -1
                     binding.troubleViewLayout.setBackgroundColor(
                         ContextCompat.getColor(binding.root.context, R.color.seafoam))
                     binding.troubleRadioButton.isChecked = false
                 }
-            }
 
-//            if(trouble.equals("diagnoses")) {
-//                binding.troubleNameTextView.text = trouble.getTitle()
-//
-//                binding.troubleRadioButton.visibility = View.GONE
-//
-//                var diagnosis = trouble as Diagnosis
-//                if(!diagnosis.getType().equals("Diagnosis")) {
-//                    diagnosis = Diagnosis(trouble.data)
-//                }
-//                binding.troubleCardView.setOnClickListener {
-//                    fragment.moveToDiagnosisPage(diagnosis)
-//                }
-//            } else {
-//                binding.troubleImageButton.visibility = View.GONE
-//
-//                binding.troubleNameTextView.text = trouble.getTitle()
-//                if(selectedIndex != index) {
-//                    binding.troubleViewLayout.setBackgroundColor(
-//                        ContextCompat.getColor(binding.root.context, R.color.seafoam))
-//                    binding.troubleRadioButton.isChecked = false
-//                }
-//
-//                binding.troubleCardView.setOnClickListener {
-//                    if(selectedIndex != index) {
-//                        binding.troubleViewLayout.setBackgroundColor(
-//                            ContextCompat.getColor(binding.root.context, R.color.cerulean))
-//                        binding.troubleRadioButton.isChecked = true
-//                        var prevSelected = selectedIndex
-//                        if(prevSelected != -1) {
-//                            notifyItemChanged(prevSelected)
-//                        }
-//                        selectedIndex = index
-//                        Log.d(Constants.TRBLE_ADPTER, "Selected trouble is at index " + selectedIndex)
-//                    } else if(selectedIndex == index){
-//                        selectedIndex = -1
-//                        binding.troubleViewLayout.setBackgroundColor(
-//                            ContextCompat.getColor(binding.root.context, R.color.seafoam))
-//                        binding.troubleRadioButton.isChecked = false
-//                    }
-//                }
-//            }
+                binding.troubleCardView.setOnClickListener {
+                    if(selectedIndex != index) {
+                        binding.troubleViewLayout.setBackgroundColor(
+                            ContextCompat.getColor(binding.root.context, R.color.cerulean))
+                        binding.troubleRadioButton.isChecked = true
+                        var prevSelected = selectedIndex
+                        if(prevSelected != -1) {
+                            notifyItemChanged(prevSelected)
+                        }
+                        selectedIndex = index
+                        Log.d(Constants.TRBLE_ADPTER, "Selected trouble is at index " + selectedIndex)
+                    } else if(selectedIndex == index){
+                        selectedIndex = -1
+                        binding.troubleViewLayout.setBackgroundColor(
+                            ContextCompat.getColor(binding.root.context, R.color.seafoam))
+                        binding.troubleRadioButton.isChecked = false
+                    }
+                }
+            }
         }
     }
 }
