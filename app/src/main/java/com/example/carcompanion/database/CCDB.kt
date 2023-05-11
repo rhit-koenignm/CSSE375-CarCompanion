@@ -175,7 +175,7 @@ class CCDB : CarCompanionDatabase {
         return diagnoses[id]!!
     }
 
-    override fun getIndicators(id: String): List<Indicator> {
+    override fun getIndicators(): List<Indicator> {
         return indicators.values.toList()
     }
 
@@ -184,7 +184,7 @@ class CCDB : CarCompanionDatabase {
         return symptoms.filterKeys { symptomIDs!!.contains(it)}.values.toList()
     }
 
-    override fun getSymptoms(id: String): List<Symptom> {
+    override fun getSymptoms(): List<Symptom> {
         return symptoms.values.toList()
     }
 
@@ -193,7 +193,7 @@ class CCDB : CarCompanionDatabase {
         return diagnoses.filterKeys { diagnosisIDs!!.contains(it)}.values.toList()
     }
 
-    override fun getDiagnoses(id: String): List<Diagnosis> {
+    override fun getDiagnoses(): List<Diagnosis> {
         return diagnoses.values.toList()
     }
 

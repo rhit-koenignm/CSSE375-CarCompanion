@@ -1,15 +1,18 @@
 package com.example.carcompanion.ui.troubleshooting
 
+import com.example.carcompanion.database.CarCompanionDatabase
 
-class TroubleshootingFlowController {
+
+class TroubleshootingFlowController(val db: CarCompanionDatabase) {
     var state: State = State.Start
         private set
 
-    sealed interface State {
-        object Start : State
-        class PrimarySelected(val primary: Indicator) : State
-        class SecondarySelected(val primary: Indicator, val secondary: Symptom) : State
-        class ViewDiagnosis(val primary: Indicator, val secondary: Symptom, val diagnosis: Diagnosis) : State
+    sealed class State {
+        object Start : State()
+        class PrimarySelected(val primary: Indicator) : State()
+        class SecondarySelected(val primary: Indicator, val secondary: Symptom) : State()
+        class ViewDiagnosis(val primary: Indicator, val secondary: Symptom, val diagnosis: Diagnosis) : State()
+
     }
 
     sealed interface Event {
@@ -31,6 +34,24 @@ class TroubleshootingFlowController {
         processEvent(evt)
 
         return state
+    }
+
+    fun getWoes(): List<TroubleShootingTree.Woe> {
+        val state = state
+        return when (state) {
+            is State.Start -> {
+                db.getIndicators()
+            }
+            is State.PrimarySelected -> {
+                db.getIndicatorToSym(state.primary.data.getId())
+            }
+            is State.SecondarySelected -> {
+                db.getSymptomToDiag(state.secondary.data.getId())
+            }
+            is State.ViewDiagnosis -> {
+                emptyList()
+            }
+        }
     }
 
     fun processEvent(event: Event) {

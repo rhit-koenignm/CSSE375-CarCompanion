@@ -10,9 +10,9 @@ interface CarCompanionDatabase {
     fun getSymptom(id: String): Symptom
     fun getDiagnosis(id: String): Diagnosis
 
-    fun getIndicators(id: String): List<Indicator>
+    fun getIndicators(): List<Indicator>
     fun getIndicatorToSym(indicatorID: String): List<Symptom>
-    fun getSymptoms(id: String): List<Symptom>
+    fun getSymptoms(): List<Symptom>
     fun getSymptomToDiag(symptomID: String): List<Diagnosis>
-    fun getDiagnoses(id: String): List<Diagnosis>
+    fun getDiagnoses(): List<Diagnosis>
 }

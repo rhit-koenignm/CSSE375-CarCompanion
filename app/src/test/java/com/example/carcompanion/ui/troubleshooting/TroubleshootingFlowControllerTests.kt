@@ -1,10 +1,5 @@
-package com.example.carcompanion.ui
+package com.example.carcompanion.ui.troubleshooting
 
-import com.example.carcompanion.ui.troubleshooting.Diagnosis
-import com.example.carcompanion.ui.troubleshooting.Indicator
-import com.example.carcompanion.ui.troubleshooting.Symptom
-import com.example.carcompanion.ui.troubleshooting.TroubleData
-import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.Event
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.State
 import junit.framework.TestCase.assertEquals
@@ -17,21 +12,20 @@ import org.hamcrest.CoreMatchers.instanceOf
 class TroubleshootingFlowControllerTests {
 
     fun getIndicator() =
-        Indicator(TroubleData("Test Indicator", "Test Indicator Description"))
+        Indicator(TroubleData("Test Indicator", "Test Indicator Description", "Test Indicator Fix"))
 
     fun getSymptom() =
-        Symptom(TroubleData("Test Symptom", "Test Symptom Description"))
+        Symptom(TroubleData("Test Symptom", "Test Symptom Description", "Test Symptom Fix"))
 
     fun getDiagnosis() =
-        Diagnosis(TroubleData("Test Diagnosis", "Test Diagnosis Description"))
+        Diagnosis(TroubleData("Test Diagnosis", "Test Diagnosis Description", "Test Diagnosis Fix"))
 
     @Test
     fun testBasicReset() {
         val controller = TroubleshootingFlowController()
-        controller.processEvent(TroubleshootingFlowController.Event.ResetEvent)
+        controller.processEvent(Event.ResetEvent)
 
-        assertThat(controller.state, instanceOf(TroubleshootingFlowController.State.Start::class.java))
-        // assert(controller.state is TroubleshootingFlowController.State.Start)
+        assertThat(controller.state, instanceOf(State.Start::class.java))
     }
 
     @Test
