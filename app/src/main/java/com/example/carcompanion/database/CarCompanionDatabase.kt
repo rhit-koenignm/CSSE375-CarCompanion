@@ -1,10 +1,15 @@
 package com.example.carcompanion.database
 
+import com.example.carcompanion.ui.troubleshooting.Diagnosis
+import com.example.carcompanion.ui.troubleshooting.Indicator
+import com.example.carcompanion.ui.troubleshooting.Symptom
 import com.example.carcompanion.ui.troubleshooting.TroubleData
 
 interface CarCompanionDatabase {
-    fun loadTroubleData(): ArrayList<TroubleData>
-    fun loadIndicatorTroubleData(): ArrayList<TroubleData>
+    fun loadSymptoms(): HashMap<String,Symptom>
+    fun loadIndicators(): HashMap<String,Indicator>
 
-    fun loadDiagnosesTroubleData(): ArrayList<TroubleData>
+    fun loadDiagnoses(): HashMap<String,Diagnosis>
+
+    fun loadAllTroubleData()
 }
