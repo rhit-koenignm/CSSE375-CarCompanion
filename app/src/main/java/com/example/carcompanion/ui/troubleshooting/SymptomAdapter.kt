@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.databinding.RowViewSymptomBinding
 import com.example.carcompanion.R
 
-class SymptomAdapter(val fragment: Fragment, private val symptomList: List<TroubleShootingTree.Woe>) : RecyclerView.Adapter<SymptomAdapter.SymptomViewHolder>(){
+class SymptomAdapter(val fragment: TroubleshootingFragment, private val symptomList: List<TroubleShootingTree.Woe>) : RecyclerView.Adapter<SymptomAdapter.SymptomViewHolder>(){
 
-    var selectedSymptoms: List<Boolean> = List(symptomList.size){ false }
+    var selectedSymptom: TroubleShootingTree.Woe? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SymptomViewHolder {
         val binding = RowViewSymptomBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -33,13 +33,13 @@ class SymptomAdapter(val fragment: Fragment, private val symptomList: List<Troub
                 binding.symptomCardView.setCardBackgroundColor(
                     ContextCompat.getColor(binding.root.context, R.color.dark_teal))
             }
-            binding.troubleNameTextView.setText(symptom.getTitle())
-            binding.troubleRadioButton.isChecked = false
-            binding.troubleRadioButton.setOnClickListener {
-                var isSelected: Boolean = binding.troubleRadioButton.isChecked
+            binding.symptomNameTextView.text = symptom.getTitle()
+            binding.symptomRadioButton.isChecked = true
+            binding.symptomCardView.setOnClickListener {
+                var isSelected: Boolean = binding.symptomRadioButton.isChecked
                 if(isSelected) {
-                    binding.troubleRadioButton.isChecked = !isSelected
-                    selectedSymptoms[index]
+                    binding.symptomRadioButton.isChecked = !isSelected
+                    selectedSymptom = symptom
                 }
             }
         }

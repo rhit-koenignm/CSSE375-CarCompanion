@@ -1,6 +1,5 @@
 package com.example.carcompanion.ui.troubleshooting
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.Constants
+import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentTroubleshootingBinding
 
 class TroubleshootingFragment : Fragment() {
@@ -39,6 +38,22 @@ class TroubleshootingFragment : Fragment() {
         setNextStepButton(binding);
 
         return binding.root
+    }
+
+    fun moveToDiagnosisPage(diagnosis: Diagnosis): Boolean {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, DiagnosisDetailsFragment(diagnosis))
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
+
+    fun addFrag(f: Fragment): Boolean {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, f)
+            .addToBackStack(null)
+            .commit()
+        return true
     }
 
     private fun getStartingSymptoms() {

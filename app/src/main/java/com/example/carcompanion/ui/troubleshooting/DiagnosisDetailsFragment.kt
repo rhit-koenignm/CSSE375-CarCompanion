@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
-import com.example.carcompanion.ui.troubleshooting.TroubleData
+
 //import kotlinx.android.synthetic.main..view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,21 +18,10 @@ private const val ARG_TR = "trouble"
  * Use the [DocDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DiagnosisDetailsFragment : Fragment() {
+class DiagnosisDetailsFragment(diagnosis: Diagnosis) : Fragment() {
 
     private var trouble: TroubleData? = null
     private lateinit var binding: FragmentDiagnosisDetailsBinding
-
-    companion object {
-        @JvmStatic
-        fun newInstance(trouble: TroubleData): DiagnosisDetailsFragment{
-            val fragment = DiagnosisDetailsFragment()
-            fragment.arguments = Bundle()
-            // TODO: Convert troubleData class to be Parcelable again
-            // fragment.requireArguments().putParcelable(ARG_TR, trouble)
-            return fragment
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
