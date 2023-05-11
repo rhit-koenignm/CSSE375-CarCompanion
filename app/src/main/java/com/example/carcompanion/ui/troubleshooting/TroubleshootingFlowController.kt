@@ -1,9 +1,10 @@
 package com.example.carcompanion.ui.troubleshooting
 
+import com.example.carcompanion.database.CCDB
 import com.example.carcompanion.database.CarCompanionDatabase
 
 
-class TroubleshootingFlowController(val db: CarCompanionDatabase) {
+class TroubleshootingFlowController(val db: CarCompanionDatabase = CCDB()) {
     var state: State = State.Start
         private set
 
