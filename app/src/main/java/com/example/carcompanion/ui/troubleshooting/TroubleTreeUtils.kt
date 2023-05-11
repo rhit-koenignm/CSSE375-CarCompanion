@@ -17,8 +17,6 @@ object TroubleTreeUtils {
         var diagnosesList = loadDiagnoses() as ArrayList<Diagnosis>
         var sympList = createSymptoms() as ArrayList<Symptom>
 
-
-
         //Now I'm going to add all our woes to the tree
         troubleTree.addWoes(indicList as ArrayList<TroubleShootingTree.Woe>)
         troubleTree.addWoes(diagnosesList as ArrayList<TroubleShootingTree.Woe>)

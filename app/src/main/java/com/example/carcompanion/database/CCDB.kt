@@ -156,8 +156,6 @@ class CCDB : CarCompanionDatabase {
 
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_thermostat_failure")
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_faulty_transmission")
-
-
     }
 
 }

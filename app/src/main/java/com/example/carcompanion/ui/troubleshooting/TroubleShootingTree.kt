@@ -56,7 +56,17 @@ public class TroubleShootingTree {
 //    }
 
 
-
+    fun getStepTitle(): String {
+        if(currentStep == 0){
+            return R.string.init_trouble_title.toString()
+        }
+        else if(currentStep < finalStep){
+            return currentWoe.getTitle()
+        }
+        else {
+            return R.string.diagnosis_title.toString()
+        }
+    }
 
     //This is a data class so I can find commonDiagnoses
     internal class indexArray(val arrayIndex: Int, val elementIndex: Int)
