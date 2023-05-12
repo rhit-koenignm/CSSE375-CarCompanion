@@ -154,12 +154,14 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                         }
                         selectedIndex = index
                         Log.d(Constants.TRBLE_ADPTER, "Selected trouble is at index " + selectedIndex)
+                        fragment.toggleNextButton(true)
                     } else if(selectedIndex == index){
                         selectedIndex = -1
                         Log.d(Constants.TRBLE_ADPTER, "Unselected trouble is at index " + selectedIndex)
                         binding.troubleViewLayout.setBackgroundColor(
                             ContextCompat.getColor(binding.root.context, R.color.seafoam))
                         binding.troubleRadioButton.isChecked = false
+                        fragment.toggleNextButton(false)
                     }
                 }
             }

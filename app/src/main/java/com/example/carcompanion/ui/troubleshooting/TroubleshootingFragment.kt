@@ -56,47 +56,81 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         super.onDestroy()
     }
 
+    fun toggleNextButton(isClickable: Boolean) {
+        if(isClickable) {
+            binding.nextStepButton.isEnabled = true
+            binding.nextStepButton.alpha = 1.0f
+        } else {
+            binding.nextStepButton.isEnabled = false
+            binding.nextStepButton.alpha = 0.5f
+        }
+    }
+
+    fun toggleBackButton(isClickable: Boolean) {
+        if(isClickable) {
+            binding.backStepButton.isEnabled = true
+            binding.backStepButton.alpha = 1.0f
+        } else {
+            binding.backStepButton.isEnabled = false
+            binding.backStepButton.alpha = 0.5f
+        }
+    }
+
+    fun toggleRestartButton(isClickable: Boolean) {
+        if(isClickable) {
+            binding.restartButton.isEnabled = true
+            binding.restartButton.alpha = 1.0f
+        } else {
+            binding.restartButton.isEnabled = false
+            binding.restartButton.alpha = 0.5f
+        }
+    }
+
+    fun toggleViewDiagnosisButton(isClickable: Boolean) {
+        if(isClickable) {
+            binding.viewDiagnosisList.visibility = View.VISIBLE
+            binding.viewDiagnosisList.isEnabled = true
+            binding.viewDiagnosisList.alpha = 1.0f
+        } else {
+            binding.viewDiagnosisList.visibility = View.GONE
+            binding.viewDiagnosisList.isEnabled = false
+            binding.viewDiagnosisList.alpha = 0.5f
+        }
+    }
+
+
     fun updateButtonsFromState() {
         when(flowController.state) {
             is State.Start -> {
-                binding.restartButton.isActivated = true
-                binding.restartButton.isEnabled = false
-                binding.backStepButton.isEnabled = true
-                binding.nextStepButton.isEnabled = true
-
-                binding.viewDiagnosisList.visibility = View.GONE
-                binding.viewDiagnosisList.isEnabled = false
+                toggleNextButton(false)
+                toggleBackButton(false)
+                toggleRestartButton(false)
+                toggleViewDiagnosisButton(false)
             }
             is State.PrimarySelected -> {
-                binding.restartButton.isEnabled = false
-                binding.backStepButton.isEnabled = false
-                binding.nextStepButton.isEnabled = false
-
-                binding.viewDiagnosisList.visibility = View.GONE
-                binding.viewDiagnosisList.isEnabled = false
+                toggleNextButton(false)
+                toggleBackButton(true)
+                toggleRestartButton(true)
+                toggleViewDiagnosisButton(false)
             }
             is State.SecondarySelected -> {
-                binding.restartButton.isEnabled = true
-                binding.backStepButton.isEnabled = true
-                binding.nextStepButton.isEnabled = false
-
-                binding.viewDiagnosisList.visibility = View.GONE
-                binding.viewDiagnosisList.isEnabled = false
+                toggleNextButton(false)
+                toggleBackButton(true)
+                toggleRestartButton(true)
+                toggleViewDiagnosisButton(false)
             }
             is State.ViewDiagnosis -> {
-                binding.restartButton.isEnabled = true
-                binding.backStepButton.isEnabled = true
-                binding.nextStepButton.isEnabled = false
-
-                binding.viewDiagnosisList.visibility = View.VISIBLE
-                binding.viewDiagnosisList.isEnabled = true
+                toggleNextButton(false)
+                toggleBackButton(true)
+                toggleRestartButton(true)
+                toggleViewDiagnosisButton(false)
             }
         }
     }
 
 
     private fun setUpRestartButton() {
-        binding.restartButton.isEnabled = false
+        toggleRestartButton(false)
         binding.restartButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "restart button pressed")
             troubleAdapter.restart()
@@ -104,14 +138,14 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     }
 
     private fun setUpBackStepButton() {
-        binding.backStepButton.isEnabled = false
+        toggleBackButton(false)
         binding.backStepButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "back step button pressed")
             troubleAdapter.backStep()
         }
     }
     private fun setUpNextStepButton() {
-        binding.nextStepButton.isEnabled = false
+        toggleNextButton(false)
         binding.nextStepButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "next step button pressed")
             var didStep = troubleAdapter.nextStep()
@@ -125,8 +159,7 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     }
 
     private fun setUpViewDiagnosisButton() {
-        binding.viewDiagnosisList.visibility = View.GONE
-        binding.viewDiagnosisList.isEnabled = false
+        toggleViewDiagnosisButton(false)
         binding.viewDiagnosisList.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "view diagnoses button pressed")
         }
