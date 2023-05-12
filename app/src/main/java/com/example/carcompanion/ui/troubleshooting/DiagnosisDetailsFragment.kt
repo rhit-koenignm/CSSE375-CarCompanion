@@ -10,6 +10,7 @@ import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
 
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.State
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.Event
+import kotlinx.coroutines.flow.flow
 
 //import kotlinx.android.synthetic.main..view.*
 
@@ -22,10 +23,24 @@ private const val ARG_TR = "trouble"
  * Use the [DocDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DiagnosisDetailsFragment(diagnosis: Diagnosis, var flowController: TroubleshootingFlowController) : Fragment() { // We will also need to add the state machine to have a way to go back to the troubleshooting page
+class DiagnosisDetailsFragment(var flowController: TroubleshootingFlowController) : Fragment() { // We will also need to add the state machine to have a way to go back to the troubleshooting page
 
     private lateinit var binding: FragmentDiagnosisDetailsBinding
-    private var diagnosis: Diagnosis = diagnosis
+    private lateinit var diagnosis: Diagnosis
+
+    init {
+        when(flowController.state) {
+            is State.ViewDiagnosis -> {
+                diagnosis = (flowController.state as State.ViewDiagnosis).diagnosis
+            }
+            else -> {
+                // In this case, the controller isn't in the proper state, so send it back to the
+                // main troubleshooting page and don't touch the state
+                addFrag(TroubleshootingFragment(flowController))
+            }
+        }
+        diagnosis
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
