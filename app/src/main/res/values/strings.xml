@@ -47,11 +47,16 @@
     <string name="search">Search</string>
     <string name="home_message">The Car Companion is an app designed to help users pinpoint car problems based on certain behaviors, and assist with small repairs or find resources for getting help nearby.</string>
 
+
     <string name="view_diagnosis_list">View Diagnosis List</string>
     <string name="having_car_troubles">Having car troubles?</string>
     <string name="let_s_narrow_it_down">Let\'s narrow it down.</string>
     <string name="what_other_symptoms">What other symptoms is your car displaying?</string>
     <string name="the_car_has_a_faulty_starter">The car has a faulty starter</string>
+
+    <string name="click_to_learn_more">Click on any of the options below to learn more.</string>
+    <string name="some_possibilities">We found some possibilities...</string>
+    <string name="not_sure">Not sure this is the issue? Return to the troubleshooting page to restart or step back and try again.</string>
 
     <string name="sample_symptom_string">My car is producing a weird smell</string>
     <string name="sample_diagnosis_title">Faulty Ignition Coil</string>

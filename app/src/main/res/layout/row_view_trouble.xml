@@ -26,6 +26,7 @@
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
+            android:textAllCaps="true"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/trouble_image_button"
             card_view:layout_constraintHorizontal_bias="0.5"
@@ -47,22 +48,6 @@
             android:src="@drawable/baseline_menu_book_30"
             android:background="@null"
             />
-
-        <RadioButton
-            android:id="@+id/trouble_radio_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:checked="false"
-            android:textColor="@color/seafoam"
-            android:layout_marginRight="5dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintRight_toRightOf="@id/trouble_view_layout"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.5"
-            />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

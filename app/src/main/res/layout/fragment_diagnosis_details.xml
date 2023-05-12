@@ -25,7 +25,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="320dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         android:padding="5dp"
@@ -40,6 +40,22 @@
             android:text="@string/sample_diagnosis_details"/>
     </ScrollView>
 
+
+    <TextView
+        android:id="@+id/current_troubleshooting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/charcoal"
+        android:text="@string/not_sure"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_below="@+id/troubleshooting_title"
+        android:layout_marginBottom="20dp"
+        />
+
     <Button
         android:id="@+id/back_to_troubleshooting_button"
         android:layout_gravity="center_horizontal"
@@ -53,7 +69,7 @@
         android:layout_marginVertical="10dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="18sp"
+        android:textSize="20sp"
         />
 
 </LinearLayout>

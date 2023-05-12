@@ -18,46 +18,75 @@ internal class RefactorTest {
         assertEquals(symptomList.get(0).getTitle(),"Burning smell")
     }
 
-//    @Test
-//    fun dbTest_loadTroubleData_size(){
-//        var db = CCDB()
-//        var troubleData = db.loadTroubleData()
-//        assertEquals(troubleData.size,10)
-//    }
-//    @Test
-//    fun dbTest_loadTroubleData_content(){
-//        var db = CCDB()
-//        var troubleData = db.loadTroubleData()
-//        assertEquals(troubleData.get(0).getTitle(),"Burning smell")
-//        assertEquals(troubleData.get(0).getText(),"Your car is producing a burning smell")
-//    }
-//
-//    @Test
-//    fun dbTest_loadIndicatorTroubleData_size(){
-//        var db = CCDB()
-//        var indicatorTroubleData = db.loadIndicatorTroubleData()
-//        assertEquals(indicatorTroubleData.size,5)
-//    }
-//    @Test
-//    fun dbTest_loadIndicatorTroubleData_content(){
-//        var db = CCDB()
-//        var indicatorTroubleData = db.loadIndicatorTroubleData()
-//        assertEquals(indicatorTroubleData.get(1).getTitle(),"Weird Noise")
-//        assertEquals(indicatorTroubleData.get(1).getText(),"Is your car making a strange sound?")
-//    }
-//
-//    @Test
-//    fun dbTest_loadDiagnosesTroubleData_size(){
-//        var db = CCDB()
-//        var troubles = db.loadDiagnosesTroubleData()
-//        assertEquals(troubles.size,6)
-//    }
-//
-//    @Test
-//    fun dbTest_loadDiagnosesTroubleData_content(){
-//        var db = CCDB()
-//        var troubles = db.loadDiagnosesTroubleData()
-//        assertEquals(troubles.get(1).getTitle(),"Thermostat Failure")
-//        assertEquals(troubles.get(1).getText(),"It's small, it's inexpensive, but it plays a really important role in your vehicle's all-around makeup, especially its engine. For instance, when your thermostat fails, your engine won't work as well as it should. This is largely because these thermostats allow coolant to flow through the greater coolant system. A faulty thermostat could spell bigger engine issues down the road. Good news though: a new thermostat is inexpensive and can be installed fairly easily in less than an hour. How do you know whether or not your thermostat is bad? It's easy to test. Just start up your engine and put your hand on the radiator or its top hose. If it quickly warms up after a moment or two, it's working well. If it warms gradually from the start or doesn't warm up, you should look into thermostat replacement.\n")
-//    }
+    @Test
+    fun dbTest_getIndicators_size(){
+        var db = CCDB()
+        assertEquals(7,db.getIndicators().size)
+    }
+    @Test
+    fun dbTest_getIndicator(){
+        var db = CCDB()
+        assertEquals("There are a variety of warning lights on your dashboard, are any lit?"
+            ,db.getIndicator("indicator_flashing_light").getText())
+    }
+    @Test
+    fun dbTest_getSymptoms_size(){
+        var db = CCDB()
+        assertEquals(13,db.getSymptoms().size)
+    }
+    @Test
+    fun dbTest_getSymptom(){
+        var db = CCDB()
+        assertEquals("Your car is producing a burning smell"
+            ,db.getSymptom("symptom_burning_smell").getText())
+    }
+
+    @Test
+    fun dbTest_getDiagnoses_size(){
+        var db = CCDB()
+        assertEquals(10,db.getDiagnoses().size)
+    }
+    @Test
+    fun dbTest_getDiagnosis(){
+        var db = CCDB()
+        assertEquals("Bad Spark Plugs"
+            ,db.getDiagnosis("diagnosis_bad_spark_plugs").getTitle())
+    }
+
+    @Test
+    fun dbTest_getIndicatorToSym_size(){
+        var db = CCDB()
+        assertEquals(3
+            ,db.getIndicatorToSym("indicator_weird_noise").size)
+    }
+    @Test
+    fun dbTest_getIndicatorToSym(){
+        var db = CCDB()
+        assertEquals("Squealing Sound"
+            , db.getIndicatorToSym("indicator_weird_noise")[0].getTitle()
+        )
+        assertEquals("Misfiring Engine"
+            , db.getIndicatorToSym("indicator_weird_noise")[1].getTitle()
+        )
+        assertEquals("Clunking Sound"
+            , db.getIndicatorToSym("indicator_weird_noise")[2].getTitle()
+        )
+    }
+
+    @Test
+    fun dbTest_getSymptomToDiag_size(){
+        var db = CCDB()
+        assertEquals(2
+            ,db.getSymptomToDiag("symptom_struggling_accelerate").size)
+    }
+    @Test
+    fun dbTest_getSymptomToDiag(){
+        var db = CCDB()
+        assertEquals("Bad Spark Plugs"
+            , db.getSymptomToDiag("symptom_struggling_accelerate")[0].getTitle()
+        )
+        assertEquals("Faulty Transmission"
+            , db.getSymptomToDiag("symptom_struggling_accelerate")[1].getTitle()
+        )
+    }
 }
