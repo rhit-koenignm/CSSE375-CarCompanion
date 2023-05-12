@@ -175,6 +175,9 @@ class CCDB : CarCompanionDatabase {
     }
 
     override fun getIndicator(id: String): Indicator {
+        if(!indicators.containsKey(id)) {
+            throw NoSuchElementException()
+        }
         return indicators[id]!!
     }
 

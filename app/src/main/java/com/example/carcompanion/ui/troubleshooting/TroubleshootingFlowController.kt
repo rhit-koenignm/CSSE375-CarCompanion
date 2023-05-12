@@ -24,6 +24,19 @@ class TroubleshootingFlowController(val db: CarCompanionDatabase = CCDB()) {
         object BackEvent : Event
     }
 
+    fun getIndicatorFromId(id: String) : Indicator {
+        return db.getIndicator(id)
+    }
+
+    fun getSymptomFromId(id: String) : Symptom {
+        return db.getSymptom(id)
+    }
+
+    fun getDiagnosisFromId(id: String) : Diagnosis {
+        return db.getDiagnosis(id)
+    }
+
+
     fun selectWoe(woe: TroubleShootingTree.Woe): State {
         val evt = when(woe) {
             is Indicator -> Event.SelectPrimarySymptomEvent(woe)

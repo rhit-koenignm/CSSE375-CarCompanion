@@ -53,21 +53,38 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
     }
 
     fun nextStep() : Boolean {
-        if(selectedIndex != -1) {
+        if(selectedIndex != -1 || getSelectedTroubleId().isEmpty()) {
             when(flowController.state) {
                 is State.Start -> {
-                    flowController.processEvent(Event.SelectPrimarySymptomEvent(getSelectedTrouble() as Indicator))
-                    updateWoeList()
-                    return true
+                    try {
+                        var selectedIndicator = flowController.getIndicatorFromId(getSelectedTroubleId())
+                        if(selectedIndicator == null) {
+                            return false
+                        }
+                        flowController.processEvent(Event.SelectPrimarySymptomEvent(selectedIndicator))
+//                    updateWoeList()
+                        return true
+                    } catch (err: NoSuchElementException) {
+                        Log.d(Constants.TRBLE_ADPTER, "No indicator for that ID")
+                        return false
+                    }
                 }
                 is State.PrimarySelected -> {
-                    flowController.processEvent(Event.SelectSecondarySymptomEvent(getSelectedTrouble() as Symptom))
-                    updateWoeList()
+                    var selectedSymptom = flowController.getSymptomFromId(getSelectedTroubleId())
+                    if(selectedSymptom == null) {
+                        return false
+                    }
+                    flowController.processEvent(Event.SelectSecondarySymptomEvent(selectedSymptom))
+//                    updateWoeList()
                     return true
                 }
                 is State.SecondarySelected -> {
-                    flowController.processEvent(Event.SelectDiagnosisEvent(getSelectedTrouble() as Diagnosis))
-                    updateWoeList()
+                    var selectedDiagnosis = flowController.getDiagnosisFromId(getSelectedTroubleId())
+                    if(selectedDiagnosis == null) {
+                        return false
+                    }
+                    flowController.processEvent(Event.SelectDiagnosisEvent(selectedDiagnosis))
+//                    updateWoeList()
                     return true
                 }
                 is State.ViewDiagnosis -> {
@@ -107,7 +124,6 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
     inner class TroubleViewHolder(private val binding: RowViewTroubleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(trouble: TroubleShootingTree.Woe, index: Int) {
             Log.d(Constants.TRBLE_ADPTER, "These woes are type: " + trouble.getType())
-
             if(trouble.getType().equals("Diagnosis")) {
                 binding.troubleNameTextView.text = trouble.getTitle()
                 binding.troubleRadioButton.visibility = View.GONE

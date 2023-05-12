@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carcompanion.Constants
@@ -50,9 +51,10 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     fun updateButtonsFromState() {
         when(flowController.state) {
             is State.Start -> {
+                binding.restartButton.isActivated = true
                 binding.restartButton.isEnabled = false
-                binding.backStepButton.isEnabled = false
-                binding.nextStepButton.isEnabled = false
+                binding.backStepButton.isEnabled = true
+                binding.nextStepButton.isEnabled = true
 
                 binding.viewDiagnosisList.visibility = View.GONE
                 binding.viewDiagnosisList.isEnabled = false
@@ -104,7 +106,12 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         binding.nextStepButton.isEnabled = false
         binding.nextStepButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "next step button pressed")
-            troubleAdapter.nextStep()
+            var didStep = troubleAdapter.nextStep()
+            if(didStep == false) {
+                val toast = Toast.makeText(context,"Next step failed, no trouble selected?", Toast.LENGTH_LONG)
+                toast.show()
+            }
+            moveToNextPage()
 //            binding.troubleshootingRecycler.adapter = troubleAdapter
         }
     }
@@ -120,6 +127,14 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     fun moveToDiagnosisPage(diagnosis: Diagnosis): Boolean {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, DiagnosisDetailsFragment(diagnosis, flowController))
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
+
+    fun moveToNextPage(): Boolean {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, TroubleshootingFragment(flowController))
             .addToBackStack(null)
             .commit()
         return true
