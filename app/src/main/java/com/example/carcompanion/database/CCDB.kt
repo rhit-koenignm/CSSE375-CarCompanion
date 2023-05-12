@@ -203,7 +203,7 @@ class CCDB : CarCompanionDatabase {
     }
 
     override fun getSymptomToDiag(symptomID: String): List<Diagnosis> {
-        var diagnosisIDs = indicators[symptomID]?.symptoms
+        var diagnosisIDs = symptoms[symptomID]?.diagnoses
         return diagnoses.filterKeys { diagnosisIDs!!.contains(it)}.values.toMutableList()
     }
 
