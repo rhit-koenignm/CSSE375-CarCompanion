@@ -17,7 +17,7 @@ internal class RefactorTest {
         symptomList.add(newSymptom)
         assertEquals(symptomList.get(0).getTitle(),"Burning smell")
     }
-    
+
     @Test
     fun dbTest_getIndicators_size(){
         var db = CCDB()
@@ -32,7 +32,7 @@ internal class RefactorTest {
     @Test
     fun dbTest_getSymptoms_size(){
         var db = CCDB()
-        assertEquals(10,db.getSymptoms().size)
+        assertEquals(13,db.getSymptoms().size)
     }
     @Test
     fun dbTest_getSymptom(){
@@ -44,7 +44,7 @@ internal class RefactorTest {
     @Test
     fun dbTest_getDiagnoses_size(){
         var db = CCDB()
-        assertEquals(6,db.getDiagnoses().size)
+        assertEquals(10,db.getDiagnoses().size)
     }
     @Test
     fun dbTest_getDiagnosis(){

@@ -39,8 +39,13 @@ class CCDB : CarCompanionDatabase {
              "symptom_dark_smoke" to
              Symptom(TroubleData("symptom_dark_smoke","Dark Smoke", "Your car is producing dark smoke coming from the exhaust")),
              "symptom_pink_fluid_leaking" to
-             Symptom(TroubleData("symptom_pink_fluid_leaking","Pink fluid leaking", "Your car is leaking a pink fluid"))
-         )
+             Symptom(TroubleData("symptom_pink_fluid_leaking","Pink fluid leaking", "Your car is leaking a pink fluid")),
+             "symptom_poor_fuel_economy" to
+             Symptom(TroubleData("symptom_poor_fuel_economy","Poor Fuel Economy", " If you notice that your car is getting fewer miles per gallon than usual, it could be a sign of a performance issue.")),
+             "symptom_handling_issues" to
+             Symptom(TroubleData("symptom_handling_issues","Handling issues", " If you notice that your car is handling poorly, or if it feels like it's pulling to one side or the other")),
+             "symptom_rough_idling" to Symptom(TroubleData("symptom_rough_idling","Rough Idling", "If you notice that your car is idling roughly, or if it vibrates excessively when stopped, it could be a sign of a performance issue."))
+             )
 
     }
 
@@ -131,7 +136,36 @@ class CCDB : CarCompanionDatabase {
                      "Spark plugs replacement cost differs heavily depending on what car model you have. Spark plugs cost 20\$-100\$ each depending on the model and spark plug type. Spark plugs replacement labor cost can be 20-100\$ dollar on a 4 cylinder car engine, but up to 1000\$ on a V8 engine or another engine if they are located badly.\n" +
                              "\n" +
                              "Consider that you have a normal spark plug, and the price is 10\$ each, and are running a V6 engine, the price of the spark plugs will be 60\$. The labor cost differs a lot in different car models. In some cars, you can replace the spark plugs within 10 minutes, and some do require a couple of hours to do the job. But the most common labor cost of a spark plug replacement is around 50-150\$ for most cars."
-                 )))
+                 )),
+             "diagnosis_low_fuel_pressure" to
+                     Diagnosis(
+                         TroubleData(
+                             "diagnosis_low_fuel_pressure",
+                             "Low Fuel Pressure",
+                             "Fuel pressure is essential for ensuring that the engine receives the right amount of fuel to mix with air to generate power. If the fuel pressure is too low, the engine may not receive enough fuel, leading to a decrease in performance."
+                         )),
+             "diagnosis_low_tire_pressure" to
+                     Diagnosis(
+                         TroubleData(
+                             "diagnosis_low_tire_pressure",
+                             "Low Tire Pressure",
+                             "Underinflated tires can increase rolling resistance, which can cause the engine to work harder than necessary, burning more fuel and reducing fuel economy."
+                         )),
+             "diagnosis_alignment_issues" to
+                     Diagnosis(
+                         TroubleData(
+                             "diagnosis_alignment_issues",
+                             "Alignment Issues",
+                             "Improper wheel alignment can cause the car to pull to one side or the other, making it harder to control. This can be caused by hitting a curb or pothole, or from general wear and tear."
+                         )),
+             "diagnosis_suspension_problems" to
+                     Diagnosis(
+                         TroubleData(
+                             "diagnosis_suspension_problems",
+                             "Suspension Problems",
+                             "Worn-out suspension components, such as shocks or struts, can cause the car to bounce or sway, affecting handling and making it harder to control."
+                         )),
+             )
     }
 
 
@@ -156,6 +190,9 @@ class CCDB : CarCompanionDatabase {
         indicators["indicator_performance_issues"]?.addSymptom("symptom_dark_smoke")
         indicators["indicator_performance_issues"]?.addSymptom("symptom_struggling_accelerate")
         indicators["indicator_performance_issues"]?.addSymptom("symptom_highRPM_low_acceleration")
+         indicators["indicator_performance_issues"]?.addSymptom("symptom_poor_fuel_economy")
+         indicators["indicator_performance_issues"]?.addSymptom("symptom_handling_issues")
+         indicators["indicator_performance_issues"]?.addSymptom("symptom_rough_idling")
 
         indicators["indicator_strange_thing"]?.addSymptom("symptom_pink_fluid_leaking")
         indicators["indicator_strange_thing"]?.addSymptom("symptom_smell_sulfur")
@@ -170,13 +207,27 @@ class CCDB : CarCompanionDatabase {
 
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_thermostat_failure")
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_faulty_transmission")
-
+        //performance issues:
          symptoms["symptom_struggling_accelerate"]?.addDiagnosis("diagnosis_bad_spark_plugs")
          symptoms["symptom_struggling_accelerate"]?.addDiagnosis("diagnosis_faulty_transmission")
 
          symptoms["symptom_dark_smoke"]?.addDiagnosis("diagnosis_transmission_line")
          symptoms["symptom_dark_smoke"]?.addDiagnosis("diagnosis_faulty_transmission")
-    }
+
+         symptoms["symptom_highRPM_low_acceleration"]?.addDiagnosis("diagnosis_transmission_line")
+         symptoms["symptom_highRPM_low_acceleration"]?.addDiagnosis("diagnosis_faulty_transmission")
+
+         symptoms["symptom_poor_fuel_economy"]?.addDiagnosis("diagnosis_low_fuel_pressure")
+         symptoms["symptom_poor_fuel_economy"]?.addDiagnosis("diagnosis_low_tire_pressure")
+         symptoms["symptom_poor_fuel_economy"]?.addDiagnosis("diagnosis_faulty_transmission")
+
+         symptoms["symptom_handling_issues"]?.addDiagnosis("diagnosis_alignment_issues")
+         symptoms["symptom_handling_issues"]?.addDiagnosis("diagnosis_suspension_problems")
+
+         symptoms["symptom_rough_idling"]?.addDiagnosis("diagnosis_transmission_line")
+         symptoms["symptom_rough_idling"]?.addDiagnosis("diagnosis_thermostat_failure")
+     }
+
 
     override fun getIndicator(id: String): Indicator {
         if(!indicators.containsKey(id)) {
