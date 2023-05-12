@@ -47,13 +47,13 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
 
     fun getSelectedTrouble() : TroubleShootingTree.Woe? {
         if (selectedIndex < 0 || troubleList.size < selectedIndex) {
-            return troubleList.get(selectedIndex)
+            return null
         }
-        return null
+        return troubleList.get(selectedIndex)
     }
 
     fun nextStep() : Boolean {
-        if(selectedIndex != -1 || getSelectedTroubleId().isEmpty()) {
+        if(selectedIndex != -1 || getSelectedTroubleId() == "") {
             when(flowController.state) {
                 is State.Start -> {
                     try {
@@ -65,7 +65,7 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
 //                    updateWoeList()
                         return true
                     } catch (err: NoSuchElementException) {
-                        Log.d(Constants.TRBLE_ADPTER, "No indicator for that ID")
+                        Log.d(Constants.TRBLE_ADPTER, "No indicator for the ID " + getSelectedTroubleId())
                         return false
                     }
                 }

@@ -48,6 +48,14 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     fun updateButtonsFromState() {
         when(flowController.state) {
             is State.Start -> {
@@ -110,9 +118,9 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
             if(didStep == false) {
                 val toast = Toast.makeText(context,"Next step failed, no trouble selected?", Toast.LENGTH_LONG)
                 toast.show()
+            } else {
+                moveToNextPage()
             }
-            moveToNextPage()
-//            binding.troubleshootingRecycler.adapter = troubleAdapter
         }
     }
 
