@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carcompanion.Constants
@@ -44,6 +45,7 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         setUpViewDiagnosisButton()
 
         updateButtonsFromState()
+        updateTitlesFromState()
 
         return binding.root
     }
@@ -54,6 +56,27 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    fun updateTitlesFromState() {
+        when(flowController.state) {
+            is State.Start -> {
+                binding.troubleshootingTitle.text = getString(R.string.having_car_troubles)
+                binding.currentTroubleshootingTitle.text = getString(R.string.init_trouble_title)
+            }
+            is State.PrimarySelected -> {
+                binding.troubleshootingTitle.text = getString(R.string.let_s_narrow_it_down)
+                binding.currentTroubleshootingTitle.text = getString(R.string.what_other_symptoms)
+            }
+            is State.SecondarySelected -> {
+                binding.troubleshootingTitle.text = getString(R.string.some_possibilities)
+                binding.currentTroubleshootingTitle.text = getString(R.string.click_to_learn_more)
+            }
+            is State.ViewDiagnosis -> {
+                binding.troubleshootingTitle.text = getString(R.string.having_car_troubles)
+                binding.currentTroubleshootingTitle.text = getString(R.string.not_sure)
+            }
+        }
     }
 
     fun toggleNextButton(isClickable: Boolean) {
