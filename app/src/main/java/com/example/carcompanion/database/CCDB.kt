@@ -171,7 +171,11 @@ class CCDB : CarCompanionDatabase {
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_thermostat_failure")
         symptoms["symptom_check_engine"]?.addDiagnosis("diagnosis_faulty_transmission")
 
+         symptoms["symptom_struggling_accelerate"]?.addDiagnosis("diagnosis_bad_spark_plugs")
+         symptoms["symptom_struggling_accelerate"]?.addDiagnosis("diagnosis_faulty_transmission")
 
+         symptoms["symptom_dark_smoke"]?.addDiagnosis("diagnosis_transmission_line")
+         symptoms["symptom_dark_smoke"]?.addDiagnosis("diagnosis_faulty_transmission")
     }
 
     override fun getIndicator(id: String): Indicator {
