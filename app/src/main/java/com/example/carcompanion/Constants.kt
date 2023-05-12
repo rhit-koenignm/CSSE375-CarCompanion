@@ -5,5 +5,7 @@ object Constants {
     const val AUTH_TAG = "CarComp-Auth"
     const val FIREBASE_TAG = "CarComp-Firebase"
     const val DETAILS_PATH = "carDeets"
+
     const val TRBLE_ADPTER = "CarComp-Adapter"
+    const val TRBLE_FRAG = "CarComp-Trouble-Frag"
 }

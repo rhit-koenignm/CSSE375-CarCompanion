@@ -5,14 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carcompanion.Constants
 import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentTroubleshootingBinding
 import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.State
-import kotlinx.coroutines.flow.flow
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.Event
 
 class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : Fragment() {
     private lateinit var binding: FragmentTroubleshootingBinding
@@ -25,7 +24,7 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     ): View? {
         binding = FragmentTroubleshootingBinding.inflate(inflater, container, false)
 
-        Log.d(Constants.DEFAULT_TAG, "opened troubleshooter")
+        Log.d(Constants.TRBLE_FRAG, "opened troubleshooter")
 
         if(controller == null) {
             flowController = TroubleshootingFlowController()
@@ -38,10 +37,10 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         binding.troubleshootingRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.troubleshootingRecycler.setHasFixedSize(true)
 
-        setRestartButton()
-        setBackStepButton()
-        setNextStepButton()
-        setViewDiagnosisButton()
+        setUpRestartButton()
+        setUpBackStepButton()
+        setUpNextStepButton()
+        setUpViewDiagnosisButton()
 
         updateButtonsFromState()
 
@@ -86,34 +85,35 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
     }
 
 
-    private fun setRestartButton() {
+    private fun setUpRestartButton() {
         binding.restartButton.isEnabled = false
         binding.restartButton.setOnClickListener {
-            Log.d(Constants.DEFAULT_TAG, "restart button pressed")
-//            adapter.restartTroubleshooting()
+            Log.d(Constants.TRBLE_FRAG, "restart button pressed")
+            troubleAdapter.restart()
         }
     }
 
-    private fun setBackStepButton() {
+    private fun setUpBackStepButton() {
         binding.backStepButton.isEnabled = false
         binding.backStepButton.setOnClickListener {
-            Log.d(Constants.DEFAULT_TAG, "back step button pressed")
+            Log.d(Constants.TRBLE_FRAG, "back step button pressed")
+            troubleAdapter.backStep()
         }
     }
-    private fun setNextStepButton() {
+    private fun setUpNextStepButton() {
         binding.nextStepButton.isEnabled = false
         binding.nextStepButton.setOnClickListener {
-            Log.d(Constants.DEFAULT_TAG, "next step button pressed")
-            binding.troubleshootingRecycler.adapter = troubleAdapter
+            Log.d(Constants.TRBLE_FRAG, "next step button pressed")
+            troubleAdapter.nextStep()
+//            binding.troubleshootingRecycler.adapter = troubleAdapter
         }
     }
 
-    private fun setViewDiagnosisButton() {
+    private fun setUpViewDiagnosisButton() {
         binding.viewDiagnosisList.visibility = View.GONE
         binding.viewDiagnosisList.isEnabled = false
         binding.viewDiagnosisList.setOnClickListener {
-            Log.d(Constants.DEFAULT_TAG, "view diagnoses button pressed")
-            binding.troubleshootingRecycler.adapter = troubleAdapter
+            Log.d(Constants.TRBLE_FRAG, "view diagnoses button pressed")
         }
     }
 

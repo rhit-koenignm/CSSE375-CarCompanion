@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.example.carcompanion.R
 import com.example.carcompanion.databinding.FragmentDiagnosisDetailsBinding
 
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.State
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.Event
+
 //import kotlinx.android.synthetic.main..view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,6 +42,7 @@ class DiagnosisDetailsFragment(diagnosis: Diagnosis, var flowController: Trouble
 
     fun setupBackButton() {
         binding.backToTroubleshootingButton.setOnClickListener {
+            flowController.processEvent(Event.BackEvent)
             addFrag(TroubleshootingFragment(flowController))
         }
     }

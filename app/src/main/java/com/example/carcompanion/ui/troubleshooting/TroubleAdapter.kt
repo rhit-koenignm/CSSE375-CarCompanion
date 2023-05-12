@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carcompanion.Constants
 import com.example.carcompanion.R
 import com.example.carcompanion.databinding.RowViewTroubleBinding
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.State
+import com.example.carcompanion.ui.troubleshooting.TroubleshootingFlowController.Event
 
 class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: TroubleshootingFlowController) : RecyclerView.Adapter<TroubleAdapter.TroubleViewHolder>(){
 
@@ -50,6 +52,43 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
         return null
     }
 
+    fun nextStep() : Boolean {
+        if(selectedIndex != -1) {
+            when(flowController.state) {
+                is State.Start -> {
+                    flowController.processEvent(Event.SelectPrimarySymptomEvent(getSelectedTrouble() as Indicator))
+                    updateWoeList()
+                    return true
+                }
+                is State.PrimarySelected -> {
+                    flowController.processEvent(Event.SelectSecondarySymptomEvent(getSelectedTrouble() as Symptom))
+                    updateWoeList()
+                    return true
+                }
+                is State.SecondarySelected -> {
+                    flowController.processEvent(Event.SelectDiagnosisEvent(getSelectedTrouble() as Diagnosis))
+                    updateWoeList()
+                    return true
+                }
+                is State.ViewDiagnosis -> {
+                    return false
+                }
+            }
+        } else {
+            return false
+        }
+    }
+
+    fun restart() {
+        flowController.processEvent(Event.ResetEvent)
+        updateWoeList()
+    }
+
+    fun backStep() {
+        flowController.processEvent(Event.BackEvent)
+        updateWoeList()
+    }
+
     private fun updateWoeList() {
         selectedIndex = -1
         if(troubleList.isEmpty()) {
@@ -71,16 +110,13 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
 
             if(trouble.getType().equals("Diagnosis")) {
                 binding.troubleNameTextView.text = trouble.getTitle()
-
                 binding.troubleRadioButton.visibility = View.GONE
 
-                var diagnosis = trouble as Diagnosis
-                if(!diagnosis.getType().equals("Diagnosis")) {
-                    diagnosis = Diagnosis(trouble.data)
-                }
                 binding.troubleCardView.setOnClickListener {
-                    fragment.moveToDiagnosisPage(diagnosis)
+                    flowController.processEvent(Event.SelectDiagnosisEvent(getSelectedTrouble() as Diagnosis))
+                    fragment.moveToDiagnosisPage(trouble as Diagnosis)
                 }
+
             } else {
                 binding.troubleImageButton.visibility = View.GONE
 
@@ -104,6 +140,7 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                         Log.d(Constants.TRBLE_ADPTER, "Selected trouble is at index " + selectedIndex)
                     } else if(selectedIndex == index){
                         selectedIndex = -1
+                        Log.d(Constants.TRBLE_ADPTER, "Unselected trouble is at index " + selectedIndex)
                         binding.troubleViewLayout.setBackgroundColor(
                             ContextCompat.getColor(binding.root.context, R.color.seafoam))
                         binding.troubleRadioButton.isChecked = false
