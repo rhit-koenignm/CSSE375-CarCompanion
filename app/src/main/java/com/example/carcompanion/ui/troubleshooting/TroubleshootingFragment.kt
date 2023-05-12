@@ -42,7 +42,6 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         setUpRestartButton()
         setUpBackStepButton()
         setUpNextStepButton()
-        setUpViewDiagnosisButton()
 
         updateButtonsFromState()
         updateTitlesFromState()
@@ -109,18 +108,6 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         }
     }
 
-    fun toggleViewDiagnosisButton(isClickable: Boolean) {
-        if(isClickable) {
-            binding.viewDiagnosisList.visibility = View.VISIBLE
-            binding.viewDiagnosisList.isEnabled = true
-            binding.viewDiagnosisList.alpha = 1.0f
-        } else {
-            binding.viewDiagnosisList.visibility = View.GONE
-            binding.viewDiagnosisList.isEnabled = false
-            binding.viewDiagnosisList.alpha = 0.5f
-        }
-    }
-
 
     fun updateButtonsFromState() {
         when(flowController.state) {
@@ -128,25 +115,21 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
                 toggleNextButton(false)
                 toggleBackButton(false)
                 toggleRestartButton(false)
-                toggleViewDiagnosisButton(false)
             }
             is State.PrimarySelected -> {
                 toggleNextButton(false)
                 toggleBackButton(true)
                 toggleRestartButton(true)
-                toggleViewDiagnosisButton(false)
             }
             is State.SecondarySelected -> {
                 toggleNextButton(false)
                 toggleBackButton(true)
                 toggleRestartButton(true)
-                toggleViewDiagnosisButton(false)
             }
             is State.ViewDiagnosis -> {
                 toggleNextButton(false)
                 toggleBackButton(true)
                 toggleRestartButton(true)
-                toggleViewDiagnosisButton(false)
             }
         }
     }
@@ -183,16 +166,9 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         }
     }
 
-    private fun setUpViewDiagnosisButton() {
-        toggleViewDiagnosisButton(false)
-        binding.viewDiagnosisList.setOnClickListener {
-            Log.d(Constants.TRBLE_FRAG, "view diagnoses button pressed")
-        }
-    }
-
     fun moveToDiagnosisPage(controller: TroubleshootingFlowController): Boolean {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, DiagnosisDetailsFragment(flowController))
+            .replace(R.id.fragment_container, DiagnosisDetailsFragment(controller))
             .addToBackStack(null)
             .commit()
         return true

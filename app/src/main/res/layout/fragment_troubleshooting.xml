@@ -41,9 +41,10 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_below="@id/current_troubleshooting_title"
-        android:clipChildren="true"
+        android:clipChildren="false"
         android:clipToPadding="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:padding="5dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -97,17 +98,5 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/view_diagnosis_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_diagnosis_list"
-        android:layout_below="@id/button_layout"
-        android:backgroundTint="@color/celadon"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        />
-
 
 </RelativeLayout>

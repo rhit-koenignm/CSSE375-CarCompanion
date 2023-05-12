@@ -56,7 +56,7 @@
 
     <string name="click_to_learn_more">Click on any of the options below to learn more.</string>
     <string name="some_possibilities">We found some possibilities...</string>
-    <string name="not_sure">Not sure the issue is here? Restart or step back to try again.</string>
+    <string name="not_sure">Not sure this is the issue? Return to the troubleshooting page to restart or step back and try again.</string>
 
     <string name="sample_symptom_string">My car is producing a weird smell</string>
     <string name="sample_diagnosis_title">Faulty Ignition Coil</string>

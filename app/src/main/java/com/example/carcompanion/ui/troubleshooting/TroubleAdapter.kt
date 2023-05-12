@@ -122,7 +122,6 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
             Log.d(Constants.TRBLE_ADPTER, "These woes are type: " + trouble.getType())
             if(trouble.getType().equals("Diagnosis")) {
                 binding.troubleNameTextView.text = trouble.getTitle()
-                binding.troubleRadioButton.visibility = View.GONE
 
                 binding.troubleCardView.setOnClickListener {
                     flowController.processEvent(Event.SelectDiagnosisEvent(flowController.getDiagnosisFromId(trouble.data.getId())))
@@ -136,14 +135,12 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                 if(selectedIndex != index) {
                     binding.troubleViewLayout.setBackgroundColor(
                         ContextCompat.getColor(binding.root.context, R.color.seafoam))
-                    binding.troubleRadioButton.isChecked = false
                 }
 
                 binding.troubleCardView.setOnClickListener {
                     if(selectedIndex != index) {
                         binding.troubleViewLayout.setBackgroundColor(
                             ContextCompat.getColor(binding.root.context, R.color.cerulean))
-                        binding.troubleRadioButton.isChecked = true
                         var prevSelected = selectedIndex
                         if(prevSelected != -1) {
                             notifyItemChanged(prevSelected)
@@ -156,7 +153,6 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                         Log.d(Constants.TRBLE_ADPTER, "Unselected trouble is at index " + selectedIndex)
                         binding.troubleViewLayout.setBackgroundColor(
                             ContextCompat.getColor(binding.root.context, R.color.seafoam))
-                        binding.troubleRadioButton.isChecked = false
                         fragment.toggleNextButton(false)
                     }
                 }
