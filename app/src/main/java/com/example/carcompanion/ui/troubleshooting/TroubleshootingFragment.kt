@@ -167,9 +167,9 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         }
     }
 
-    fun moveToDiagnosisPage(diagnosis: Diagnosis): Boolean {
+    fun moveToDiagnosisPage(controller: TroubleshootingFlowController): Boolean {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, DiagnosisDetailsFragment(diagnosis, flowController))
+            .replace(R.id.fragment_container, DiagnosisDetailsFragment(flowController))
             .addToBackStack(null)
             .commit()
         return true

@@ -75,7 +75,6 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                         return false
                     }
                     flowController.processEvent(Event.SelectSecondarySymptomEvent(selectedSymptom))
-//                    updateWoeList()
                     return true
                 }
                 is State.SecondarySelected -> {
@@ -84,7 +83,6 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                         return false
                     }
                     flowController.processEvent(Event.SelectDiagnosisEvent(selectedDiagnosis))
-//                    updateWoeList()
                     return true
                 }
                 is State.ViewDiagnosis -> {
@@ -127,8 +125,8 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
                 binding.troubleRadioButton.visibility = View.GONE
 
                 binding.troubleCardView.setOnClickListener {
-                    flowController.processEvent(Event.SelectDiagnosisEvent(getSelectedTrouble() as Diagnosis))
-                    fragment.moveToDiagnosisPage(trouble as Diagnosis)
+                    flowController.processEvent(Event.SelectDiagnosisEvent(flowController.getDiagnosisFromId(trouble.data.getId())))
+                    fragment.moveToDiagnosisPage(flowController)
                 }
 
             } else {
