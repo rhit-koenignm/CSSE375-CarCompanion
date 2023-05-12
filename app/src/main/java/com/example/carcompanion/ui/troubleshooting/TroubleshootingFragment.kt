@@ -134,6 +134,7 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         binding.restartButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "restart button pressed")
             troubleAdapter.restart()
+            moveToNextPage()
         }
     }
 
@@ -142,6 +143,7 @@ class TroubleshootingFragment(val controller: TroubleshootingFlowController?) : 
         binding.backStepButton.setOnClickListener {
             Log.d(Constants.TRBLE_FRAG, "back step button pressed")
             troubleAdapter.backStep()
+            moveToNextPage()
         }
     }
     private fun setUpNextStepButton() {

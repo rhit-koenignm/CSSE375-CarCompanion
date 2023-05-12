@@ -98,12 +98,10 @@ class TroubleAdapter(val fragment: TroubleshootingFragment, val flowController: 
 
     fun restart() {
         flowController.processEvent(Event.ResetEvent)
-        updateWoeList()
     }
 
     fun backStep() {
         flowController.processEvent(Event.BackEvent)
-        updateWoeList()
     }
 
     private fun updateWoeList() {
